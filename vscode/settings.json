@@ -1,0 +1,100 @@
+{
+    "workbench.colorTheme": "pustota",
+    "editor.formatOnSave": true,
+    "workbench.sideBar.location": "right",
+    //icons
+
+    "material-icon-theme.hidesExplorerArrows": true,
+    "workbench.tree.renderIndentGuides": "none",
+    "workbench.startupEditor": "none",
+
+    //editor
+    "editor.copyWithSyntaxHighlighting": false,
+    "diffEditor.ignoreTrimWhitespace": false,
+    "editor.emptySelectionClipboard": false,
+    "workbench.editor.enablePreview": false,
+    "window.newWindowDimensions": "inherit",
+    "editor.multiCursorModifier": "ctrlCmd",
+    "files.trimTrailingWhitespace": true,
+    "diffEditor.renderSideBySide": false,
+    "editor.snippetSuggestions": "top",
+    "editor.detectIndentation": false,
+    "window.nativeFullScreen": true,
+    "files.insertFinalNewline": true,
+    "files.trimFinalNewlines": true,
+    "workbench.editor.showTabs": "none",
+    "editor.renderLineHighlight": "line",
+    "editor.minimap.enabled": false,
+    "editor.guides.indentation": false,
+    "editor.lightbulb.enabled": "off",
+    "editor.showFoldingControls": "never",
+    "editor.scrollbar.horizontal": "hidden",
+    "editor.scrollbar.vertical": "hidden",
+    "editor.overviewRulerBorder": false,
+    "github.copilot.nextEditSuggestions.enabled": true,
+    "editor.cursorSmoothCaretAnimation": "on",
+    "editor.cursorBlinking": "solid",
+    "editor.tabSize": 4,
+    "editor.fontLigatures": true,
+    "editor.lineHeight": 1.5,
+    "editor.fontFamily": "Fira Code",
+    "editor.lineNumbers": "relative",
+    "json.format.keepLines": true,
+    "zenMode.showTabs": "none",
+    "breadcrumbs.enabled": false,
+    "explorer.compactFolders": false,
+    "git.decorations.enabled": false,
+    "scm.diffDecorations": "none",
+    "editor.stickyScroll.maxLineCount": 999,
+    "editor.stickyScroll.enabled": true,
+    "editor.links": false,
+    "editor.quickSuggestions": {
+        "other": "on",
+    },
+    "editor.suggestOnTriggerCharacters": false,
+    "editor.tabCompletion": "on",
+    "extensions.ignoreRecommendations": true,
+    "files.autoSave": "afterDelay",
+    "terminal.integrated.tabs.enabled": false,
+    "window.titleBarStyle": "native",
+    "custom-ui-style.electron": {
+        "titleBarStyle": "hidden"
+    },
+    "vim.easymotion": true,
+    "vim.incsearch": true,
+    "vim.useSystemClipboard": true,
+    "vim.useCtrlKeys": true,
+    "vim.hlsearch": true,
+    "vim.insertModeKeyBindings": [
+        {
+            "before": [ "j", "k" ],
+            "after": [ "<Esc>" ]
+        }
+    ],
+    "vim.normalModeKeyBindingsNonRecursive": [
+        {
+            "before": [ "<leader>", "d" ],
+            "after": [ "d", "d" ]
+        },
+        {
+            "before": [ "<C-n>" ],
+            "commands": [ ":nohl" ]
+        },
+        {
+            "before": [ "K" ],
+            "commands": [ "lineBreakInsert" ],
+            "silent": true
+        }
+    ],
+    "vim.leader": "<space>",
+    "vim.handleKeys": {
+        "<C-a>": false,
+        "<C-f>": false
+    },
+    // To improve performance
+    "extensions.experimental.affinity": {
+        "vscodevim.vim": 1
+    }
+
+
+}

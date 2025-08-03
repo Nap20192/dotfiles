@@ -1,0 +1,138 @@
+// Place your key bindings in this file to override the defaults
+[
+    {
+        "key": "alt+d",
+        "command": "fileutils.removeFile"
+    },
+    {
+        "key": "ctrl+alt+c",
+        "command": "fileutils.copyFileName"
+    },
+    {
+        "key": "alt+c",
+        "command": "fileutils.duplicateFile"
+    },
+    {
+        "key": "ctrl+alt+m",
+        "command": "fileutils.moveFile"
+    },
+    {
+        "key": "alt+.",
+        "command": "fileutils.newFile"
+    },
+    {
+        "key": "shift+r",
+        "command": "fileutils.renameFile"
+    },
+    {
+        "key": "alt+/",
+        "command": "fileutils.newFolder"
+    },
+    {
+        "key": "alt+.",
+        "command": "fileutils.newFileAtRoot"
+    },
+    {
+        "key": "shift+alt+m",
+        "command": "fileutils.newFolderAtRoot"
+    },
+    {
+        "key": "ctrl+p",
+        "command": "workbench.action.showCommands",
+    },
+    {
+        "key": "ctrl+g",
+        "command": "workbench.action.gotoSymbol",
+    },
+    {
+        "key": "alt+j",
+        "command": "workbench.action.quickOpenPreviousRecentlyUsedEditorInGroup",
+        "when": "!activeEditorGroupEmpty"
+    },
+    {
+        "key": "ctrl+tab",
+        "command": "-workbench.action.quickOpenPreviousRecentlyUsedEditorInGroup",
+        "when": "!activeEditorGroupEmpty"
+    },
+    {
+        "key": "alt+k",
+        "command": "workbench.action.quickOpenLeastRecentlyUsedEditorInGroup",
+        "when": "!activeEditorGroupEmpty"
+    },
+    {
+        "key": "ctrl+shift+tab",
+        "command": "-workbench.action.quickOpenLeastRecentlyUsedEditorInGroup",
+        "when": "!activeEditorGroupEmpty"
+    },
+    {
+        "key": "alt+j",
+        "command": "workbench.action.quickOpenNavigateNextInEditorPicker",
+        "when": "inEditorsPicker && inQuickOpen"
+    },
+    {
+        "key": "ctrl+tab",
+        "command": "-workbench.action.quickOpenNavigateNextInEditorPicker",
+        "when": "inEditorsPicker && inQuickOpen"
+    },
+    {
+        "key": "alt+k",
+        "command": "workbench.action.quickOpenNavigatePreviousInEditorPicker",
+        "when": "inEditorsPicker && inQuickOpen"
+    },
+    {
+        "key": "ctrl+shift+tab",
+        "command": "-workbench.action.quickOpenNavigatePreviousInEditorPicker",
+        "when": "inEditorsPicker && inQuickOpen"
+    },
+    {
+        "key": "ctrl+shift+f",
+        "command": "workbench.action.quickTextSearch"
+    },
+    {
+        "key": "alt+enter",
+        "command": "editor.action.showContextMenu",
+    },
+    {
+        "key": "ctrl+j",
+        "command": "editor.action.copyLinesDownAction",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "ctrl+alt+k",
+        "command": "editor.action.formatDocument",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "ctrl+[",
+        "command": "editor.fold",
+        "when": "editorTextFocus && foldingEnabled"
+    },{
+        "key": "ctrl+]",
+        "command": "editor.unfold",
+        "when": "editorTextFocus && foldingEnabled"
+    },{
+        "key": "ctrl+alt+[",
+        "command": "editor.foldAll",
+        "when": "editorTextFocus && foldingEnabled"
+    },{
+        "key": "ctrl+alt+]",
+        "command": "editor.unfoldAll",
+        "when": "editorTextFocus && foldingEnabled"
+    },{
+        "key": "ctrl+shift+]",
+        "command": "editor.unfoldRecursively",
+        "when": "editorTextFocus && foldingEnabled"
+    },{
+        "key": "ctrl+shift+[",
+        "command": "editor.foldRecursively",
+        "when": "editorTextFocus && foldingEnabled"
+    },{
+        "key": "ctrl+.",
+        "command": "workbench.action.navigateForward",
+        "when": "canNavigateForward"
+    },{
+        "key": "ctrl+,",
+        "command": "workbench.action.navigateBack",
+        "when": "canNavigateBack"
+    }
+]
