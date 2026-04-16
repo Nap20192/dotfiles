@@ -91,17 +91,11 @@ source <(fzf --zsh)
 source $ILYASYOY_DOTFILES_DIR/sh/helpers.sh
 source $ILYASYOY_DOTFILES_DIR/sh/exports.sh
 source $ILYASYOY_DOTFILES_DIR/sh/aliases.sh
-## start ilyasyoy gvm config ##
 _gvm_lazy_load() {
     unset -f gvm
     [[ -s "$HOME/.gvm/scripts/gvm" ]] && source "$HOME/.gvm/scripts/gvm"
     "$@"
 }
 gvm() { _gvm_lazy_load gvm "$@"; }
-## end ilyasyoy gvm config ##
-## start ilyasyoy fnm config ##
 eval "$(fnm env --use-on-cd --shell zsh)"
-## end ilyasyoy fnm config ##
-
-# ECC plugin root for Claude Code hooks
 export CLAUDE_PLUGIN_ROOT="/home/vnkjd/.claude"

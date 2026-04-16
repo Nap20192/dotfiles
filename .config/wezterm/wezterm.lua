@@ -2,7 +2,7 @@ local wezterm = require "wezterm"
 
 local M = {}
 
-M.font_size = 14
+M.font_size = 13
 M.font = wezterm.font "Fira Code"
 
 M.color_schemes = {
@@ -41,7 +41,7 @@ M.color_schemes = {
     ["IlyasYOY Monochrome Light"] = {
         foreground = "#000000",
         background = "#eeeeee",
-        cursor_bg = "#191919",
+        cursor_bg = "#8787af",
         cursor_fg = "#dadada",
         cursor_border = "#8787af",
         selection_fg = "#dadada",
@@ -90,19 +90,26 @@ wezterm.on("window-config-reloaded", function(window, _)
     end
 end)
 
---M.color_scheme = scheme_for_appearance(wezterm.gui.get_appearance())
-M.color_scheme = "dank-theme"
+M.color_scheme = scheme_for_appearance(wezterm.gui.get_appearance())
+
 M.hide_tab_bar_if_only_one_tab = true
 M.window_decorations = "NONE"
+M.window_padding = {
+  left = 15,
+  right = 15,
+  top = 15,
+  bottom = 15,
+}
 
 M.send_composed_key_when_left_alt_is_pressed = false
 M.send_composed_key_when_right_alt_is_pressed = false
+
+M.native_macos_fullscreen_mode = true
 
 -- Try attaching to an existing tmux session; if none exist, create a new one named 'main'.
 wezterm.on("gui-startup", function(cmd)
     local mux = wezterm.mux
     local shell = os.getenv "SHELL" or "/bin/bash"
-    local session = "main"
     mux.spawn_window {
         args = {
             shell,
