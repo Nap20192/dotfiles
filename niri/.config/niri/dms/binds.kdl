@@ -1,0 +1,4 @@
+binds {
+    // Super+Shift+S removed: conflicts with "Toggle Dark/Light Style" in ../binds.kdl
+    // Screenshot is already bound to Print and Mod+P
+}

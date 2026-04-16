@@ -1,0 +1,18 @@
+
+layer-rule {
+    match namespace="^awww"
+    place-within-backdrop true
+}
+
+layout {
+    // Makes the workspace background invisible so the stationary wallpaper shows through
+    background-color "transparent"
+}
+
+// Optional: Turn off workspace shadows in the overview for a cleaner look
+overview {
+    workspace-shadow {
+        on
+    }
+}
+
