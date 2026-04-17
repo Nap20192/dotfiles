@@ -134,6 +134,6 @@ for _, server in ipairs {
 end
 
 vim.api.nvim_create_autocmd("LspAttach", {
-    group = vim.api.nvim_create_augroup("ilyasyoy.lsp", {}),
+    group = vim.api.nvim_create_augroup("vnkjd.lsp", {}),
     callback = lsp_attach,
 })

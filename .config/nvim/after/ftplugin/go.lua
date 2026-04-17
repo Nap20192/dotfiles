@@ -1,7 +1,7 @@
-local core = require "ilyasyoy.functions.core"
-local lint_helpers = require "ilyasyoy.functions.lint"
-local test_helpers = require "ilyasyoy.functions.test"
-local toggle_helper = require "ilyasyoy.functions.toggle_test"
+local core = require "vnkjd.functions.core"
+local lint_helpers = require "vnkjd.functions.lint"
+local test_helpers = require "vnkjd.functions.test"
+local toggle_helper = require "vnkjd.functions.toggle_test"
 
 vim.opt_local.expandtab = false
 vim.opt_local.spell = false

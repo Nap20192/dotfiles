@@ -3,12 +3,12 @@ local gh = function(x)
 end
 
 -- Dev plugins: use local path if it exists, else fall back to GitHub.
-local function ilyasyoy(name)
-    local local_path = vim.fn.expand("~/Projects/IlyasYOY/" .. name)
+local function vnkjd(name)
+    local local_path = vim.fn.expand("~/Projects/vnkjd/" .. name)
     if vim.fn.isdirectory(local_path) == 1 then
         return { src = "file://" .. local_path, name = name }
     else
-        return gh("IlyasYOY/" .. name)
+        return gh("vnkjd/" .. name)
     end
 end
 
@@ -16,7 +16,7 @@ local M = {
     specs = {
         core = {
             -- Dev (own) plugins
-            ilyasyoy "theme.nvim",
+            vnkjd "theme.nvim",
 
             -- Colors
             gh "norcalli/nvim-colorizer.lua",
@@ -93,7 +93,7 @@ local M = {
             gh "copilotlsp-nvim/copilot-lsp",
         },
         obs = {
-            ilyasyoy "obs.nvim",
+            vnkjd "obs.nvim",
         },
     },
 }

@@ -150,7 +150,7 @@ local function setup_swaps()
     end, buf_opts)
 end
 
-local ts_group = vim.api.nvim_create_augroup("ilyasyoy-treesitter", {})
+local ts_group = vim.api.nvim_create_augroup("vnkjd-treesitter", {})
 
 vim.api.nvim_create_autocmd("FileType", {
     pattern = {

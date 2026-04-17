@@ -1,4 +1,4 @@
-local toggle_helpers = require "ilyasyoy.functions.toggle_test"
+local toggle_helpers = require "vnkjd.functions.toggle_test"
 
 toggle_helpers.setup {
     command = "TSXToggleTest",

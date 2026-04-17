@@ -558,6 +558,12 @@ Vault: `~/Projects/IlyasYOY/notes-wiki`
 
 ## Утилиты
 
+### Keybinding reference
+
+| Клавиша | Действие |
+|---|---|
+| `<leader>?` | Открыть этот файл (HINTS.md) |
+
 ### Undotree
 
 | Клавиша | Действие |

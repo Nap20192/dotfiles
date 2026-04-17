@@ -1,5 +1,5 @@
 require("obs").setup {
-    vault_home = "~/Projects/IlyasYOY/notes-wiki",
+    vault_home = "~/Projects/vnkjd/notes-wiki",
     vault_name = "notes-wiki",
     journal = {
         daily_template_name = "daily",

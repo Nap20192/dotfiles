@@ -157,7 +157,7 @@ function M.setup(opts)
             if cur.get_name_fn then
                 name = cur.get_name_fn()
             elseif cur.node_type then
-                local ts = require "ilyasyoy.functions.treesitter"
+                local ts = require "vnkjd.functions.treesitter"
                 name = ts.get_enclosing_name(cur.node_type)
             end
 

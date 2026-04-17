@@ -1,4 +1,4 @@
-local ilyasyoy_snippets = require "ilyasyoy.snippets"
+local vnkjd_snippets = require "vnkjd.snippets"
 local ls = require "luasnip"
 local fmt = require("luasnip.extras.fmt").fmt
 local s = ls.snippet
@@ -8,9 +8,9 @@ local c = ls.choice_node
 
 return {
     s("checkbox", fmt("- {} {}", { c(1, { t "[ ]", t "[x]" }), i(0, "Todo") })),
-    s("todaylink", fmt("[[{}]]", ilyasyoy_snippets.current_date())),
-    s("tomorrowlink", fmt("[[{}]]", ilyasyoy_snippets.tomorrow_date())),
-    s("yesterdaylink", fmt("[[{}]]", ilyasyoy_snippets.yesterday_date())),
+    s("todaylink", fmt("[[{}]]", vnkjd_snippets.current_date())),
+    s("tomorrowlink", fmt("[[{}]]", vnkjd_snippets.tomorrow_date())),
+    s("yesterdaylink", fmt("[[{}]]", vnkjd_snippets.yesterday_date())),
     s(
         "callout",
         fmt("> [!{}] {}\n> {}", {

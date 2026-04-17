@@ -64,7 +64,7 @@ end
 
 -- Set up colorscheme
 vim.cmd "set termguicolors"
-vim.cmd 'let g:colors_name = "ilyasyoy-monochrome"'
+vim.cmd 'let g:colors_name = "vnkjd-monochrome"'
 vim.cmd("set background=" .. bg)
 
 -- =============================================================================

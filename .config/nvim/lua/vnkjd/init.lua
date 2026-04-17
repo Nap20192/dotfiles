@@ -4,7 +4,7 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = ","
 
-require "ilyasyoy.pack"
+require "vnkjd.pack"
 
 vim.o.autoread = true
 
@@ -105,3 +105,12 @@ end, { desc = "Run monotask on current directory" })
 vim.keymap.set("n", "<leader>mT", function()
     run_monotask(vim.fn.expand "%")
 end, { desc = "Run monotask on current file" })
+
+vim.keymap.set("n", "<leader>?", function()
+    vim.cmd("edit " .. vim.fn.stdpath("config") .. "/HINTS.md")
+end, { desc = "Open keybinding hints (HINTS.md)" })
+
+vim.keymap.set("n", "<localleader>fm", function()
+    local file = vim.fn.expand "%:p"
+    vim.cmd("botright split | terminal glow " .. vim.fn.shellescape(file))
+end, { desc = "Preview markdown with glow" })

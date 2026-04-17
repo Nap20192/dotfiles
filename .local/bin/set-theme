@@ -1,40 +1,34 @@
 #!/bin/bash
 
-if [ "$(dconf read /org/gnome/desktop/interface/color-scheme)" = "'prefer-dark'" ]; then
-  CURRENT_STYLE="dark"
+CURRENT_RAW=$(dconf read /org/gnome/desktop/interface/color-scheme)
+if [ "$CURRENT_RAW" = "'prefer-dark'" ]; then
+    CURRENT_STYLE="dark"
 else
-  CURRENT_STYLE="light"
+    CURRENT_STYLE="light"
 fi
 
+# Логика переключения
 if [ "$1" = "dark" ]; then
-  STYLE="dark"
+    STYLE="dark"
 elif [ "$1" = "light" ]; then
-  STYLE="light"
-elif [ "$CURRENT_STYLE" = "dark" ]; then
-  STYLE="light"
+    STYLE="light"
 else
-  STYLE="dark"
+    # Toggle режим
+    [ "$CURRENT_STYLE" = "dark" ] && STYLE="light" || STYLE="dark"
 fi
 
-if [ "$STYLE" = "$CURRENT_STYLE" ]; then
-  exit 0
-fi
+[ "$STYLE" = "$CURRENT_STYLE" ] && exit 0
 
 if [ "$STYLE" = "dark" ]; then
-  COLOR_SCHEME="prefer-dark"
-  ALACRITTY_COLORS="catppuccin-mocha"
-  HELIX_THEME="catppuccin_mocha"
-  NVIM_THEME="catppuccin-mocha"
-elif [ "$STYLE" = "light" ]; then
-  COLOR_SCHEME="default"
-  ALACRITTY_COLORS="github_light"
-  HELIX_THEME="github_light"
-  NVIM_THEME="github_light"
+    COLOR_SCHEME="prefer-dark"
+    NIRI_FOCUS="#00afff" # Blue
+else
+    COLOR_SCHEME="prefer-light"
+    NIRI_FOCUS="#ffaf00" # Yellow
 fi
 
 niri msg action do-screen-transition
-dconf write /org/gnome/desktop/interface/color-scheme "\"$COLOR_SCHEME\""
-# sed -i --follow-symlinks "s/^    \"~/    # \"~/;s/^    # \(\"~.*$ALACRITTY_COLORS.toml\",\)/    \1/" ~/.config/alacritty/alacritty.toml
-# sed -i --follow-symlinks "s/^\(theme =\)/# \1/;s/^# \(theme = \"$HELIX_THEME\"\)/\1/" ~/.config/helix/config.toml
-# pkill -USR1 hx
-# sed -i --follow-symlinks "s/^\(vim.cmd.colorscheme\)/-- \1/;s/^-- \(vim.cmd.colorscheme '$NVIM_THEME'\)/\1/" ~/.config/nvim/init.lua
+
+dconf write /org/gnome/desktop/interface/color-scheme "'$COLOR_SCHEME'"
+
+niri msg action set-property layout.focus-ring.active-color "$NIRI_FOCUS"

@@ -1,10 +1,10 @@
-vim.cmd [[ colorscheme ilyasyoy-monochrome ]]
+vim.cmd [[ colorscheme vnkjd-monochrome ]]
 
 vim.schedule(function()
     require("colorizer").setup()
 end)
 
 require("auto-dark-mode").setup {
-    dark_mode_colorscheme = "ilyasyoy-monochrome",
-    light_mode_colorscheme = "ilyasyoy-monochrome",
+    dark_mode_colorscheme = "vnkjd-monochrome",
+    light_mode_colorscheme = "vnkjd-monochrome",
 }

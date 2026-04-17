@@ -1,5 +1,5 @@
-local test_helpers = require "ilyasyoy.functions.test"
-local toggle_helpers = require "ilyasyoy.functions.toggle_test"
+local test_helpers = require "vnkjd.functions.test"
+local toggle_helpers = require "vnkjd.functions.toggle_test"
 
 vim.bo.formatoptions = vim.bo.formatoptions .. "ro/"
 

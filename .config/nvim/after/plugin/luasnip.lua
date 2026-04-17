@@ -68,12 +68,12 @@ vim.defer_fn(function()
         end)
     end
 
-    local ilyasyoy_snippets = require "ilyasyoy.snippets"
+    local vnkjd_snippets = require "vnkjd.snippets"
     local fmt = require("luasnip.extras.fmt").fmt
     ls.add_snippets("all", {
-        ls.s("today", ilyasyoy_snippets.current_date()),
-        ls.s("tomorrow", fmt("{}", ilyasyoy_snippets.tomorrow_date())),
-        ls.s("yesterday", fmt("{}", ilyasyoy_snippets.yesterday_date())),
+        ls.s("today", vnkjd_snippets.current_date()),
+        ls.s("tomorrow", fmt("{}", vnkjd_snippets.tomorrow_date())),
+        ls.s("yesterday", fmt("{}", vnkjd_snippets.yesterday_date())),
         ls.s({ trig = "uid", wordTrig = true }, { ls.f(uuid), ls.i(0) }),
     })
 end, 0)

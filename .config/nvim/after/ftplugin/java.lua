@@ -1,8 +1,8 @@
-local core = require "ilyasyoy.functions.core"
-local lint_helpers = require "ilyasyoy.functions.lint"
-local test_helpers = require "ilyasyoy.functions.test"
+local core = require "vnkjd.functions.core"
+local lint_helpers = require "vnkjd.functions.lint"
+local test_helpers = require "vnkjd.functions.test"
 local jdtls = require "jdtls"
-local jdtls_config = require("ilyasyoy.functions.java").get_jdtls_config()
+local jdtls_config = require("vnkjd.functions.java").get_jdtls_config()
 
 local function setup_linters()
     lint_helpers.setup_command {
@@ -177,7 +177,7 @@ end
 
 setup_linters()
 setup_test()
-require("ilyasyoy.functions.toggle_test").setup {
+require("vnkjd.functions.toggle_test").setup {
     command = "JavaToggleTest",
     rules = {
         {

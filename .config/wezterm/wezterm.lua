@@ -2,7 +2,7 @@ local wezterm = require "wezterm"
 
 local M = {}
 
-M.font_size = 13
+M.font_size = 12
 M.font = wezterm.font "Fira Code"
 
 M.color_schemes = {
@@ -41,31 +41,31 @@ M.color_schemes = {
     ["IlyasYOY Monochrome Light"] = {
         foreground = "#000000",
         background = "#eeeeee",
-        cursor_bg = "#8787af",
-        cursor_fg = "#dadada",
-        cursor_border = "#8787af",
-        selection_fg = "#dadada",
+        cursor_bg = "#4e4e4e",
+        cursor_fg = "#eeeeee",
+        cursor_border = "#4e4e4e",
+        selection_fg = "#eeeeee",
         selection_bg = "#ffaf00",
         scrollbar_thumb = "#626262",
         split = "#626262",
         ansi = {
-            "#000000", -- black   (fg)
-            "#da8d8d", -- red     (remove)
-            "#8dda9e", -- green   (add)
-            "#ffaf00", -- yellow  (visual)
-            "#00afff", -- blue    (search)
-            "#8787af", -- magenta (cursor)
-            "#00afaf", -- cyan
-            "#727272", -- white   (bg)
+            "#000000", -- black
+            "#da8d8d", -- red
+            "#111111", -- green   → gray-1
+            "#ffaf00", -- yellow
+            "#3b3b3b", -- blue    → gray-4
+            "#4e4e4e", -- magenta → gray-5
+            "#252525", -- cyan    → gray-3
+            "#727272", -- white   (muted)
         },
         brights = {
-            "#626262", -- bright black  (muted)
-            "#ff005f", -- bright red    (error)
-            "#416241", -- bright green  (dark add)
-            "#ffaf00", -- bright yellow (visual)
-            "#00afff", -- bright blue   (search)
-            "#d787d7", -- bright magenta
-            "#87afd7", -- bright cyan
+            "#626262", -- bright black
+            "#ff005f", -- bright red
+            "#1c1c1c", -- bright green   → gray-2
+            "#ffaf00", -- bright yellow
+            "#454545", -- bright blue    → gray-6
+            "#575757", -- bright magenta → gray-7
+            "#303030", -- bright cyan    → gray-3b
             "#828282", -- bright white
         },
     },
@@ -106,18 +106,6 @@ M.send_composed_key_when_right_alt_is_pressed = false
 
 M.native_macos_fullscreen_mode = true
 
--- Try attaching to an existing tmux session; if none exist, create a new one named 'main'.
-wezterm.on("gui-startup", function(cmd)
-    local mux = wezterm.mux
-    local shell = os.getenv "SHELL" or "/bin/bash"
-    mux.spawn_window {
-        args = {
-            shell,
-            "-lc",
-            "tmux list-sessions >/dev/null 2>&1 && exec tmux attach || exec "
-                .. shell,
-        },
-    }
-end)
+M.default_prog = { "tmux", "new-session", "-A", "-s", "main" }
 
 return M

@@ -3,7 +3,7 @@ local Path = require "plenary.path"
 local M = {}
 
 local function resolve_dotfiles_plenary_path()
-    local path_from_env = vim.fn.environ().ILYASYOY_DOTFILES_DIR
+    local path_from_env = vim.fn.environ().VNKJD_DOTFILES_DIR
     return Path:new(path_from_env)
 end
 
