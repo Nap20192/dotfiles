@@ -15,14 +15,13 @@
 7. [Отладка (DAP)](#отладка-dap)
 8. [Git](#git)
 9. [Go](#go)
-10. [Java](#java)
-11. [Python](#python)
-12. [Markdown](#markdown)
-13. [Copilot](#copilot)
-14. [Заметки (obs.nvim)](#заметки-obsnvim)
-15. [База данных (dadbod)](#база-данных-dadbod)
-16. [Утилиты](#утилиты)
-17. [Рабочий процесс](#рабочий-процесс)
+10. [Python](#python)
+11. [Markdown](#markdown)
+12. [Copilot](#copilot)
+13. [Заметки (obs.nvim)](#заметки-obsnvim)
+14. [База данных (dadbod)](#база-данных-dadbod)
+15. [Утилиты](#утилиты)
+16. [Рабочий процесс](#рабочий-процесс)
 
 ---
 
@@ -256,7 +255,7 @@ Oil позволяет редактировать файловую систем�
 | `yesterday` | Вчерашняя дата |
 | `uid` | UUID v4 (`xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx`) |
 
-Файловые сниппеты лежат в `snippets/` — для Go, Java, Lua, Markdown.
+Файловые сниппеты лежат в `snippets/` — для Go, Lua, Markdown.
 
 ---
 
@@ -286,8 +285,6 @@ Oil позволяет редактировать файловую систем�
 | Клавиша | Язык | Действие |
 |---|---|---|
 | `,Dm` | Go | Debug теста под курсором |
-| `,Dm` | Java | Debug ближайшего тест-метода |
-| `,Dc` | Java | Debug ближайшего тест-класса |
 | `,Dm` | Python | Debug теста под курсором |
 
 ---
@@ -409,53 +406,6 @@ Oil позволяет редактировать файловую систем�
 
 ---
 
-## Java
-
-### Тесты (Gradle)
-
-| Клавиша | Команда | Описание |
-|---|---|---|
-| `,ta` | `JavaTestAll` | `./gradlew test` |
-| `,tf` | `JavaTestFile` | Тесты класса файла |
-| `,tt` | `JavaTestFunction` | Тест-метод под курсором |
-| `,tl` | `JavaTestLast` | Повторить последний тест |
-
-### Рефакторинг (jdtls)
-
-| Клавиша | Режим | Действие |
-|---|---|---|
-| `,oi` | normal | Organize imports |
-| `,oa` | normal | Organize imports + format |
-| `,ev` | normal/visual | Extract variable |
-| `,eV` | normal/visual | Extract variable (все вхождения) |
-| `,ec` | normal/visual | Extract constant |
-| `,em` | normal/visual | Extract method |
-| `,oT` | normal | Перейти к тестовому классу |
-| `,ct` | normal | Сгенерировать тест |
-
-### Отладка
-
-| Клавиша | Действие |
-|---|---|
-| `,Dm` | Debug ближайшего test-метода |
-| `,Dc` | Debug ближайшего test-класса |
-
-### Линтеры
-
-| Команда | Описание |
-|---|---|
-| `:JavaPMD` | Запустить PMD для текущего файла |
-| `:JavaCheckstyle` | Запустить Checkstyle |
-
-### Прочее
-
-| Клавиша | Действие |
-|---|---|
-| `,ot` | Переключиться между `src/main/java/` и `src/test/java/` |
-| `,lr` | Очистить данные и перезапустить jdtls (`JdtWipeDataAndRestart`) |
-
----
-
 ## Python
 
 ### Тесты (pytest)
@@ -506,7 +456,7 @@ Oil позволяет редактировать файловую систем�
 
 ## Copilot
 
-Включён для: go, python, java, lua, markdown, sh, make, gitcommit.
+Включён для: go, python, lua, markdown, sh, make, gitcommit.
 
 | Клавиша | Действие |
 |---|---|

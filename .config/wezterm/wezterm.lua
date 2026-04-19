@@ -2,7 +2,9 @@ local wezterm = require "wezterm"
 
 local M = {}
 
-M.font_size = 12
+M.font_size = 13
+
+
 M.font = wezterm.font "Fira Code"
 
 M.color_schemes = {
@@ -101,11 +103,8 @@ M.window_padding = {
   bottom = 15,
 }
 
+M.adjust_window_size_when_changing_font_size = false
 M.send_composed_key_when_left_alt_is_pressed = false
 M.send_composed_key_when_right_alt_is_pressed = false
-
-M.native_macos_fullscreen_mode = true
-
-M.default_prog = { "tmux", "new-session", "-A", "-s", "main" }
 
 return M

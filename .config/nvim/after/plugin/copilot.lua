@@ -3,13 +3,6 @@ if vim.g.copilot_disable then
 end
 
 require("copilot").setup {
-    filetypes = {
-        ["*"] = false,
-        markdown = true,
-        gitcommit = true,
-        make = true,
-        sh = true,
-    },
     panel = { enabled = true },
     suggestion = {
         enabled = true,
@@ -23,6 +16,7 @@ require("copilot").setup {
         },
     },
 }
+
 
 vim.keymap.set(
     "n",

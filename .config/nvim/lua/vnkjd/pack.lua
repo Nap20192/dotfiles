@@ -15,11 +15,13 @@ end
 local M = {
     specs = {
         core = {
+
             -- Dev (own) plugins
             vnkjd "theme.nvim",
+            gh "windwp/nvim-autopairs",
 
             -- Colors
-            gh "norcalli/nvim-colorizer.lua",
+            gh "catgoose/nvim-colorizer.lua",
             gh "f-person/auto-dark-mode.nvim",
 
             -- Navigation & file management
@@ -28,6 +30,7 @@ local M = {
             -- UI
             gh "nvim-lualine/lualine.nvim",
             gh "folke/which-key.nvim",
+            gh"dmtrKovalenko/fff.nvim",
 
             -- Snippets
             gh "L3MON4D3/LuaSnip",

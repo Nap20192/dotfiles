@@ -36,6 +36,10 @@
       "rev": "505d9a269d657ce8e0fa5601e0530f0d8798038c",
       "src": "https://github.com/MironPascalCaseFan/debugmaster.nvim"
     },
+    "fff.nvim": {
+      "rev": "cebacb3c35645a5036adda093d4332f6098865bd",
+      "src": "https://github.com/dmtrKovalenko/fff.nvim"
+    },
     "fugitive-gitlab.vim": {
       "rev": "3584cf7e607ba7822f991d407a8d780e05aae287",
       "src": "https://github.com/shumphrey/fugitive-gitlab.vim"
@@ -59,6 +63,10 @@
     "mason.nvim": {
       "rev": "b03fb0f20bc1d43daf558cda981a2be22e73ac42",
       "src": "https://github.com/williamboman/mason.nvim"
+    },
+    "nvim-autopairs": {
+      "rev": "59bce2eef357189c3305e25bc6dd2d138c1683f5",
+      "src": "https://github.com/windwp/nvim-autopairs"
     },
     "nvim-colorizer.lua": {
       "rev": "a065833f35a3a7cc3ef137ac88b5381da2ba302e",
@@ -111,7 +119,7 @@
     },
     "obs.nvim": {
       "rev": "b7b86e08272f72c8daf7cfc58444595661ef1e37",
-      "src": "file:///home/vnkjd/Projects/IlyasYOY/obs.nvim"
+      "src": "https://github.com/vnkjd/obs.nvim"
     },
     "oil.nvim": {
       "rev": "0fcc83805ad11cf714a949c98c605ed717e0b83e",
@@ -123,7 +131,7 @@
     },
     "theme.nvim": {
       "rev": "73d9b21913e668fd85f9ef2f61129efcbd83509f",
-      "src": "file:///home/vnkjd/Projects/IlyasYOY/theme.nvim"
+      "src": "https://github.com/vnkjd/theme.nvim"
     },
     "themery.nvim": {
       "rev": "bfa58f4b279d21cb515b28023e1b68ec908584b2",

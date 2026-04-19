@@ -13,6 +13,7 @@ local function lsp_attach(data)
 
     -- <c-y> expands snippets with side effects;
     -- this is built-in neovim snippets & autocompletion functionality.
+
     vim.keymap.set("i", "<CR>", function()
         if vim.fn.pumvisible() ~= 0 then
             return "<C-y>"
@@ -25,9 +26,13 @@ local function lsp_attach(data)
 
     vim.keymap.set("n", "<C-s>", vim.lsp.buf.signature_help, bufopts)
     vim.keymap.set("n", "grs", function()
+
         vim.lsp.buf.typehierarchy "subtypes"
+
     end, described(bufopts, "go to subtypes"))
+
     vim.keymap.set("n", "grS", function()
+
         vim.lsp.buf.typehierarchy "supertypes"
     end, described(bufopts, "go to supertypes"))
     vim.keymap.set(
