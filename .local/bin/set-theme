@@ -7,28 +7,13 @@ else
     CURRENT_STYLE="light"
 fi
 
-# Логика переключения
 if [ "$1" = "dark" ]; then
     STYLE="dark"
 elif [ "$1" = "light" ]; then
     STYLE="light"
 else
-    # Toggle режим
     [ "$CURRENT_STYLE" = "dark" ] && STYLE="light" || STYLE="dark"
 fi
 
 [ "$STYLE" = "$CURRENT_STYLE" ] && exit 0
 
-if [ "$STYLE" = "dark" ]; then
-    COLOR_SCHEME="prefer-dark"
-    NIRI_FOCUS="#00afff" # Blue
-else
-    COLOR_SCHEME="prefer-light"
-    NIRI_FOCUS="#ffaf00" # Yellow
-fi
-
-niri msg action do-screen-transition
-
-dconf write /org/gnome/desktop/interface/color-scheme "'$COLOR_SCHEME'"
-
-niri msg action set-property layout.focus-ring.active-color "$NIRI_FOCUS"

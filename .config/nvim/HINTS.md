@@ -526,15 +526,6 @@ Vault: `~/Projects/IlyasYOY/notes-wiki`
 
 `:DiffOrig` — сравнить текущий буфер с состоянием файла на диске в vertical split.
 
-### Monotask
-
-| Клавиша | Команда | Действие |
-|---|---|---|
-| `<leader>mt` | `:Monotask` | Запустить monotask в текущей директории |
-| `<leader>mT` | `:Monotask %` | Запустить monotask для текущего файла |
-
-Результат попадает в quickfix через vim-dispatch.
-
 ---
 
 ## Рабочий процесс

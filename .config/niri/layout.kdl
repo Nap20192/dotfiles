@@ -65,7 +65,7 @@ layout {
         length total-proportion=1.0
         position "right"
         gaps-between-tabs 2
-        corner-radius 8
+        corner-radius 4
         active-color "red"
         inactive-color "gray"
         urgent-color "#ff6b6b"

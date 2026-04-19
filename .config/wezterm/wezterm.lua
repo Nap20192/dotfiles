@@ -8,7 +8,8 @@ M.font_size = 13
 M.font = wezterm.font "Fira Code"
 
 M.color_schemes = {
-    ["IlyasYOY Monochrome Dark"] = {
+
+    ["Monochrome Dark"] = {
         foreground = "#dadada",
         background = "#000000",
         cursor_bg = "#8787af",
@@ -40,34 +41,34 @@ M.color_schemes = {
         },
     },
 
-    ["IlyasYOY Monochrome Light"] = {
+    ["Monochrome Light"] = {
         foreground = "#000000",
         background = "#eeeeee",
-        cursor_bg = "#4e4e4e",
-        cursor_fg = "#eeeeee",
-        cursor_border = "#4e4e4e",
-        selection_fg = "#eeeeee",
+        cursor_bg = "#8787af",
+        cursor_fg = "#dadada",
+        cursor_border = "#8787af",
+        selection_fg = "#dadada",
         selection_bg = "#ffaf00",
         scrollbar_thumb = "#626262",
         split = "#626262",
         ansi = {
-            "#000000", -- black
-            "#da8d8d", -- red
-            "#111111", -- green   → gray-1
-            "#ffaf00", -- yellow
-            "#3b3b3b", -- blue    → gray-4
-            "#4e4e4e", -- magenta → gray-5
-            "#252525", -- cyan    → gray-3
-            "#727272", -- white   (muted)
+            "#000000", -- black   (fg)
+            "#da8d8d", -- red     (remove)
+            "#8dda9e", -- green   (add)
+            "#ffaf00", -- yellow  (visual)
+            "#000000", -- blue    (black)
+            "#8787af", -- magenta (cursor)
+            "#00afaf", -- cyan
+            "#727272", -- white   (bg)
         },
         brights = {
-            "#626262", -- bright black
-            "#ff005f", -- bright red
-            "#1c1c1c", -- bright green   → gray-2
-            "#ffaf00", -- bright yellow
-            "#454545", -- bright blue    → gray-6
-            "#575757", -- bright magenta → gray-7
-            "#303030", -- bright cyan    → gray-3b
+            "#626262", -- bright black  (muted)
+            "#ff005f", -- bright red    (error)
+            "#416241", -- bright green  (dark add)
+            "#ffaf00", -- bright yellow (visual)
+            "#000000", -- bright blue   (black)
+            "#d787d7", -- bright magenta
+            "#87afd7", -- bright cyan
             "#828282", -- bright white
         },
     },
@@ -75,9 +76,9 @@ M.color_schemes = {
 
 local function scheme_for_appearance(appearance)
     if appearance:find "Dark" then
-        return "IlyasYOY Monochrome Dark"
+        return "Monochrome Dark"
     else
-        return "IlyasYOY Monochrome Light"
+        return "Monochrome Light"
     end
 end
 
@@ -106,5 +107,18 @@ M.window_padding = {
 M.adjust_window_size_when_changing_font_size = false
 M.send_composed_key_when_left_alt_is_pressed = false
 M.send_composed_key_when_right_alt_is_pressed = false
+
+M.keys = {
+    {
+        key = "c",
+        mods = "CTRL|SHIFT",
+        action = wezterm.action.CopyTo "Clipboard",
+    },
+    {
+        key = "v",
+        mods = "CTRL|SHIFT",
+        action = wezterm.action.PasteFrom "Clipboard",
+    },
+}
 
 return M

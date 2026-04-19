@@ -52,6 +52,7 @@ local M = {
 
             -- Utilities
             gh "nvim-lua/plenary.nvim",
+            gh "MunifTanjim/nui.nvim",
 
             -- Text manipulation
             gh "tpope/vim-abolish",
@@ -98,6 +99,12 @@ local M = {
         obs = {
             vnkjd "obs.nvim",
         },
+        leetcode = {
+            gh "kawre/leetcode.nvim",
+        },
+        themery = {
+            gh "zaldih/themery.nvim",
+        },
     },
 }
 
@@ -113,6 +120,8 @@ for _, group in ipairs {
     "git_tools",
     "copilot",
     "obs",
+    "leetcode",
+    "themery",
 } do
     vim.pack.add(M.specs[group])
 end

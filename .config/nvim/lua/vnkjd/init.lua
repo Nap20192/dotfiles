@@ -84,27 +84,13 @@ vim.keymap.set("v", "<leader>cP", function()
     vim.notify("copied: " .. path)
 end, { desc = "Copy absolute file path with line numbers to clipboard" })
 
--- Monotask integration
-local function run_monotask(path)
-    path = path or "."
-    local cmd = "monotask " .. vim.fn.shellescape(path)
-    vim.cmd.Dispatch { "-compiler=make", cmd }
-end
-
-vim.api.nvim_create_user_command("Monotask", function(opts)
-    run_monotask(opts.args ~= "" and opts.args or nil)
-end, {
-    nargs = "?",
-    desc = "Run monotask on path (default: current dir) and populate quickfix",
-})
-
-vim.keymap.set("n", "<leader>mt", function()
-    run_monotask()
-end, { desc = "Run monotask on current directory" })
-
-vim.keymap.set("n", "<leader>mT", function()
-    run_monotask(vim.fn.expand "%")
-end, { desc = "Run monotask on current file" })
+vim.keymap.set("i", "<M-n>", function()
+    if vim.fn.pumvisible() == 1 then
+        return "<C-n>"
+    else
+        return "<C-x><C-o>"
+    end
+end, { expr = true, desc = "Open omni completion or next item" })
 
 vim.keymap.set("n", "<leader>?", function()
     vim.cmd("edit " .. vim.fn.stdpath("config") .. "/HINTS.md")
