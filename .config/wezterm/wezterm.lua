@@ -43,7 +43,7 @@ M.color_schemes = {
 
     ["Monochrome Light"] = {
         foreground = "#000000",
-        background = "#eeeeee",
+        background = "#ffffff",
         cursor_bg = "#8787af",
         cursor_fg = "#dadada",
         cursor_border = "#8787af",

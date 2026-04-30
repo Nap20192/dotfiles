@@ -38,6 +38,9 @@ local M = {
             -- LSP
             gh "neovim/nvim-lspconfig",
 
+            -- Completion
+            gh "saghen/blink.cmp",
+
             -- Mason (LSP/tool installer)
             gh "williamboman/mason.nvim",
             gh "WhoIsSethDaniel/mason-tool-installer.nvim",
@@ -96,6 +99,9 @@ local M = {
             -- I don't use NES, but I include it anyway.
             gh "copilotlsp-nvim/copilot-lsp",
         },
+        yazi = {
+            gh "mikavilpas/yazi.nvim",
+        },
         obs = {
             vnkjd "obs.nvim",
         },
@@ -104,6 +110,9 @@ local M = {
         },
         themery = {
             gh "zaldih/themery.nvim",
+        },
+        alabaster = {
+            gh "dchinmay2/alabaster.nvim",
         },
     },
 }
@@ -119,9 +128,11 @@ for _, group in ipairs {
     "dadbod",
     "git_tools",
     "copilot",
+    "yazi",
     "obs",
     "leetcode",
     "themery",
+    "alabaster",
 } do
     vim.pack.add(M.specs[group])
 end

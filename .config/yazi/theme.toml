@@ -1,0 +1,97 @@
+# Monochrome Dark — matches wezterm/tmux palette
+# bg=#000000  fg=#dadada  cursor=#8787af  accent=#ffaf00  blue=#00afff
+
+[mgr]
+cwd = { fg = "#00afff", bold = true }
+
+hovered         = { fg = "#000000", bg = "#dadada" }
+preview_hovered = { underline = true }
+
+find_keyword  = { fg = "#ffaf00", bold = true, underline = true }
+find_position = { fg = "#8787af", bold = true }
+
+marker_selected = { fg = "#ffaf00",  bg = "#ffaf00" }
+marker_copied   = { fg = "#8dda9e",  bg = "#8dda9e" }
+marker_cut      = { fg = "#ff005f",  bg = "#ff005f" }
+marker_marked   = { fg = "#87afd7",  bg = "#87afd7" }
+
+tab_active   = { fg = "#000000", bg = "#ffaf00", bold = true }
+tab_inactive = { fg = "#dadada", bg = "#191919" }
+tab_width    = 1
+
+count_selected = { fg = "#000000", bg = "#ffaf00" }
+count_copied   = { fg = "#000000", bg = "#8dda9e" }
+count_cut      = { fg = "#000000", bg = "#ff005f" }
+
+border_symbol = "│"
+border_style  = { fg = "#303030" }
+
+[status]
+separator_open  = ""
+separator_close = ""
+separator_style = { fg = "#191919", bg = "#191919" }
+
+mode_normal = { fg = "#000000", bg = "#8787af", bold = true }
+mode_select = { fg = "#000000", bg = "#ffaf00", bold = true }
+mode_unset  = { fg = "#dadada", bg = "#303030", bold = true }
+
+progress_label  = { fg = "#dadada", bold = true }
+progress_normal = { fg = "#00afff", bg = "#000000" }
+progress_error  = { fg = "#ff005f", bg = "#000000" }
+
+perm_type  = { fg = "#8dda9e" }
+perm_read  = { fg = "#ffaf00" }
+perm_write = { fg = "#ff005f" }
+perm_exec  = { fg = "#00afff" }
+perm_sep   = { fg = "#303030" }
+
+[input]
+border   = { fg = "#8787af" }
+title    = { fg = "#dadada" }
+value    = { fg = "#dadada" }
+selected = { fg = "#000000", bg = "#ffaf00" }
+
+[select]
+border   = { fg = "#8787af" }
+active   = { fg = "#000000", bg = "#dadada" }
+inactive = { fg = "#dadada" }
+
+[tasks]
+border  = { fg = "#8787af" }
+title   = { fg = "#dadada" }
+hovered = { underline = true }
+
+[which]
+mask            = { bg = "#191919" }
+cand            = { fg = "#00afaf" }
+rest            = { fg = "#303030" }
+desc            = { fg = "#8787af" }
+separator       = "  "
+separator_style = { fg = "#303030" }
+
+[help]
+on      = { fg = "#00afaf" }
+exec    = { fg = "#8dda9e" }
+desc    = { fg = "#dadada" }
+hovered = { bg = "#303030", bold = true }
+footer  = { fg = "#000000", bg = "#dadada" }
+
+[filetype]
+rules = [
+  { mime = "image/*",                      fg = "#ffaf00" },
+  { mime = "video/*",                      fg = "#8787af" },
+  { mime = "audio/*",                      fg = "#00afaf" },
+  { mime = "application/json",             fg = "#8dda9e" },
+  { mime = "application/x-executable",    fg = "#8dda9e" },
+  { mime = "application/zip",              fg = "#ff005f" },
+  { mime = "application/gzip",             fg = "#ff005f" },
+  { mime = "application/x-tar",            fg = "#ff005f" },
+  { mime = "application/x-bzip2",          fg = "#ff005f" },
+  { mime = "application/x-7z-compressed",  fg = "#ff005f" },
+  { mime = "application/x-rar",            fg = "#ff005f" },
+  { mime = "application/x-xz",             fg = "#ff005f" },
+  { mime = "application/x-zstd",           fg = "#ff005f" },
+  { mime = "text/*",                        fg = "#dadada" },
+  { name = "*/",                            fg = "#00afff" },
+  { name = "*",                             fg = "#dadada" },
+]

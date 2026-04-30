@@ -1,0 +1,39 @@
+[mgr]
+show_hidden = true
+
+[opener]
+edit = [
+  { run = 'nvim "$@"', desc = "nvim", block = true },
+]
+open = [
+  { run = 'xdg-open "$@"', desc = "xdg-open" },
+]
+play = [
+  { run = 'mpv "$@"', desc = "mpv", orphan = true },
+]
+view = [
+  { run = 'imv "$@"', desc = "imv", orphan = true },
+]
+extract = [
+  { run = 'unar "$@"', desc = "unar" },
+  { run = 'bsdtar -xf "$@"', desc = "bsdtar" },
+]
+
+[open]
+rules = [
+  { mime = "text/*",                       use = ["edit", "open"] },
+  { mime = "application/json",             use = ["edit", "open"] },
+  { mime = "application/x-sh",             use = ["edit", "open"] },
+  { mime = "image/*",                      use = ["view", "open"] },
+  { mime = "video/*",                      use = ["play", "open"] },
+  { mime = "audio/*",                      use = ["play", "open"] },
+  { mime = "application/zip",              use = ["extract", "open"] },
+  { mime = "application/gzip",             use = ["extract", "open"] },
+  { mime = "application/x-tar",            use = ["extract", "open"] },
+  { mime = "application/x-bzip2",          use = ["extract", "open"] },
+  { mime = "application/x-7z-compressed",  use = ["extract", "open"] },
+  { mime = "application/x-rar",            use = ["extract", "open"] },
+  { mime = "application/x-xz",             use = ["extract", "open"] },
+  { mime = "application/x-zstd",           use = ["extract", "open"] },
+  { mime = "*",                             use = ["open"] },
+]

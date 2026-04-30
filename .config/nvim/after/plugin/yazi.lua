@@ -1,0 +1,18 @@
+local ok, yazi = pcall(require, "yazi")
+if not ok then return end
+
+yazi.setup({
+    open_for_directories = false,
+    keymaps = {
+        open_file_in_vertical_split = "<c-v>",
+        open_file_in_horizontal_split = "<c-x>",
+        open_file_in_tab = "<c-t>",
+        grep_in_directory = "<c-s>",
+        cycle_open_buffers = "<tab>",
+        copy_relative_path_to_clipboard = "<c-y>",
+        change_working_directory = "<c-\\>",
+    },
+})
+
+vim.keymap.set("n", "<leader>-", "<cmd>Yazi<cr>", { desc = "Open yazi (file)" })
+vim.keymap.set("n", "<leader>_", "<cmd>Yazi cwd<cr>", { desc = "Open yazi (cwd)" })

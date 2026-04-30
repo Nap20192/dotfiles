@@ -50,7 +50,7 @@ local palette = {
 local bg = vim.o.background
 
 if bg == "light" then
-    palette.bg = "#eeeeee"
+    palette.bg = "#ffffff"
     palette.fg = "#000000"
     palette.elevated = "#d7d7d7"
     palette.subtle = "#e4e4e4"
@@ -71,8 +71,9 @@ vim.cmd("set background=" .. bg)
 -- BASE GROUPS
 -- =============================================================================
 hi("Normal", { guifg = palette.fg, guibg = palette.bg })
-hi("CursorLine", { guibg = palette.subtle })
-hi("CursorLineNr", { guifg = palette.fg, guibg = palette.subtle })
+hi("NormalNC", { guifg = palette.fg, guibg = palette.bg })
+hi("CursorLine", { guibg = palette.elevated })
+hi("CursorLineNr", { guifg = palette.fg, guibg = palette.elevated, gui = "bold" })
 hi("ColorColumn", { guibg = palette.subtle })
 hi("LineNr", { guifg = palette.muted })
 hi("FoldColumn", { guifg = palette.muted })
@@ -208,14 +209,15 @@ link("diffRemoved", "DiffDelete")
 -- =============================================================================
 -- UI ELEMENTS
 -- =============================================================================
-hi("StatusLine", { guifg = palette.bg, guibg = palette.elevated, gui = "bold" })
+hi("StatusLine", { guifg = palette.fg, guibg = palette.elevated, gui = "bold" })
 hi("StatusLineNC", { guifg = palette.muted, guibg = palette.elevated })
 hi("WinSeparator", { guifg = palette.muted, guibg = palette.bg })
 hi("TabLine", { guifg = palette.muted, guibg = palette.bg })
 hi("TabLineFill", { guifg = palette.muted, guibg = palette.bg })
 hi("TabLineSel", { guibg = palette.elevated, gui = "bold,reverse" })
 
-hi("NormalFloat", { guifg = palette.fg, guibg = palette.elevated })
+hi("NormalFloat", { guifg = palette.fg, guibg = palette.bg })
+hi("FloatBorder", { guifg = palette.muted, guibg = palette.bg })
 
 hi("Pmenu", { guifg = palette.fg, guibg = palette.elevated })
 hi("PmenuSel", { guifg = palette.bg, guibg = palette.fg })
@@ -387,3 +389,39 @@ hi("FzfLuaFzfCursorLine", { guifg = palette.fg, guibg = palette.subtle })
 hi("FzfLuaFzfMatch", { guifg = palette.search, gui = "bold" })
 hi("FzfLuaFzfBorder", { guifg = palette.muted, guibg = palette.bg })
 hi("FzfLuaFzfScrollbar", { guifg = palette.muted, guibg = palette.bg })
+
+-- =============================================================================
+-- BLINK.CMP
+-- =============================================================================
+hi("BlinkCmpMenu", { guifg = palette.fg, guibg = palette.bg })
+hi("BlinkCmpMenuBorder", { guifg = palette.muted, guibg = palette.bg })
+link("BlinkCmpMenuSelection", "PmenuSel")
+
+hi("BlinkCmpDoc", { guifg = palette.fg, guibg = palette.bg })
+hi("BlinkCmpDocBorder", { guifg = palette.muted, guibg = palette.bg })
+hi("BlinkCmpDocSeparator", { guifg = palette.muted, guibg = palette.bg })
+hi("BlinkCmpDocCursorLine", { guibg = palette.elevated })
+
+hi("BlinkCmpSignatureHelp", { guifg = palette.fg, guibg = palette.bg })
+hi("BlinkCmpSignatureHelpBorder", { guifg = palette.muted, guibg = palette.bg })
+link("BlinkCmpSignatureHelpActiveParameter", "Visual")
+
+hi("BlinkCmpLabel", { guifg = palette.fg })
+hi("BlinkCmpLabelMatch", { guifg = palette.fg, gui = "bold" })
+hi("BlinkCmpLabelDeprecated", { guifg = palette.muted, gui = "strikethrough" })
+hi("BlinkCmpLabelDescription", { guifg = palette.muted })
+hi("BlinkCmpLabelDetail", { guifg = palette.muted })
+hi("BlinkCmpKind", { guifg = palette.muted })
+hi("BlinkCmpSource", { guifg = palette.muted })
+
+hi("BlinkCmpScrollBarThumb", { guibg = palette.muted })
+hi("BlinkCmpScrollBarGutter", { guibg = palette.elevated })
+
+for _, kind in ipairs {
+    "Text", "Method", "Function", "Constructor", "Field", "Variable",
+    "Class", "Interface", "Module", "Property", "Unit", "Value", "Enum",
+    "Keyword", "Snippet", "Color", "File", "Reference", "Folder",
+    "EnumMember", "Constant", "Struct", "Event", "Operator", "TypeParameter",
+} do
+    link("BlinkCmpKind" .. kind, "BlinkCmpKind")
+end

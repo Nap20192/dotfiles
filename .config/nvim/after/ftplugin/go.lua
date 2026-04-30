@@ -1,4 +1,5 @@
 local core = require "vnkjd.functions.core"
+local gotests = require "vnkjd.functions.gotests"
 local lint_helpers = require "vnkjd.functions.lint"
 local test_helpers = require "vnkjd.functions.test"
 local toggle_helper = require "vnkjd.functions.toggle_test"
@@ -7,6 +8,25 @@ vim.opt_local.expandtab = false
 vim.opt_local.spell = false
 vim.bo.formatoptions = vim.bo.formatoptions .. "ro/"
 vim.bo.formatprg = "gofumpt"
+
+vim.api.nvim_create_autocmd("BufWritePre", {
+    group = vim.api.nvim_create_augroup("GoFormatting", { clear = false }),
+    buffer = 0,
+    callback = function()
+        local params = vim.lsp.util.make_range_params(0, "utf-16")
+        params.context = { only = { "source.organizeImports" } }
+        local result = vim.lsp.buf_request_sync(0, "textDocument/codeAction", params, 3000)
+        for cid, res in pairs(result or {}) do
+            for _, r in pairs((res or {}).result or {}) do
+                if r.edit then
+                    local enc = (vim.lsp.get_client_by_id(cid) or {}).offset_encoding or "utf-16"
+                    vim.lsp.util.apply_workspace_edit(r.edit, enc)
+                end
+            end
+        end
+        vim.lsp.buf.format({ async = false, timeout_ms = 3000 })
+    end,
+})
 
 vim.api.nvim_buf_create_user_command(
     0,
@@ -484,6 +504,57 @@ setup_bench()
 setup_test()
 setup_build()
 setup_lsp_actions()
+
+local first_lines = vim.api.nvim_buf_get_lines(0, 0, 10, false)
+local is_leet = false
+for _, line in ipairs(first_lines) do
+    if line:match "@leet" then
+        is_leet = true
+        break
+    end
+end
+
+if is_leet then
+    local pkg_line = "package leetcode"
+    local bufnr = vim.api.nvim_get_current_buf()
+
+    vim.api.nvim_buf_set_lines(bufnr, 0, 0, false, { pkg_line, "" })
+    vim.bo[bufnr].modified = false
+
+    local group = vim.api.nvim_create_augroup("LeetGoPackage_" .. bufnr, { clear = true })
+
+    vim.api.nvim_create_autocmd("BufWritePre", {
+        buffer = bufnr,
+        group = group,
+        callback = function()
+            if vim.api.nvim_buf_get_lines(bufnr, 0, 1, false)[1] == pkg_line then
+                vim.api.nvim_buf_set_lines(bufnr, 0, 2, false, {})
+            end
+        end,
+    })
+
+    vim.api.nvim_create_autocmd("BufWritePost", {
+        buffer = bufnr,
+        group = group,
+        callback = function()
+            if vim.api.nvim_buf_get_lines(bufnr, 0, 1, false)[1] ~= pkg_line then
+                vim.api.nvim_buf_set_lines(bufnr, 0, 0, false, { pkg_line, "" })
+                vim.bo[bufnr].modified = false
+            end
+        end,
+    })
+end
+
+if not vim.api.nvim_buf_get_name(0):match "_test%.go$" then
+    vim.keymap.set("n", "<leader>tg", gotests.generate, {
+        buffer = true,
+        desc = "Generate table-driven test for function under cursor",
+    })
+    vim.keymap.set("n", "<leader>tG", gotests.generate_all, {
+        buffer = true,
+        desc = "Generate tests for all functions in file",
+    })
+end
 
 toggle_helper.setup {
     command = "GoToggleTest",

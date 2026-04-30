@@ -1,0 +1,9 @@
+[manager]
+
+prepend_keymap = [
+  # Open hovered/selected file(s) in nvim in a new tmux window
+  { on = ["<C-n>"], run = 'shell "tmux new-window nvim \"$@\""', desc = "Open in nvim (new tmux window)" },
+
+  # Open hovered/selected file(s) in nvim in a vertical tmux split
+  { on = ["<C-f>"], run = 'shell "tmux split-window -h nvim \"$@\""', desc = "Open in nvim (tmux split)" },
+]

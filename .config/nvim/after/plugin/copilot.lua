@@ -15,7 +15,14 @@ require("copilot").setup {
             dismiss = "<M-h>",
         },
     },
+filetypes = {
+        yaml = true, -- Полезно для docker-compose и k8s
+        markdown = true,
+        help = true,
+        ["."] = true,
+    },
 }
+
 
 
 vim.keymap.set(

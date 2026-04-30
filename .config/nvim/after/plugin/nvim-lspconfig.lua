@@ -9,20 +9,6 @@ end
 
 local function lsp_attach(data)
     local bufopts = { noremap = true, silent = true, buffer = data.buf }
-    vim.lsp.completion.enable(true, data.data.client_id, data.buf)
-
-    -- <c-y> expands snippets with side effects;
-    -- this is built-in neovim snippets & autocompletion functionality.
-
-    vim.keymap.set("i", "<CR>", function()
-        if vim.fn.pumvisible() ~= 0 then
-            return "<C-y>"
-        end
-        return "<CR>"
-    end, {
-        buffer = data.buf,
-        expr = true,
-    })
 
     vim.keymap.set("n", "<C-s>", vim.lsp.buf.signature_help, bufopts)
     vim.keymap.set("n", "grs", function()
@@ -106,12 +92,37 @@ local function lsp_attach(data)
 end
 
 vim.lsp.config("gopls", {
+    cmd = { "gopls" },
+    filetypes = { "go", "gomod", "gowork", "gotmpl" },
     settings = {
         gopls = {
             gofumpt = true,
             completeUnimported = true,
             usePlaceholders = false,
             staticcheck = true,
+            analyses = {
+                unusedparams = true,
+            },
+        },
+    },
+})
+vim.lsp.config("rust-analyzer", {
+    settings = {
+        ["rust-analyzer"] = {
+            check = {
+                command = "clippy",
+            },
+            procMacro = {
+                enable = true,
+            },
+            cargo = {
+                allFeatures = true,
+            },
+            completion = {
+                postfix = {
+                    enable = true,
+                },
+            },
         },
     },
 })
@@ -134,6 +145,7 @@ for _, server in ipairs {
     "gopls",
     "tinymist",
     "kotlin_lsp",
+    "rust-analyzer",
 } do
     vim.lsp.enable(server)
 end

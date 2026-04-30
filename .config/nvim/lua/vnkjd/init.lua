@@ -84,14 +84,6 @@ vim.keymap.set("v", "<leader>cP", function()
     vim.notify("copied: " .. path)
 end, { desc = "Copy absolute file path with line numbers to clipboard" })
 
-vim.keymap.set("i", "<M-n>", function()
-    if vim.fn.pumvisible() == 1 then
-        return "<C-n>"
-    else
-        return "<C-x><C-o>"
-    end
-end, { expr = true, desc = "Open omni completion or next item" })
-
 vim.keymap.set("n", "<leader>?", function()
     vim.cmd("edit " .. vim.fn.stdpath("config") .. "/HINTS.md")
 end, { desc = "Open keybinding hints (HINTS.md)" })

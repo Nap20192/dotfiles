@@ -44,8 +44,8 @@ set undofile
 set incsearch
 
 " Number of lines to keep above/below the cursor 
-set scrolloff=8
-
+set scrolloff=999
+set scrolloffpad =20
 " Column with extra info 
 set signcolumn=yes 
 set foldcolumn=1 
@@ -63,7 +63,7 @@ set wildmode=full
 " increase history size 
 set history=300
 
-set nowrap
+set wrap
 
 " Switch buffers using keys
 nnoremap <silent> ]<C-q> :cnewer<cr>

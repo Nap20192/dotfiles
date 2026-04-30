@@ -1,11 +1,5 @@
-vim.api.nvim_create_autocmd("FileType", {
-    pattern = "sql",
-    callback = function(args)
-        vim.bo[args.buf].omnifunc = "vim_dadbod_completion#omni"
-    end,
-})
+vim.g.db_ui_save_location = vim.fn.expand "~/.local/share/nvim/dadbod/"
 
-vim.g.db_ui_save_location = vim.fn.getcwd() .. "/sql/"
 vim.g.db_ui_table_helpers = {
     postgresql = {
         ["Table Size"] = [[
@@ -16,9 +10,6 @@ select
 from information_schema.tables
 where table_schema = 'public'
     and table_name = '{table}';
-]],
-        ["Count"] = [[
-select count(*) from {table};
 ]],
     },
 }
