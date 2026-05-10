@@ -1,5 +1,3 @@
-spawn-at-startup "awww-daemon"
-
 include "debug.kdl"
 include "input.kdl"
 include "outputs.kdl"
@@ -17,5 +15,3 @@ include "dms/binds.kdl"
 include "dms/cursor.kdl"
 
 include "dms/outputs.kdl"
-
-include "dms/windowrules.kdl"

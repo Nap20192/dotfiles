@@ -1,19 +1,19 @@
-window-rule {
-    geometry-corner-radius 5
-     clip-to-geometry true
-}
+// window-rule {
+//     geometry-corner-radius 5
+//      clip-to-geometry true
+// }
 
-window-rule {
-    match app-id="^Alacritty$"
-    match app-id="^Alacritty-floating$"
-
-    clip-to-geometry true
-    tiled-state true
-    draw-border-with-background false
-
-    shadow { on; }
-	opacity 0.95
-}
+// window-rule {
+//
+//     match app-id="^(org\\.wezfurlong\\.wezterm|Wezterm-floating)$"
+//
+//     clip-to-geometry true
+//     tiled-state true
+//     draw-border-with-background false
+//
+//     shadow { on; }
+// 	opacity 0.93
+// }
 
 // prefer-no-csd
 

@@ -7,6 +7,49 @@ local function toggle_codelens(bufnr)
     vim.lsp.codelens.enable(not vim.lsp.codelens.is_enabled(filter), filter)
 end
 
+local function go_organize_imports(bufnr)
+    local clients = vim.lsp.get_clients { bufnr = bufnr, name = "gopls" }
+    local client = clients[1]
+    if not client then
+        return
+    end
+
+    local params = vim.lsp.util.make_range_params(0, client.offset_encoding)
+    params.context = {
+        only = { "source.organizeImports" },
+        diagnostics = {},
+    }
+
+    local response = client:request_sync(
+        "textDocument/codeAction",
+        params,
+        3000,
+        bufnr
+    )
+
+    for _, action in ipairs(response and response.result or {}) do
+        if action.edit then
+            vim.lsp.util.apply_workspace_edit(action.edit, client.offset_encoding)
+        end
+
+        if action.command then
+            vim.lsp.buf.execute_command(action.command)
+        end
+    end
+end
+
+local function go_format(bufnr)
+    go_organize_imports(bufnr)
+    vim.lsp.buf.format {
+        async = false,
+        bufnr = bufnr,
+        timeout_ms = 10000,
+        filter = function(client)
+            return client.name == "gopls"
+        end,
+    }
+end
+
 local function lsp_attach(data)
     local bufopts = { noremap = true, silent = true, buffer = data.buf }
 
@@ -153,4 +196,12 @@ end
 vim.api.nvim_create_autocmd("LspAttach", {
     group = vim.api.nvim_create_augroup("vnkjd.lsp", {}),
     callback = lsp_attach,
+})
+
+vim.api.nvim_create_autocmd("BufWritePre", {
+    group = vim.api.nvim_create_augroup("vnkjd.go", {}),
+    pattern = { "*.go" },
+    callback = function(args)
+        go_format(args.buf)
+    end,
 })

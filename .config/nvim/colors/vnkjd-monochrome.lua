@@ -188,12 +188,12 @@ link("@tag.attribute", "Type")
 hi("Search", { guifg = palette.search, guibg = palette.bg, gui = "reverse" })
 hi("IncSearch", { guifg = palette.visual, guibg = palette.bg, gui = "reverse" })
 hi("CurSearch", { guifg = palette.visual, guibg = palette.bg, gui = "reverse" })
-hi("Visual", { guifg = palette.visual, guibg = palette.elevated })
+hi("Visual", { guifg = palette.fg, guibg = palette.visual })
 hi("VisualNOS", { guibg = palette.subtle })
 
--- =============================================================================
+-- ================================visual=============================================
 -- DIFF
--- =============================================================================
+-- ================================visual=============================================
 hi("DiffAdd", { guibg = palette.add })
 hi("DiffDelete", { guibg = palette.remove })
 hi("DiffChange", { guibg = palette.change })

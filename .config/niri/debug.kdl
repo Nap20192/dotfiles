@@ -1,0 +1,2 @@
+// Keep debug settings empty by default.
+// Not forcing render-drm-device lets niri pick the best renderer (usually iGPU on hybrid laptops).

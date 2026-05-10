@@ -56,6 +56,10 @@
       "rev": "be79dead8b147acce0daa3fc15cf5f0f4d6f2232",
       "src": "https://github.com/ibhagwan/fzf-lua"
     },
+    "image.nvim": {
+      "rev": "da2be65c153ba15a14a342b05591652a6df70d58",
+      "src": "https://github.com/3rd/image.nvim"
+    },
     "leetcode.nvim": {
       "rev": "fdd3f91800b3983e27bc9fcfb99cfa7293d7f11a",
       "src": "https://github.com/kawre/leetcode.nvim"

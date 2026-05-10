@@ -1,0 +1,176 @@
+# Light pair for the local tmux palette
+# bg     "#ffffff"
+# fg     "#000000"
+# accent "#ffaf00"
+
+[app]
+overall = { bg = "#ffffff" }
+
+[mgr]
+cwd = { fg = "#000000", bold = true }
+
+# Find
+find_keyword = { fg = "#000000", bg = "#ffaf00", bold = true }
+find_position = { fg = "#000000", bold = true, italic = true }
+
+# Marker
+marker_copied = { fg = "#000000", bg = "#4f8f4f" }
+marker_cut = { fg = "#000000", bg = "#b83333" }
+marker_marked = { fg = "#000000", bg = "#d89600" }
+marker_selected = { fg = "#000000", bg = "#ffaf00" }
+
+# Count
+count_copied = { fg = "#000000", bold = true, reversed = true }
+count_cut = { fg = "#000000", bold = true, reversed = true }
+count_selected = { fg = "#000000", bold = true, reversed = true }
+
+# Border
+border_symbol = "│"
+border_style = { fg = "#000000" }
+
+[indicator]
+parent = { underline = true }
+current = { fg = "#000000", bg = "#ffaf00", bold = true }
+preview = { underline = true }
+padding = { open = "█", close = "█" }
+
+[tabs]
+active = { fg = "#000000", bg = "#ffaf00", bold = true }
+inactive = { fg = "#000000", bg = "#eeeeee" }
+sep_inner = { open = "", close = "" }
+sep_outer = { open = "", close = "" }
+
+[mode]
+normal_main = { fg = "#000000", bg = "#ffaf00", bold = true }
+normal_alt = { fg = "#000000", bg = "#eeeeee" }
+
+select_main = { fg = "#000000", bg = "#ffaf00", bold = true }
+select_alt = { fg = "#000000", bg = "#ffe1a0" }
+
+unset_main = { fg = "#000000", bg = "#ffaf00", bold = true }
+unset_alt = { fg = "#000000", bg = "#ffe1a0" }
+
+[status]
+overall = { fg = "#000000", bg = "#ffffff" }
+sep_left = { open = "", close = "" }
+sep_right = { open = "", close = "" }
+
+# Permissions
+perm_type = { fg = "#000000" }
+perm_read = { fg = "#000000" }
+perm_write = { fg = "#000000" }
+perm_exec = { fg = "#000000" }
+perm_sep = { fg = "#000000" }
+
+# Progress
+progress_label = { fg = "#000000", bold = true }
+progress_normal = { fg = "#000000", bg = "#ffe1a0" }
+progress_error = { bg = "#b83333" }
+
+[which]
+cols = 3
+mask = { bg = "#eeeeee" }
+cand = { fg = "#000000", bold = true }
+rest = { fg = "#000000", italic = true }
+desc = { fg = "#000000" }
+separator = " "
+separator_style = { }
+
+[confirm]
+border = { fg = "#000000" }
+title = { fg = "#000000", bold = true }
+body = { fg = "#000000", bold = true }
+list = { fg = "#000000" }
+btn_yes = { fg = "#000000", bg = "#ffaf00", bold = true }
+btn_no = { fg = "#000000", bg = "#eeeeee" }
+
+[spot]
+border = { fg = "#000000" }
+title = { fg = "#000000", bold = true }
+tbl_col = { fg = "#000000" }
+tbl_cell = { fg = "#000000", bg = "#eeeeee" }
+
+[notify]
+title_info = { fg = "#000000" }
+title_warn = { fg = "#000000" }
+title_error = { fg = "#000000" }
+
+[pick]
+border = { fg = "#000000", bold = true }
+active = { fg = "#000000", bold = true }
+inactive = { fg = "#000000" }
+
+[input]
+border = { fg = "#000000" }
+title = { fg = "#000000", bold = true }
+value = { fg = "#000000" }
+selected = { fg = "#000000", bg = "#ffaf00" }
+
+[cmp]
+border = { fg = "#000000", bold = true }
+active = { fg = "#000000", bg = "#ffaf00", bold = true }
+inactive = { fg = "#000000" }
+
+[tasks]
+border = { fg = "#000000" }
+title = { fg = "#000000", bold = true }
+hovered = { fg = "#000000", bg = "#ffaf00", bold = true }
+
+[help]
+on = { fg = "#000000" }
+run = { fg = "#000000" }
+desc = { fg = "#000000", italic = true }
+hovered = { fg = "#000000", bg = "#ffaf00" }
+footer = { fg = "#000000", bg = "#ffaf00", bold = true }
+
+[filetype]
+rules = [
+  { mime = "inode/empty", fg = "#000000" },
+
+  { url = "*", is = "orphan", fg = "#000000" },
+  { url = "*/", is = "orphan", fg = "#000000" },
+  { url = "*", is = "link", fg = "#000000" },
+  { url = "*/", is = "link", fg = "#000000" },
+  { url = "*", is = "block", fg = "#000000" },
+  { url = "*", is = "char", fg = "#000000" },
+  { url = "*", is = "fifo", fg = "#000000" },
+  { url = "*", is = "sock", fg = "#000000" },
+  { url = "*", is = "sticky", fg = "#000000" },
+  { url = "*", is = "dummy", fg = "#000000" },
+
+  { url = "*/", fg = "#000000" },
+  { url = "*", is = "exec", fg = "#000000" },
+  { url = "*", fg = "#000000" }
+]
+
+[icon]
+dirs = [
+  { name = ".config", text = "■", fg = "#000000" },
+  { name = ".git", text = "■", fg = "#000000" },
+  { name = ".github", text = "■", fg = "#000000" },
+  { name = ".npm", text = "■", fg = "#000000" },
+  { name = "Desktop", text = "■", fg = "#000000" },
+  { name = "Development", text = "■", fg = "#000000" },
+  { name = "Documents", text = "■", fg = "#000000" },
+  { name = "Downloads", text = "■", fg = "#000000" },
+  { name = "Library", text = "■", fg = "#000000" },
+  { name = "Movies", text = "■", fg = "#000000" },
+  { name = "Music", text = "■", fg = "#000000" },
+  { name = "Pictures", text = "■", fg = "#000000" },
+  { name = "Public", text = "■", fg = "#000000" },
+  { name = "Videos", text = "■", fg = "#000000" }
+]
+conds = [
+  { if = "orphan", text = "■", fg = "#000000" },
+  { if = "link", text = "■", fg = "#000000" },
+  { if = "block", text = "■", fg = "#000000" },
+  { if = "char", text = "■", fg = "#000000" },
+  { if = "fifo", text = "■", fg = "#000000" },
+  { if = "sock", text = "■", fg = "#000000" },
+  { if = "sticky", text = "■", fg = "#000000" },
+  { if = "dummy", text = "■", fg = "#000000" },
+
+  { if = "dir", text = "■", fg = "#000000" },
+  { if = "exec", text = "■", fg = "#000000" },
+  { if = "!dir", text = "■", fg = "#000000" }
+]

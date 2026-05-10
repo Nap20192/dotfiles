@@ -1,4 +1,3 @@
-
 layer-rule {
     match namespace="^awww"
     place-within-backdrop true
@@ -13,4 +12,3 @@ overview {
         on
     }
 }
-

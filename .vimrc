@@ -15,6 +15,7 @@ set exrc
 " Numbers settings
 set nu
 set relativenumber 
+set autoread
 
 " Bells 
 set noerrorbells 

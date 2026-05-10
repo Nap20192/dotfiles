@@ -98,25 +98,36 @@ M.color_scheme = scheme_for_appearance(wezterm.gui.get_appearance())
 M.hide_tab_bar_if_only_one_tab = true
 M.window_decorations = "NONE"
 M.window_padding = {
-  left = 15,
-  right = 15,
-  top = 15,
-  bottom = 15,
+  left = 20,
+  right = 20,
+  top = 20,
+  bottom = 5,
 }
 
 M.adjust_window_size_when_changing_font_size = false
 M.send_composed_key_when_left_alt_is_pressed = false
 M.send_composed_key_when_right_alt_is_pressed = false
+M.enable_kitty_keyboard = true
 
 M.keys = {
     {
         key = "c",
         mods = "CTRL|SHIFT",
-        action = wezterm.action.CopyTo "Clipboard",
+        action = wezterm.action.CopyTo "ClipboardAndPrimarySelection",
     },
     {
         key = "v",
         mods = "CTRL|SHIFT",
+        action = wezterm.action.PasteFrom "Clipboard",
+    },
+    {
+        key = "Insert",
+        mods = "CTRL",
+        action = wezterm.action.CopyTo "ClipboardAndPrimarySelection",
+    },
+    {
+        key = "Insert",
+        mods = "SHIFT",
         action = wezterm.action.PasteFrom "Clipboard",
     },
 }
