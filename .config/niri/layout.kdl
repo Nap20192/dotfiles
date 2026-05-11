@@ -1,6 +1,13 @@
 layout {
     gaps 5
-    center-focused-column "never"
+
+   struts {
+        left 0
+        right 0
+        top -5
+        bottom -5
+    }
+    center-focused-column "always"
     always-center-single-column
     empty-workspace-above-first
     default-column-display "tabbed"
