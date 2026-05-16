@@ -15,7 +15,6 @@ set exrc
 " Numbers settings
 set nu
 set relativenumber 
-set autoread
 
 " Bells 
 set noerrorbells 
@@ -28,10 +27,6 @@ set hidden
 set tabstop=4 softtabstop=4
 set shiftwidth=4
 set expandtab 
-
-if !has('nvim')
-    set smartindent 
-endif
 
 " Swap files 
 set noswapfile 
@@ -46,7 +41,7 @@ set incsearch
 
 " Number of lines to keep above/below the cursor 
 set scrolloff=999
-set scrolloffpad =20
+set scrolloffpad =999
 " Column with extra info 
 set signcolumn=yes 
 set foldcolumn=1 
@@ -85,3 +80,4 @@ imap <C-щ> <C-o>
 
 " Reselect last changed/inserted text with gV
 nnoremap gV `[v`]
+

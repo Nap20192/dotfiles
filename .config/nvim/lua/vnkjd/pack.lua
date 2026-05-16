@@ -19,13 +19,16 @@ local M = {
             -- Dev (own) plugins
             vnkjd "theme.nvim",
             gh "windwp/nvim-autopairs",
+            gh "Verf/deepwhite.nvim",
 
             -- Colors
             gh "catgoose/nvim-colorizer.lua",
             gh "f-person/auto-dark-mode.nvim",
+            gh "oskarnurm/koda.nvim",
 
             -- Navigation & file management
             gh "christoomey/vim-tmux-navigator",
+            gh "nvim-mini/mini.files",
 
             -- UI
             gh "nvim-lualine/lualine.nvim",
@@ -99,9 +102,9 @@ local M = {
             -- I don't use NES, but I include it anyway.
             gh "copilotlsp-nvim/copilot-lsp",
         },
-        yazi = {
-            gh "mikavilpas/yazi.nvim",
-        },
+        -- yazi = {
+        --     gh "mikavilpas/yazi.nvim",
+        -- },
         obs = {
             vnkjd "obs.nvim",
         },
@@ -134,7 +137,10 @@ for _, group in ipairs {
     "themery",
     "alabaster",
 } do
-    vim.pack.add(M.specs[group])
+    local specs = M.specs[group]
+    if specs then
+        vim.pack.add(specs)
+    end
 end
 
 return M

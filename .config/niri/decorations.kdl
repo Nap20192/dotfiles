@@ -1,7 +1,14 @@
-// window-rule {
-//     geometry-corner-radius 5
-//      clip-to-geometry true
-// }
+window-rule {
+    geometry-corner-radius 10
+     clip-to-geometry true
+}
+
+window-rule {
+    background-effect {
+        blur true
+    }
+     draw-border-with-background false
+}
 
 // window-rule {
 //
@@ -9,10 +16,9 @@
 //
 //     clip-to-geometry true
 //     tiled-state true
-//     draw-border-with-background false
 //
 //     shadow { on; }
-// 	opacity 0.93
+// 	opacity 0.6
 // }
 
 // prefer-no-csd

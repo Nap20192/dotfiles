@@ -1,5 +1,5 @@
 layout {
-    gaps 5
+    gaps 15
 
    struts {
         left 0
@@ -7,11 +7,11 @@ layout {
         top -5
         bottom -5
     }
-    center-focused-column "always"
+    center-focused-column "never"
     always-center-single-column
     empty-workspace-above-first
     default-column-display "tabbed"
-    background-color "#111111"
+    background-color "#fff7df"
 
     preset-column-widths {
         proportion 0.33333
@@ -29,18 +29,18 @@ layout {
 
     focus-ring {
         on
-        width 4
+        width 5
         active-color "#000000"
-        inactive-color "#ffffff"
-        urgent-color "#ff6b6b"
+        inactive-color "#9b907f"
+        urgent-color "#ad5a4d"
     }
 
     border {
         on
         width 4
-        active-color "white"
-        inactive-color "black"
-        urgent-color "white"
+        active-color "#ffaf00"
+        inactive-color "#9b907f"
+        urgent-color "#ad5a4d"
     }
 
     shadow {
@@ -62,13 +62,13 @@ layout {
         position "right"
         gaps-between-tabs 2
         corner-radius 4
-        active-color "red"
-        inactive-color "gray"
-        urgent-color "#ff6b6b"
+        active-color "#ffaf00"
+        inactive-color "#9b907f"
+        urgent-color "#ad5a4d"
     }
 
     insert-hint {
         on
-        color "#ffc87f80"
+        color "#ffaf0080"
     }
 }

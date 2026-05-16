@@ -26,58 +26,48 @@ local function link(from, to)
     vim.cmd(string.format("hi! link %s %s", from, to))
 end
 
--- =============================================================================
--- PALETTE
--- =============================================================================
-local palette = {
-    bg = "#000000",
-    fg = "#dadada",
-    elevated = "#1c1c1c",
-    subtle = "#303030",
-    muted = "#707070",
-    noise = "#191919",
-
-    search = "#00afff",
-    visual = "#ffaf00",
-    add = "#416241",
-    remove = "#722529",
-    change = "#1d2b3a",
-    change_text = "#2d4560",
-    error = "#ff005f",
-    cursor = "#8787af",
-}
-
-local bg = vim.o.background
-
-if bg == "light" then
-    palette.bg = "#ffffff"
-    palette.fg = "#000000"
-    palette.elevated = "#d7d7d7"
-    palette.subtle = "#e4e4e4"
-    palette.muted = "#626262"
-    palette.add = "#8dda9e"
-    palette.remove = "#da8d8d"
-    palette.change = "#b8d8f0"
-    palette.change_text = "#7ab5e0"
-    palette.noise = "#cccccc"
+local theme_state = vim.fn.expand(
+    (vim.env.XDG_CACHE_HOME or "~/.cache") .. "/vnkjd/theme"
+)
+local mode = vim.o.background
+if vim.fn.filereadable(theme_state) == 1 then
+    local state = vim.trim(vim.fn.readfile(theme_state, "", 1)[1] or "")
+    if state == "light" or state == "dark" then
+        mode = state
+        vim.o.background = state
+    end
 end
+local palette = require("vnkjd.theme").get(mode)
+local transparent_terminal = vim.env.KITTY_WINDOW_ID ~= nil
+    or vim.env.GHOSTTY_RESOURCES_DIR ~= nil
+    or vim.env.TERM == "xterm-kitty"
+    or vim.env.TERM == "xterm-ghostty"
+
+local transparent = vim.g.vnkjd_transparent_background ~= false
+    and transparent_terminal
+local base_bg = transparent and "NONE" or palette.bg
+local popup_bg = transparent and "NONE" or palette.bg
+local elevated_bg = transparent and "NONE" or palette.bg
+local subtle_bg = transparent and "NONE" or palette.bg
+local muted_bg = transparent and "NONE" or palette.bg
+local select_fg = palette.selection_fg or "#000000"
 
 -- Set up colorscheme
 vim.cmd "set termguicolors"
 vim.cmd 'let g:colors_name = "vnkjd-monochrome"'
-vim.cmd("set background=" .. bg)
+vim.cmd("set background=" .. mode)
 
 -- =============================================================================
 -- BASE GROUPS
 -- =============================================================================
-hi("Normal", { guifg = palette.fg, guibg = palette.bg })
-hi("NormalNC", { guifg = palette.fg, guibg = palette.bg })
-hi("CursorLine", { guibg = palette.elevated })
-hi("CursorLineNr", { guifg = palette.fg, guibg = palette.elevated, gui = "bold" })
-hi("ColorColumn", { guibg = palette.subtle })
+hi("Normal", { guifg = palette.fg, guibg = base_bg })
+hi("NormalNC", { guifg = palette.fg, guibg = base_bg })
+hi("CursorLine", { guibg = elevated_bg })
+hi("CursorLineNr", { guifg = palette.fg, guibg = elevated_bg, gui = "bold" })
+hi("ColorColumn", { guibg = subtle_bg })
 hi("LineNr", { guifg = palette.muted })
 hi("FoldColumn", { guifg = palette.muted })
-hi("Folded", { guifg = palette.muted, guibg = palette.bg })
+hi("Folded", { guifg = palette.muted, guibg = base_bg })
 hi("EndOfBuffer", { guifg = palette.muted })
 hi("Conceal", { guifg = palette.muted })
 hi("NonText", { guifg = palette.noise })
@@ -185,11 +175,11 @@ link("@tag.attribute", "Type")
 -- =============================================================================
 -- SEARCH AND VISUAL
 -- =============================================================================
-hi("Search", { guifg = palette.search, guibg = palette.bg, gui = "reverse" })
-hi("IncSearch", { guifg = palette.visual, guibg = palette.bg, gui = "reverse" })
-hi("CurSearch", { guifg = palette.visual, guibg = palette.bg, gui = "reverse" })
+hi("Search", { guifg = select_fg, guibg = palette.search, gui = "bold" })
+hi("IncSearch", { guifg = select_fg, guibg = palette.visual, gui = "bold" })
+hi("CurSearch", { guifg = select_fg, guibg = palette.visual, gui = "bold" })
 hi("Visual", { guifg = palette.fg, guibg = palette.visual })
-hi("VisualNOS", { guibg = palette.subtle })
+hi("VisualNOS", { guibg = subtle_bg })
 
 -- ================================visual=============================================
 -- DIFF
@@ -209,26 +199,26 @@ link("diffRemoved", "DiffDelete")
 -- =============================================================================
 -- UI ELEMENTS
 -- =============================================================================
-hi("StatusLine", { guifg = palette.fg, guibg = palette.elevated, gui = "bold" })
-hi("StatusLineNC", { guifg = palette.muted, guibg = palette.elevated })
-hi("WinSeparator", { guifg = palette.muted, guibg = palette.bg })
-hi("TabLine", { guifg = palette.muted, guibg = palette.bg })
-hi("TabLineFill", { guifg = palette.muted, guibg = palette.bg })
-hi("TabLineSel", { guibg = palette.elevated, gui = "bold,reverse" })
+hi("StatusLine", { guifg = palette.fg, guibg = base_bg, gui = "bold" })
+hi("StatusLineNC", { guifg = palette.muted, guibg = base_bg })
+hi("WinSeparator", { guifg = palette.muted, guibg = base_bg })
+hi("TabLine", { guifg = palette.muted, guibg = base_bg })
+hi("TabLineFill", { guifg = palette.muted, guibg = base_bg })
+hi("TabLineSel", { guibg = elevated_bg, gui = "bold,reverse" })
 
-hi("NormalFloat", { guifg = palette.fg, guibg = palette.bg })
-hi("FloatBorder", { guifg = palette.muted, guibg = palette.bg })
+hi("NormalFloat", { guifg = palette.fg, guibg = popup_bg })
+hi("FloatBorder", { guifg = palette.muted, guibg = popup_bg })
 
-hi("Pmenu", { guifg = palette.fg, guibg = palette.elevated })
-hi("PmenuSel", { guifg = palette.bg, guibg = palette.fg })
-hi("PmenuExtra", { guifg = palette.fg, guibg = palette.elevated })
-hi("PmenuExtraSel", { guifg = palette.bg, guibg = palette.fg })
-hi("PmenuKind", { guifg = palette.fg, guibg = palette.elevated, gui = "bold" })
-hi("PmenuKindSel", { guifg = palette.bg, guibg = palette.fg, gui = "bold" })
-hi("PmenuSbar", { guibg = palette.subtle })
-hi("PmenuThumb", { guibg = palette.muted })
+hi("Pmenu", { guifg = palette.fg, guibg = popup_bg })
+hi("PmenuSel", { guifg = select_fg, guibg = palette.fg })
+hi("PmenuExtra", { guifg = palette.fg, guibg = popup_bg })
+hi("PmenuExtraSel", { guifg = select_fg, guibg = palette.fg })
+hi("PmenuKind", { guifg = palette.fg, guibg = popup_bg, gui = "bold" })
+hi("PmenuKindSel", { guifg = select_fg, guibg = palette.fg, gui = "bold" })
+hi("PmenuSbar", { guibg = subtle_bg })
+hi("PmenuThumb", { guibg = muted_bg })
 
-hi("WildMenu", { guifg = palette.search, guibg = palette.bg, gui = "bold" })
+hi("WildMenu", { guifg = select_fg, guibg = palette.search, gui = "bold" })
 hi("Directory", { guifg = palette.fg })
 hi("Title", { guifg = palette.fg })
 hi("Question", { guifg = palette.fg })
@@ -251,7 +241,7 @@ hi("SpellRare", { guisp = palette.error, gui = "undercurl" })
 -- =============================================================================
 -- ERROR AND TODO
 -- =============================================================================
-hi("Error", { guifg = palette.error, guibg = palette.bg, gui = "bold,reverse" })
+hi("Error", { guifg = palette.error, guibg = base_bg, gui = "bold,reverse" })
 hi("ErrorMsg", { guibg = palette.error })
 hi("WarningMsg", { guifg = palette.fg })
 hi("Todo", { guifg = palette.search, gui = "bold,reverse" })
@@ -288,7 +278,7 @@ link("DiagnosticSignOk", "DiagnosticOk")
 -- =============================================================================
 -- CURSOR
 -- =============================================================================
-hi("Cursor", { guibg = palette.cursor })
+hi("Cursor", { guifg = palette.cursor_text, guibg = palette.cursor })
 
 -- =============================================================================
 -- SIGN COLUMN
@@ -343,27 +333,27 @@ link("include", "PreProc")
 -- =============================================================================
 -- FZF-LUA
 -- =============================================================================
-hi("FzfLuaNormal", { guifg = palette.fg, guibg = palette.bg })
-hi("FzfLuaBorder", { guifg = palette.muted, guibg = palette.bg })
-hi("FzfLuaTitle", { guifg = palette.fg, guibg = palette.elevated })
-hi("FzfLuaTitleFlags", { guifg = palette.fg, guibg = palette.subtle })
-hi("FzfLuaBackdrop", { guifg = palette.muted, guibg = palette.bg })
-hi("FzfLuaPreviewNormal", { guifg = palette.fg, guibg = palette.elevated })
-hi("FzfLuaPreviewBorder", { guifg = palette.muted, guibg = palette.elevated })
-hi("FzfLuaPreviewTitle", { guifg = palette.fg, guibg = palette.elevated })
-hi("FzfLuaCursor", { guibg = palette.cursor })
-hi("FzfLuaCursorLine", { guibg = palette.subtle })
-hi("FzfLuaCursorLineNr", { guifg = palette.fg, guibg = palette.subtle })
+hi("FzfLuaNormal", { guifg = palette.fg, guibg = popup_bg })
+hi("FzfLuaBorder", { guifg = palette.muted, guibg = popup_bg })
+hi("FzfLuaTitle", { guifg = palette.fg, guibg = elevated_bg })
+hi("FzfLuaTitleFlags", { guifg = palette.fg, guibg = subtle_bg })
+hi("FzfLuaBackdrop", { guifg = palette.muted, guibg = base_bg })
+hi("FzfLuaPreviewNormal", { guifg = palette.fg, guibg = elevated_bg })
+hi("FzfLuaPreviewBorder", { guifg = palette.muted, guibg = elevated_bg })
+hi("FzfLuaPreviewTitle", { guifg = palette.fg, guibg = elevated_bg })
+hi("FzfLuaCursor", { guifg = palette.cursor_text, guibg = palette.cursor })
+hi("FzfLuaCursorLine", { guibg = subtle_bg })
+hi("FzfLuaCursorLineNr", { guifg = palette.fg, guibg = subtle_bg })
 hi(
     "FzfLuaSearch",
-    { guifg = palette.visual, guibg = palette.bg, gui = "reverse" }
+    { guifg = select_fg, guibg = palette.visual, gui = "bold" }
 )
-hi("FzfLuaScrollBorderEmpty", { guifg = palette.muted, guibg = palette.bg })
-hi("FzfLuaScrollBorderFull", { guifg = palette.muted, guibg = palette.bg })
-hi("FzfLuaScrollFloatEmpty", { guibg = palette.subtle })
-hi("FzfLuaScrollFloatFull", { guibg = palette.muted })
-hi("FzfLuaHelpNormal", { guifg = palette.fg, guibg = palette.bg })
-hi("FzfLuaHelpBorder", { guifg = palette.muted, guibg = palette.bg })
+hi("FzfLuaScrollBorderEmpty", { guifg = palette.muted, guibg = base_bg })
+hi("FzfLuaScrollBorderFull", { guifg = palette.muted, guibg = base_bg })
+hi("FzfLuaScrollFloatEmpty", { guibg = subtle_bg })
+hi("FzfLuaScrollFloatFull", { guibg = muted_bg })
+hi("FzfLuaHelpNormal", { guifg = palette.fg, guibg = base_bg })
+hi("FzfLuaHelpBorder", { guifg = palette.muted, guibg = base_bg })
 hi("FzfLuaHeaderBind", { guifg = palette.fg })
 hi("FzfLuaHeaderText", { guifg = palette.fg })
 hi("FzfLuaPathColNr", { guifg = palette.search })
@@ -384,26 +374,26 @@ hi("FzfLuaLiveSym", { guifg = palette.search })
 hi("FzfLuaCmdEx", { guifg = palette.fg })
 hi("FzfLuaCmdBuf", { guifg = palette.add })
 hi("FzfLuaCmdGlobal", { guifg = palette.fg })
-hi("FzfLuaFzfNormal", { guifg = palette.fg, guibg = palette.bg })
-hi("FzfLuaFzfCursorLine", { guifg = palette.fg, guibg = palette.subtle })
+hi("FzfLuaFzfNormal", { guifg = palette.fg, guibg = popup_bg })
+hi("FzfLuaFzfCursorLine", { guifg = palette.fg, guibg = subtle_bg })
 hi("FzfLuaFzfMatch", { guifg = palette.search, gui = "bold" })
-hi("FzfLuaFzfBorder", { guifg = palette.muted, guibg = palette.bg })
-hi("FzfLuaFzfScrollbar", { guifg = palette.muted, guibg = palette.bg })
+hi("FzfLuaFzfBorder", { guifg = palette.muted, guibg = base_bg })
+hi("FzfLuaFzfScrollbar", { guifg = palette.muted, guibg = base_bg })
 
 -- =============================================================================
 -- BLINK.CMP
 -- =============================================================================
-hi("BlinkCmpMenu", { guifg = palette.fg, guibg = palette.bg })
-hi("BlinkCmpMenuBorder", { guifg = palette.muted, guibg = palette.bg })
+hi("BlinkCmpMenu", { guifg = palette.fg, guibg = popup_bg })
+hi("BlinkCmpMenuBorder", { guifg = palette.muted, guibg = base_bg })
 link("BlinkCmpMenuSelection", "PmenuSel")
 
-hi("BlinkCmpDoc", { guifg = palette.fg, guibg = palette.bg })
-hi("BlinkCmpDocBorder", { guifg = palette.muted, guibg = palette.bg })
-hi("BlinkCmpDocSeparator", { guifg = palette.muted, guibg = palette.bg })
-hi("BlinkCmpDocCursorLine", { guibg = palette.elevated })
+hi("BlinkCmpDoc", { guifg = palette.fg, guibg = popup_bg })
+hi("BlinkCmpDocBorder", { guifg = palette.muted, guibg = base_bg })
+hi("BlinkCmpDocSeparator", { guifg = palette.muted, guibg = base_bg })
+hi("BlinkCmpDocCursorLine", { guibg = elevated_bg })
 
-hi("BlinkCmpSignatureHelp", { guifg = palette.fg, guibg = palette.bg })
-hi("BlinkCmpSignatureHelpBorder", { guifg = palette.muted, guibg = palette.bg })
+hi("BlinkCmpSignatureHelp", { guifg = palette.fg, guibg = popup_bg })
+hi("BlinkCmpSignatureHelpBorder", { guifg = palette.muted, guibg = base_bg })
 link("BlinkCmpSignatureHelpActiveParameter", "Visual")
 
 hi("BlinkCmpLabel", { guifg = palette.fg })
@@ -414,8 +404,8 @@ hi("BlinkCmpLabelDetail", { guifg = palette.muted })
 hi("BlinkCmpKind", { guifg = palette.muted })
 hi("BlinkCmpSource", { guifg = palette.muted })
 
-hi("BlinkCmpScrollBarThumb", { guibg = palette.muted })
-hi("BlinkCmpScrollBarGutter", { guibg = palette.elevated })
+hi("BlinkCmpScrollBarThumb", { guibg = muted_bg })
+hi("BlinkCmpScrollBarGutter", { guibg = elevated_bg })
 
 for _, kind in ipairs {
     "Text", "Method", "Function", "Constructor", "Field", "Variable",

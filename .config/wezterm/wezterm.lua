@@ -1,78 +1,95 @@
 local wezterm = require "wezterm"
 
 local M = {}
+local palettes = {
+    dark = {
+        fg = "#dadada",
+        bg = "#000000",
+        cursor = "#ffaf00",
+        cursor_text = "#000000",
+        selection_fg = "#000000",
+        selection_bg = "#ffaf00",
+        muted = "#707070",
+        ansi = {
+            "#000000",
+            "#b35a4f",
+            "#6d8758",
+            "#ffaf00",
+            "#6c8db5",
+            "#9a7bb8",
+            "#5d9690",
+            "#dadada",
+        },
+        brights = {
+            "#4a4a4a",
+            "#d77a61",
+            "#93ad6d",
+            "#ffaf00",
+            "#8eabd1",
+            "#b59ad1",
+            "#7db8af",
+            "#f3eadb",
+        },
+    },
+    light = {
+        fg = "#000000",
+        bg = "#fff7df",
+        cursor = "#ffaf00",
+        cursor_text = "#000000",
+        selection_fg = "#000000",
+        selection_bg = "#ffaf00",
+        muted = "#626262",
+        ansi = {
+            "#000000",
+            "#ad5a4d",
+            "#5f7a4f",
+            "#ffaf00",
+            "#5e7fa8",
+            "#866ea8",
+            "#4f8b85",
+            "#6f6557",
+        },
+        brights = {
+            "#9b907f",
+            "#cf745d",
+            "#78935f",
+            "#ffaf00",
+            "#7d98bd",
+            "#a189c0",
+            "#6ea79f",
+            "#fff7df",
+        },
+    },
+}
+
+local function scheme(colors)
+    return {
+        foreground = colors.fg,
+        background = colors.bg,
+        cursor_bg = colors.cursor,
+        cursor_fg = colors.cursor_text,
+        cursor_border = colors.cursor,
+        selection_fg = colors.selection_fg,
+        selection_bg = colors.selection_bg,
+        scrollbar_thumb = colors.muted,
+        split = colors.muted,
+        ansi = colors.ansi,
+        brights = colors.brights,
+    }
+end
+
+local opacity = 0.8
+M.window_background_opacity = opacity
 
 M.font_size = 13
-
 
 M.font = wezterm.font "Fira Code"
 
 M.color_schemes = {
-
-    ["Monochrome Dark"] = {
-        foreground = "#dadada",
-        background = "#000000",
-        cursor_bg = "#8787af",
-        cursor_fg = "#000000",
-        cursor_border = "#8787af",
-        selection_fg = "#000000",
-        selection_bg = "#ffaf00",
-        scrollbar_thumb = "#707070",
-        split = "#707070",
-        ansi = {
-            "#191919", -- black   (noise)
-            "#722529", -- red     (remove)
-            "#416241", -- green   (add)
-            "#ffaf00", -- yellow  (visual)
-            "#00afff", -- blue    (search)
-            "#8787af", -- magenta (cursor)
-            "#00afaf", -- cyan
-            "#dadada", -- white   (fg)
-        },
-        brights = {
-            "#303030", -- bright black  (subtle)
-            "#ff005f", -- bright red    (error)
-            "#8dda9e", -- bright green  (light add)
-            "#ffaf00", -- bright yellow (visual)
-            "#00afff", -- bright blue   (search)
-            "#d787d7", -- bright magenta
-            "#87afd7", -- bright cyan
-            "#ffffff", -- bright white
-        },
-    },
-
-    ["Monochrome Light"] = {
-        foreground = "#000000",
-        background = "#ffffff",
-        cursor_bg = "#8787af",
-        cursor_fg = "#dadada",
-        cursor_border = "#8787af",
-        selection_fg = "#dadada",
-        selection_bg = "#ffaf00",
-        scrollbar_thumb = "#626262",
-        split = "#626262",
-        ansi = {
-            "#000000", -- black   (fg)
-            "#da8d8d", -- red     (remove)
-            "#8dda9e", -- green   (add)
-            "#ffaf00", -- yellow  (visual)
-            "#000000", -- blue    (black)
-            "#8787af", -- magenta (cursor)
-            "#00afaf", -- cyan
-            "#727272", -- white   (bg)
-        },
-        brights = {
-            "#626262", -- bright black  (muted)
-            "#ff005f", -- bright red    (error)
-            "#416241", -- bright green  (dark add)
-            "#ffaf00", -- bright yellow (visual)
-            "#000000", -- bright blue   (black)
-            "#d787d7", -- bright magenta
-            "#87afd7", -- bright cyan
-            "#828282", -- bright white
-        },
-    },
+    ["Monochrome Dark"] = scheme(palettes.dark),
+    ["Monochrome Light"] = scheme(palettes.light),
 }
+
 
 local function scheme_for_appearance(appearance)
     if appearance:find "Dark" then

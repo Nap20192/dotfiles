@@ -15,8 +15,6 @@ vim.cmd "source ~/.vimrc"
 
 vim.opt.completeopt = { "popup", "menu", "preview" }
 
-vim.cmd "highlight WinSeparator guibg=None"
-
 vim.o.spelllang = "ru_ru,en_us"
 vim.o.spellfile = vim.fn.expand "~/.config/nvim/spell/custom.utf-8.add"
 vim.o.winborder = "rounded"
@@ -88,7 +86,31 @@ vim.keymap.set("n", "<leader>?", function()
     vim.cmd("edit " .. vim.fn.stdpath("config") .. "/HINTS.md")
 end, { desc = "Open keybinding hints (HINTS.md)" })
 
-vim.keymap.set("n", "<localleader>fm", function()
+vim.api.nvim_create_user_command("RenderMarkdown", function()
     local file = vim.fn.expand "%:p"
-    vim.cmd("botright split | terminal glow " .. vim.fn.shellescape(file))
+    vim.cmd("botright vertical split | terminal glow " .. vim.fn.shellescape(file))
 end, { desc = "Preview markdown with glow" })
+
+vim.keymap.set(
+    "n",
+    "<localleader>fm",
+    "<cmd>RenderMarkdown<cr>",
+    { desc = "Preview markdown with glow" }
+)
+
+vim.api.nvim_create_user_command("OpenLink", function()
+    require("vnkjd.functions.links").open_under_cursor()
+end, { desc = "Open URL under cursor" })
+
+vim.keymap.set("n", "gx", function()
+    require("vnkjd.functions.links").open_under_cursor()
+end, { desc = "Open URL under cursor" })
+
+vim.keymap.set("x", "gx", function()
+    vim.api.nvim_feedkeys(
+        vim.api.nvim_replace_termcodes("<Esc>", true, false, true),
+        "nx",
+        false
+    )
+    require("vnkjd.functions.links").open_visual_selection()
+end, { desc = "Open URL in selection" })

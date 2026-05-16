@@ -1,0 +1,30 @@
+font-family = Fira Code
+font-size = 13
+
+window-decoration = none
+window-padding-x = 20
+window-padding-y = 20
+window-padding-color = background
+window-save-state = never
+
+background-opacity = 0.8
+background-opacity-cells = true
+background-blur = false
+
+cursor-style = block
+cursor-style-blink = false
+mouse-hide-while-typing = true
+
+copy-on-select = true
+confirm-close-surface = false
+shell-integration-features = no-cursor,title,no-sudo,no-ssh-env,no-ssh-terminfo,path
+
+keybind = ctrl+shift+c=copy_to_clipboard:mixed
+keybind = ctrl+shift+v=paste_from_clipboard
+keybind = ctrl+insert=copy_to_clipboard:mixed
+keybind = shift+insert=paste_from_clipboard
+keybind = ctrl+shift+r=reload_config
+keybind = ctrl+==increase_font_size:1
+keybind = ctrl++=increase_font_size:1
+keybind = ctrl+-=decrease_font_size:1
+keybind = ctrl+0=reset_font_size

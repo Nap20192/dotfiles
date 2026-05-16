@@ -44,6 +44,10 @@
       "rev": "505d9a269d657ce8e0fa5601e0530f0d8798038c",
       "src": "https://github.com/MironPascalCaseFan/debugmaster.nvim"
     },
+    "deepwhite.nvim": {
+      "rev": "ccad56bb5eb7d29258980cfc0a716eb87bcad69e",
+      "src": "https://github.com/Verf/deepwhite.nvim"
+    },
     "fff.nvim": {
       "rev": "cebacb3c35645a5036adda093d4332f6098865bd",
       "src": "https://github.com/dmtrKovalenko/fff.nvim"
@@ -59,6 +63,10 @@
     "image.nvim": {
       "rev": "da2be65c153ba15a14a342b05591652a6df70d58",
       "src": "https://github.com/3rd/image.nvim"
+    },
+    "koda.nvim": {
+      "rev": "ff7ea32c2002ee18032629122f8232fc97e5ccb3",
+      "src": "https://github.com/oskarnurm/koda.nvim"
     },
     "leetcode.nvim": {
       "rev": "fdd3f91800b3983e27bc9fcfb99cfa7293d7f11a",
@@ -80,6 +88,10 @@
       "rev": "b03fb0f20bc1d43daf558cda981a2be22e73ac42",
       "src": "https://github.com/williamboman/mason.nvim"
     },
+    "mini.files": {
+      "rev": "5e0f0d264166e71d37ca35d84c54b1887ea76b40",
+      "src": "https://github.com/nvim-mini/mini.files"
+    },
     "nui.nvim": {
       "rev": "de740991c12411b663994b2860f1a4fd0937c130",
       "src": "https://github.com/MunifTanjim/nui.nvim"
@@ -91,6 +103,10 @@
     "nvim-colorizer.lua": {
       "rev": "a065833f35a3a7cc3ef137ac88b5381da2ba302e",
       "src": "https://github.com/norcalli/nvim-colorizer.lua"
+    },
+    "nvim-colorpicker": {
+      "rev": "88f6aeac944570ebfb97ac67c9fea27a73ea0429",
+      "src": "https://github.com/mikevskater/nvim-colorpicker"
     },
     "nvim-dap": {
       "rev": "45a69eba683a2c448dd9ecfc4de89511f0646b5f",
@@ -111,6 +127,10 @@
     "nvim-dap-virtual-text": {
       "rev": "fbdb48c2ed45f4a8293d0d483f7730d24467ccb6",
       "src": "https://github.com/theHamsta/nvim-dap-virtual-text"
+    },
+    "nvim-float": {
+      "rev": "ae790c0a96fcf0c5267371bff04b2fc4542fd643",
+      "src": "https://github.com/mikevskater/nvim-float"
     },
     "nvim-jdtls": {
       "rev": "77ccaeb422f8c81b647605da5ddb4a7f725cda90",

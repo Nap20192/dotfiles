@@ -1,4 +1,9 @@
-require("leetcode").setup {
+local ok, leetcode = pcall(require, "leetcode")
+if not ok then
+    return
+end
+
+leetcode.setup {
     lang = "golang",
 }
 

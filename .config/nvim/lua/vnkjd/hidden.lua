@@ -8,4 +8,3 @@ vim.opt.showbreak = "↳ "
 vim.keymap.set("i", "jk", "<Esc>", { desc = "Exit insert mode" })
 vim.keymap.set("n", ";", ":", { desc = "Command mode" })
 
-

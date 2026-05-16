@@ -1,0 +1,163 @@
+{
+  "id": "amoled",
+  "name": "Amoled",
+  "version": "1.0.0",
+  "author": "acup",
+  "description": "Amoled theme with dark and light variants",
+  "dark": {},
+  "light": {},
+  "variants": {
+    "type": "multi",
+    "defaults": {
+      "dark": {
+        "accent": "white",
+        "flavor": "black"
+      },
+      "light": {
+        "accent": "black",
+        "flavor": "white"
+      }
+    },
+    "flavors": [
+      {
+        "id": "black",
+        "name": "Black",
+        "dark": {
+          "primaryText": "#000000",
+          "primaryContainer": "#CC5200",
+          "secondary": "#999999",
+          "surface": "#000000",
+          "surfaceText": "#E6F0FF",
+          "surfaceVariant": "#000000",
+          "surfaceVariantText": "#fff7df",
+          "surfaceTint": "#FF6600",
+          "background": "#000000",
+          "backgroundText": "#fff7df",
+          "outline": "#555555",
+          "surfaceContainer": "#000000",
+          "surfaceContainerHigh": "#000000",
+          "error": "#DD0000",
+          "warning": "#FFCC00",
+          "info": "#999999"
+        },
+        "light": {}
+      },
+      {
+        "id": "white",
+        "name": "White",
+        "dark": {},
+        "light": {
+          "primaryText": "#fff7df",
+          "primaryContainer": "#CC5200",
+          "secondary": "#666666",
+          "surface": "#fff7df",
+          "surfaceText": "#000000",
+          "surfaceVariant": "#fff7df",
+          "surfaceVariantText": "#000000",
+          "surfaceTint": "#FF6600",
+          "background": "#fff7df",
+          "backgroundText": "#000000",
+          "outline": "#AAAAAA",
+          "surfaceContainer": "#fff7df",
+          "surfaceContainerHigh": "#fff7df",
+          "error": "#DD0000",
+          "warning": "#FFCC00",
+          "info": "#666666"
+        }
+      }
+    ],
+    "accents": [
+      {
+        "id": "white",
+        "name": "white",
+        "black": { "primary": "#fff7df" },
+        "white": { "primary": "#fff7df" }
+      },
+      {
+        "id": "black",
+        "name": "black",
+        "black": { "primary": "#000000" },
+        "white": { "primary": "#000000" }
+      },
+      {
+        "id": "red",
+        "name": "red",
+        "black": { "primary": "#FF0000" },
+        "white": { "primary": "#FF0000" }
+      },
+      {
+        "id": "maroon",
+        "name": "maroon",
+        "black": { "primary": "#800000" },
+        "white": { "primary": "#800000" }
+      },
+      {
+        "id": "green",
+        "name": "green",
+        "black": { "primary": "#00FF00" },
+        "white": { "primary": "#00FF00" }
+      },
+      {
+        "id": "dark-green",
+        "name": "dark green",
+        "black": { "primary": "#008000" },
+        "white": { "primary": "#008000" }
+      },
+      {
+        "id": "greenyellow",
+        "name": "greenyellow",
+        "black": { "primary": "#ADFF2F" },
+        "white": { "primary": "#ADFF2F" }
+      },
+      {
+        "id": "coral",
+        "name": "coral",
+        "black": { "primary": "#03fc7b" },
+        "white": { "primary": "#03fc7b" }
+      },
+      {
+        "id": "blue",
+        "name": "blue",
+        "black": { "primary": "#0000FF" },
+        "white": { "primary": "#0000FF" }
+      },
+      {
+        "id": "turquoise",
+        "name": "turquoise",
+        "black": { "primary": "#03fcc6" },
+        "white": { "primary": "#03fcc6" }
+      },
+      {
+        "id": "purple",
+        "name": "purple",
+        "black": { "primary": "#CC00FF" },
+        "white": { "primary": "#CC00FF" }
+      },
+      {
+        "id": "pink",
+        "name": "pink",
+        "black": { "primary": "#fc03eb" },
+        "white": { "primary": "#fc03eb" }
+      },
+      {
+        "id": "yellow",
+        "name": "yellow",
+        "black": { "primary": "#fcfc03" },
+        "white": { "primary": "#fcfc03" }
+      },
+      {
+        "id": "orange",
+        "name": "orange",
+        "black": { "primary": "#F35C25" },
+        "white": { "primary": "#F35C25" }
+      },
+      {
+        "id": "light-orange",
+        "name": "light orange",
+        "black": { "primary": "#ff7b00" },
+        "white": { "primary": "#ff7b00" }
+      }
+    ]
+  },
+  "sourceDir": "amoled-theme"
+}

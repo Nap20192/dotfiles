@@ -46,12 +46,15 @@ local function cached_get_git_ignored_files_in(dir)
     return val
 end
 
+local WIDTH_RATIO = 0.5
+local HEIGHT_RATIO = 0.5
 local oil = require "oil"
 
 oil.setup {
     keymaps = {
         ["g?"] = "actions.show_help",
         ["<CR>"] = "actions.select",
+        ["l"] = "actions.select",
         ["<C-v>"] = "actions.select_vsplit",
         ["<C-s>"] = "actions.select_split",
         ["<C-t>"] = "actions.select_tab",
