@@ -380,12 +380,13 @@ hi("FzfLuaFzfMatch", { guifg = palette.search, gui = "bold" })
 hi("FzfLuaFzfBorder", { guifg = palette.muted, guibg = base_bg })
 hi("FzfLuaFzfScrollbar", { guifg = palette.muted, guibg = base_bg })
 
--- =============================================================================
--- BLINK.CMP
--- =============================================================================
+-- -- =============================================================================
+-- -- BLINK.CMP
+-- -- =============================================================================
 hi("BlinkCmpMenu", { guifg = palette.fg, guibg = popup_bg })
 hi("BlinkCmpMenuBorder", { guifg = palette.muted, guibg = base_bg })
-link("BlinkCmpMenuSelection", "PmenuSel")
+hi("BlinkCmpMenuSelection", { guifg = select_fg, guibg = palette.visual, gui = "bold" })
+
 
 hi("BlinkCmpDoc", { guifg = palette.fg, guibg = popup_bg })
 hi("BlinkCmpDocBorder", { guifg = palette.muted, guibg = base_bg })

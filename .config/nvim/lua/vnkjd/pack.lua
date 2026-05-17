@@ -15,6 +15,7 @@ end
 local M = {
     specs = {
         core = {
+            gh "karb94/neoscroll.nvim",
 
             -- Dev (own) plugins
             vnkjd "theme.nvim",
@@ -37,16 +38,18 @@ local M = {
 
             -- Snippets
             gh "L3MON4D3/LuaSnip",
+            gh "rafamadriz/friendly-snippets",
+
+            -- Completion
+            gh "Saghen/blink.cmp",
 
             -- LSP
             gh "neovim/nvim-lspconfig",
-
-            -- Completion
-            gh "saghen/blink.cmp",
-
             -- Mason (LSP/tool installer)
             gh "williamboman/mason.nvim",
             gh "WhoIsSethDaniel/mason-tool-installer.nvim",
+            gh "williamboman/mason-lspconfig.nvim",
+
 
             -- Treesitter
             gh "nvim-treesitter/nvim-treesitter",

@@ -81,3 +81,5 @@ imap <C-щ> <C-o>
 " Reselect last changed/inserted text with gV
 nnoremap gV `[v`]
 
+set synmaxcol=128
+syntax sync minlines=256

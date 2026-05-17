@@ -13,7 +13,7 @@ vim.cmd "packadd nvim.undotree"
 
 vim.cmd "source ~/.vimrc"
 
-vim.opt.completeopt = { "popup", "menu", "preview" }
+vim.opt.completeopt = { "popup", "menu", "menuone", "preview", "noselect" }
 
 vim.o.spelllang = "ru_ru,en_us"
 vim.o.spellfile = vim.fn.expand "~/.config/nvim/spell/custom.utf-8.add"
