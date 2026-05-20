@@ -8,6 +8,12 @@ binds {
     Super+Alt+S allow-when-locked=true hotkey-overlay-title=null { spawn-sh "pkill orca || exec orca"; }
 
     Mod+Return { spawn "kitty"; }
+    Mod+Shift+Y hotkey-overlay-title="Open YouTube" { spawn "webapp-youtube"; }
+    Mod+Shift+G hotkey-overlay-title="Open Gemini" { spawn "webapp-gemini"; }
+    Mod+Shift+X hotkey-overlay-title="Open Grok" { spawn "webapp-grok"; }
+    Mod+Shift+C hotkey-overlay-title="Open ChatGPT" { spawn "webapp-chatgpt"; }
+    Mod+Shift+W hotkey-overlay-title="Open WhatsApp" { spawn "webapp-whatsapp"; }
+    Mod+Shift+D hotkey-overlay-title="Open Google Docs" { spawn "webapp-google-docs"; }
 
     XF86AudioRaiseVolume allow-when-locked=true repeat=false { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1+"; }
     XF86AudioLowerVolume allow-when-locked=true repeat=false { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1-"; }
@@ -25,6 +31,10 @@ binds {
     Mod+L               { focus-column-right; }
     Mod+J               { focus-workspace-down; }
     Mod+K               { focus-workspace-up; }
+    Mod+Ctrl+H   { move-column-left; }
+    Mod+Ctrl+L   { move-column-right; }
+    Mod+Ctrl+J   { move-workspace-down; }
+    Mod+Ctrl+K   { move-workspace-up; }
 
     Mod+WheelScrollDown            cooldown-ms=150 { focus-workspace-down; }
     Mod+WheelScrollUp              cooldown-ms=150 { focus-workspace-up; }

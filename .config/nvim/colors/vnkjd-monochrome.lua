@@ -47,9 +47,10 @@ local transparent = vim.g.vnkjd_transparent_background ~= false
     and transparent_terminal
 local base_bg = transparent and "NONE" or palette.bg
 local popup_bg = transparent and "NONE" or palette.bg
-local elevated_bg = transparent and "NONE" or palette.bg
-local subtle_bg = transparent and "NONE" or palette.bg
-local muted_bg = transparent and "NONE" or palette.bg
+local elevated_bg = transparent and "NONE" or palette.elevated
+local subtle_bg = transparent and "NONE" or palette.subtle
+local muted_bg = transparent and "NONE" or palette.noise
+local cursorline_bg = palette.subtle
 local select_fg = palette.selection_fg or "#000000"
 
 -- Set up colorscheme
@@ -62,8 +63,8 @@ vim.cmd("set background=" .. mode)
 -- =============================================================================
 hi("Normal", { guifg = palette.fg, guibg = base_bg })
 hi("NormalNC", { guifg = palette.fg, guibg = base_bg })
-hi("CursorLine", { guibg = elevated_bg })
-hi("CursorLineNr", { guifg = palette.fg, guibg = elevated_bg, gui = "bold" })
+hi("CursorLine", { guibg = cursorline_bg })
+hi("CursorLineNr", { guifg = palette.fg, guibg = cursorline_bg, gui = "bold" })
 hi("ColorColumn", { guibg = subtle_bg })
 hi("LineNr", { guifg = palette.muted })
 hi("FoldColumn", { guifg = palette.muted })

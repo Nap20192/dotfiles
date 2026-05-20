@@ -65,7 +65,12 @@ export VISUAL="nvim"
 export EDITOR="nvim"
 
 # Aliases
-alias ls='ls --color'
+alias ls='eza --icons'
+
+alias ll='eza -lh --icons --git'
+alias la='eza -lah --icons --git'
+
+
 alias c='clear'
 
 # PATH

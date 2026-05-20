@@ -45,6 +45,7 @@ local M = {
 
             -- LSP
             gh "neovim/nvim-lspconfig",
+            gh "fatih/vim-go",
             -- Mason (LSP/tool installer)
             gh "williamboman/mason.nvim",
             gh "WhoIsSethDaniel/mason-tool-installer.nvim",
