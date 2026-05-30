@@ -1,0 +1,176 @@
+# Light pair for the local tmux palette
+# bg     "#fffaf0"
+# fg     "#18130d"
+# accent "#ff9900"
+
+[app]
+overall = { bg = "#fffaf0" }
+
+[mgr]
+cwd = { fg = "#18130d", bold = true }
+
+# Find
+find_keyword = { fg = "#18130d", bg = "#ff9900", bold = true }
+find_position = { fg = "#18130d", bold = true, italic = true }
+
+# Marker
+marker_copied = { fg = "#18130d", bg = "#4f8f4f" }
+marker_cut = { fg = "#18130d", bg = "#b83333" }
+marker_marked = { fg = "#18130d", bg = "#d89600" }
+marker_selected = { fg = "#18130d", bg = "#ff9900" }
+
+# Count
+count_copied = { fg = "#18130d", bold = true, reversed = true }
+count_cut = { fg = "#18130d", bold = true, reversed = true }
+count_selected = { fg = "#18130d", bold = true, reversed = true }
+
+# Border
+border_symbol = "│"
+border_style = { fg = "#18130d" }
+
+[indicator]
+parent = { underline = true }
+current = { fg = "#18130d", bg = "#ff9900", bold = true }
+preview = { underline = true }
+padding = { open = "█", close = "█" }
+
+[tabs]
+active = { fg = "#18130d", bg = "#ff9900", bold = true }
+inactive = { fg = "#18130d", bg = "#f4e8d4" }
+sep_inner = { open = "", close = "" }
+sep_outer = { open = "", close = "" }
+
+[mode]
+normal_main = { fg = "#18130d", bg = "#ff9900", bold = true }
+normal_alt = { fg = "#18130d", bg = "#f4e8d4" }
+
+select_main = { fg = "#18130d", bg = "#ff9900", bold = true }
+select_alt = { fg = "#18130d", bg = "#ffd18a" }
+
+unset_main = { fg = "#18130d", bg = "#ff9900", bold = true }
+unset_alt = { fg = "#18130d", bg = "#ffd18a" }
+
+[status]
+overall = { fg = "#18130d", bg = "#fffaf0" }
+sep_left = { open = "", close = "" }
+sep_right = { open = "", close = "" }
+
+# Permissions
+perm_type = { fg = "#18130d" }
+perm_read = { fg = "#18130d" }
+perm_write = { fg = "#18130d" }
+perm_exec = { fg = "#18130d" }
+perm_sep = { fg = "#18130d" }
+
+# Progress
+progress_label = { fg = "#18130d", bold = true }
+progress_normal = { fg = "#18130d", bg = "#ffd18a" }
+progress_error = { bg = "#b83333" }
+
+[which]
+cols = 3
+mask = { bg = "#f4e8d4" }
+cand = { fg = "#18130d", bold = true }
+rest = { fg = "#18130d", italic = true }
+desc = { fg = "#18130d" }
+separator = " "
+separator_style = { }
+
+[confirm]
+border = { fg = "#18130d" }
+title = { fg = "#18130d", bold = true }
+body = { fg = "#18130d", bold = true }
+list = { fg = "#18130d" }
+btn_yes = { fg = "#18130d", bg = "#ff9900", bold = true }
+btn_no = { fg = "#18130d", bg = "#f4e8d4" }
+
+[spot]
+border = { fg = "#18130d" }
+title = { fg = "#18130d", bold = true }
+tbl_col = { fg = "#18130d" }
+tbl_cell = { fg = "#18130d", bg = "#f4e8d4" }
+
+[notify]
+title_info = { fg = "#18130d" }
+title_warn = { fg = "#18130d" }
+title_error = { fg = "#18130d" }
+
+[pick]
+border = { fg = "#18130d", bold = true }
+active = { fg = "#18130d", bold = true }
+inactive = { fg = "#18130d" }
+
+[input]
+border = { fg = "#18130d" }
+title = { fg = "#18130d", bold = true }
+value = { fg = "#18130d" }
+selected = { fg = "#18130d", bg = "#ff9900" }
+
+[cmp]
+border = { fg = "#18130d", bold = true }
+active = { fg = "#18130d", bg = "#ff9900", bold = true }
+inactive = { fg = "#18130d" }
+
+[tasks]
+border = { fg = "#18130d" }
+title = { fg = "#18130d", bold = true }
+hovered = { fg = "#18130d", bg = "#ff9900", bold = true }
+
+[help]
+on = { fg = "#18130d" }
+run = { fg = "#18130d" }
+desc = { fg = "#18130d", italic = true }
+hovered = { fg = "#18130d", bg = "#ff9900" }
+footer = { fg = "#18130d", bg = "#ff9900", bold = true }
+
+[filetype]
+rules = [
+  { mime = "inode/empty", fg = "#18130d" },
+
+  { url = "*", is = "orphan", fg = "#18130d" },
+  { url = "*/", is = "orphan", fg = "#18130d" },
+  { url = "*", is = "link", fg = "#18130d" },
+  { url = "*/", is = "link", fg = "#18130d" },
+  { url = "*", is = "block", fg = "#18130d" },
+  { url = "*", is = "char", fg = "#18130d" },
+  { url = "*", is = "fifo", fg = "#18130d" },
+  { url = "*", is = "sock", fg = "#18130d" },
+  { url = "*", is = "sticky", fg = "#18130d" },
+  { url = "*", is = "dummy", fg = "#18130d" },
+
+  { url = "*/", fg = "#18130d" },
+  { url = "*", is = "exec", fg = "#18130d" },
+  { url = "*", fg = "#18130d" }
+]
+
+[icon]
+dirs = [
+  { name = ".config", text = "■", fg = "#18130d" },
+  { name = ".git", text = "■", fg = "#18130d" },
+  { name = ".github", text = "■", fg = "#18130d" },
+  { name = ".npm", text = "■", fg = "#18130d" },
+  { name = "Desktop", text = "■", fg = "#18130d" },
+  { name = "Development", text = "■", fg = "#18130d" },
+  { name = "Documents", text = "■", fg = "#18130d" },
+  { name = "Downloads", text = "■", fg = "#18130d" },
+  { name = "Library", text = "■", fg = "#18130d" },
+  { name = "Movies", text = "■", fg = "#18130d" },
+  { name = "Music", text = "■", fg = "#18130d" },
+  { name = "Pictures", text = "■", fg = "#18130d" },
+  { name = "Public", text = "■", fg = "#18130d" },
+  { name = "Videos", text = "■", fg = "#18130d" }
+]
+conds = [
+  { if = "orphan", text = "■", fg = "#18130d" },
+  { if = "link", text = "■", fg = "#18130d" },
+  { if = "block", text = "■", fg = "#18130d" },
+  { if = "char", text = "■", fg = "#18130d" },
+  { if = "fifo", text = "■", fg = "#18130d" },
+  { if = "sock", text = "■", fg = "#18130d" },
+  { if = "sticky", text = "■", fg = "#18130d" },
+  { if = "dummy", text = "■", fg = "#18130d" },
+
+  { if = "dir", text = "■", fg = "#18130d" },
+  { if = "exec", text = "■", fg = "#18130d" },
+  { if = "!dir", text = "■", fg = "#18130d" }
+]

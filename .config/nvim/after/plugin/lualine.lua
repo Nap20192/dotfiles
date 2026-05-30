@@ -2,22 +2,22 @@ local lualine = require "lualine"
 
 local palettes = {
     dark = {
-        bg = "#000000",
-        fg = "#dadada",
-        muted = "#707070",
-        visual = "#ffaf00",
-        remove = "#722529",
+        bg = "#080706",
+        fg = "#f4efe6",
+        muted = "#8a7b67",
+        visual = "#ff9900",
+        remove = "#652c29",
         search = "#00afff",
-        cursor_text = "#000000",
+        cursor_text = "#18130d",
     },
     light = {
-        bg = "#fff7df",
-        fg = "#000000",
-        muted = "#626262",
-        visual = "#ffaf00",
-        remove = "#da8d8d",
+        bg = "#fffaf0",
+        fg = "#18130d",
+        muted = "#746653",
+        visual = "#ff9900",
+        remove = "#e2a298",
         search = "#00afff",
-        cursor_text = "#000000",
+        cursor_text = "#18130d",
     },
 }
 
