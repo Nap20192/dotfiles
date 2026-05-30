@@ -81,3 +81,9 @@ input {
     // mod-key "Ctrl"
     // mod-key-nested "Ctrl"
 }
+
+gestures{
+    hot-corners{
+        off
+    }
+}

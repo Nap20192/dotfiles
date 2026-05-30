@@ -8,6 +8,7 @@ binds {
     Super+Alt+S allow-when-locked=true hotkey-overlay-title=null { spawn-sh "pkill orca || exec orca"; }
 
     Mod+Return { spawn "kitty"; }
+    Mod+T { spawn "kitty" "--class" "floating-kitty"; }
     Mod+Shift+Y hotkey-overlay-title="Open YouTube" { spawn "webapp-youtube"; }
     Mod+Shift+G hotkey-overlay-title="Open Gemini" { spawn "webapp-gemini"; }
     Mod+Shift+X hotkey-overlay-title="Open Grok" { spawn "webapp-grok"; }

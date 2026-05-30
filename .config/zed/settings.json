@@ -94,8 +94,8 @@
     "buffer_font_size": 15,
 
     "theme": {
-        "mode": "light",
+        "mode": "dark",
         "light": "Gruvbox Light",
-        "dark": "Gruvbox Material"
+        "dark": "Catppuccin Espresso (Blur) [Heavy]"
     },
 }

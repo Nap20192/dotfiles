@@ -2,7 +2,11 @@ syntax on
 filetype plugin on
 set nocompatible
 
-set list listchars=eol:¬,tab:>·,trail:~,extends:>,precedes:<
+"set list listchars=eol:¬,tab:>·,trail:~,extends:>,precedes:<
+
+
+set nolist
+
 
 let mapleader = " "
 let mapleaderlocal = " "
@@ -99,3 +103,8 @@ let g:go_def_mode = 'gopls'
 let g:go_info_mode = 'gopls'
 let g:go_autodetect_gopath = 1
 let g:go_gopls_enabled = 1
+
+augroup CreateMissingDirs
+  autocmd!
+  autocmd BufWritePre * if !isdirectory(expand('<afile>:p:h')) | call mkdir(expand('<afile>:p:h'), 'p') | endif
+augroup END

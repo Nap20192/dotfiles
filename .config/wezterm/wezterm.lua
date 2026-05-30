@@ -78,7 +78,7 @@ local function scheme(colors)
     }
 end
 
-local opacity = 0.8
+local opacity = 1.0
 M.window_background_opacity = opacity
 
 M.font_size = 13

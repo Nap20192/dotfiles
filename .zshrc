@@ -65,7 +65,7 @@ export VISUAL="nvim"
 export EDITOR="nvim"
 
 # Aliases
-alias ls='eza --icons'
+alias ls='eza -a --icons'
 
 alias ll='eza -lh --icons --git'
 alias la='eza -lah --icons --git'
@@ -109,9 +109,12 @@ function y() {
 # pnpm
 export PNPM_HOME="/home/vnkjd/.local/share/pnpm"
 case ":$PATH:" in
-  *":$PNPM_HOME:"*) ;;
-  *) export PATH="$PNPM_HOME:$PATH" ;;
+  *":$PNPM_HOME/bin:"*) ;;
+  *) export PATH="$PNPM_HOME/bin:$PATH" ;;
 esac
 # pnpm end
 #
 bindkey '^[l' autosuggest-accept
+bindkey '^[k' up-line-or-history
+bindkey '^[j' down-line-or-history
+

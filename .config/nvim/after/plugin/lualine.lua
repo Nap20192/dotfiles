@@ -1,4 +1,26 @@
 local lualine = require "lualine"
+
+local palettes = {
+    dark = {
+        bg = "#000000",
+        fg = "#dadada",
+        muted = "#707070",
+        visual = "#ffaf00",
+        remove = "#722529",
+        search = "#00afff",
+        cursor_text = "#000000",
+    },
+    light = {
+        bg = "#fff7df",
+        fg = "#000000",
+        muted = "#626262",
+        visual = "#ffaf00",
+        remove = "#da8d8d",
+        search = "#00afff",
+        cursor_text = "#000000",
+    },
+}
+
 local theme_state = vim.fn.expand(
     (vim.env.XDG_CACHE_HOME or "~/.cache") .. "/vnkjd/theme"
 )
@@ -9,7 +31,8 @@ if vim.fn.filereadable(theme_state) == 1 then
         mode = state
     end
 end
-local palette = require("vnkjd.theme").get(mode)
+
+local palette = assert(palettes[mode], "unknown lualine theme mode: " .. tostring(mode))
 local transparent_terminal = vim.env.KITTY_WINDOW_ID ~= nil
     or vim.env.GHOSTTY_RESOURCES_DIR ~= nil
     or vim.env.TERM == "xterm-kitty"
@@ -56,14 +79,6 @@ local function is_jdtls_buffer()
     return 1 == string.find(buf_path, "jdt", 1, true)
 end
 
-local function fugitive_head()
-    if vim.fn.exists "*FugitiveHead" == 0 then
-        return ""
-    end
-
-    return vim.fn.FugitiveHead()
-end
-
 lualine.setup {
     options = {
         icons_enabled = false,
@@ -76,12 +91,7 @@ lualine.setup {
             "lsp_status",
         },
         lualine_b = {
-            {
-                fugitive_head,
-                cond = function()
-                    return fugitive_head() ~= ""
-                end,
-            },
+            "branch",
         },
         lualine_c = {
             {

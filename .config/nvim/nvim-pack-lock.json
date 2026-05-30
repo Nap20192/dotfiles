@@ -12,10 +12,6 @@
       "rev": "e300259ec777a40b4b9e3c8e6ade203e78d15881",
       "src": "https://github.com/f-person/auto-dark-mode.nvim"
     },
-    "auto-pairs": {
-      "rev": "94d0577fea5c0b3dc71dbd2df7667dcffb830b3b",
-      "src": "https://github.com/LunarWatcher/auto-pairs"
-    },
     "black-metal-theme-neovim": {
       "rev": "6d0207871387077f40d5396ab1ae90520e688d36",
       "src": "https://github.com/metalelf0/black-metal-theme-neovim"
@@ -27,6 +23,22 @@
     "blink.cmp": {
       "rev": "456d38d1cd3743926f329204c2340f3e7840aad6",
       "src": "https://github.com/saghen/blink.cmp"
+    },
+    "blink.indent": {
+      "rev": "15b3b25c2e76025733cc96df0144e9a9ef4d495c",
+      "src": "https://github.com/saghen/blink.indent"
+    },
+    "blink.lib": {
+      "rev": "2cb62890cee636fe46722d03b7b2331e54fb3755",
+      "src": "https://github.com/saghen/blink.lib"
+    },
+    "blink.pairs": {
+      "rev": "44ef9b9eb77cd5dfca471b6f7dc0ee74888626fb",
+      "src": "https://github.com/saghen/blink.pairs"
+    },
+    "conform.nvim": {
+      "rev": "619363c30309d29ffa631e67c8183f2a72caa373",
+      "src": "https://github.com/stevearc/conform.nvim"
     },
     "copilot-lsp": {
       "rev": "1b6d8273594643f51bb4c0c1d819bdb21b42159d",
@@ -64,6 +76,11 @@
       "rev": "be79dead8b147acce0daa3fc15cf5f0f4d6f2232",
       "src": "https://github.com/ibhagwan/fzf-lua"
     },
+    "harpoon": {
+      "rev": "87b1a3506211538f460786c23f98ec63ad9af4e5",
+      "src": "https://github.com/ThePrimeagen/harpoon",
+      "version": "'harpoon2'"
+    },
     "image.nvim": {
       "rev": "da2be65c153ba15a14a342b05591652a6df70d58",
       "src": "https://github.com/3rd/image.nvim"
@@ -96,6 +113,14 @@
       "rev": "5e0f0d264166e71d37ca35d84c54b1887ea76b40",
       "src": "https://github.com/nvim-mini/mini.files"
     },
+    "mini.surround": {
+      "rev": "1e37ade260e2b655c3a9b8407ba7e6b0fb995b28",
+      "src": "https://github.com/nvim-mini/mini.surround"
+    },
+    "mini.tabline": {
+      "rev": "7d4a8a79f37361ad287d27bda0f37fc53f924a50",
+      "src": "https://github.com/nvim-mini/mini.tabline"
+    },
     "neoscroll.nvim": {
       "rev": "c8d29979cb0cb3a2437a8e0ae683fd82f340d3b8",
       "src": "https://github.com/karb94/neoscroll.nvim"
@@ -103,10 +128,6 @@
     "nui.nvim": {
       "rev": "de740991c12411b663994b2860f1a4fd0937c130",
       "src": "https://github.com/MunifTanjim/nui.nvim"
-    },
-    "nvim-autopairs": {
-      "rev": "59bce2eef357189c3305e25bc6dd2d138c1683f5",
-      "src": "https://github.com/windwp/nvim-autopairs"
     },
     "nvim-colorizer.lua": {
       "rev": "a065833f35a3a7cc3ef137ac88b5381da2ba302e",
@@ -165,10 +186,6 @@
       "src": "https://github.com/nvim-treesitter/nvim-treesitter-textobjects",
       "version": "'main'"
     },
-    "obs.nvim": {
-      "rev": "b7b86e08272f72c8daf7cfc58444595661ef1e37",
-      "src": "https://github.com/vnkjd/obs.nvim"
-    },
     "oil.nvim": {
       "rev": "0fcc83805ad11cf714a949c98c605ed717e0b83e",
       "src": "https://github.com/stevearc/oil.nvim"
@@ -180,10 +197,6 @@
     "smear-cursor.nvim": {
       "rev": "9e9378d6ee34bb3782e0e8c63d9ec8ca618b479b",
       "src": "https://github.com/sphamba/smear-cursor.nvim"
-    },
-    "theme.nvim": {
-      "rev": "73d9b21913e668fd85f9ef2f61129efcbd83509f",
-      "src": "https://github.com/vnkjd/theme.nvim"
     },
     "themery.nvim": {
       "rev": "bfa58f4b279d21cb515b28023e1b68ec908584b2",

@@ -11,6 +11,7 @@ include "decorations.kdl"
 include "binds.kdl"
 include "overview.kdl"
 include "colors.kdl"
+include "rules.kdl"
 
 
 include "dms/binds.kdl"

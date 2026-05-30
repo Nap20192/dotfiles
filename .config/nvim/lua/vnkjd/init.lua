@@ -3,6 +3,8 @@
 -- This is also a good place to setup other settings (vim.opt)
 vim.g.mapleader = " "
 vim.g.maplocalleader = ","
+vim.g.go_highlight_functions = 1
+vim.g.go_highlight_function_calls = 1
 
 require "vnkjd.pack"
 
@@ -13,7 +15,7 @@ vim.cmd "packadd nvim.undotree"
 
 vim.cmd "source ~/.vimrc"
 
-vim.opt.completeopt = { "popup", "menu", "menuone", "preview", "noselect" }
+vim.opt.completeopt = { "popup", "menu", "menuone", "noselect" }
 
 vim.o.spelllang = "ru_ru,en_us"
 vim.o.spellfile = vim.fn.expand "~/.config/nvim/spell/custom.utf-8.add"
@@ -85,6 +87,17 @@ end, { desc = "Copy absolute file path with line numbers to clipboard" })
 vim.keymap.set("n", "<leader>?", function()
     vim.cmd("edit " .. vim.fn.stdpath("config") .. "/HINTS.md")
 end, { desc = "Open keybinding hints (HINTS.md)" })
+
+vim.keymap.set("n", "<C-w>", "<cmd>bdelete<cr>", { desc = "Close buffer" })
+
+vim.keymap.set("n", "<C-S-w>", function()
+    local current = vim.api.nvim_get_current_buf()
+    for _, buf in ipairs(vim.api.nvim_list_bufs()) do
+        if buf ~= current and vim.bo[buf].buflisted then
+            vim.cmd.bdelete(buf)
+        end
+    end
+end, { desc = "Close other buffers" })
 
 vim.api.nvim_create_user_command("RenderMarkdown", function()
     local file = vim.fn.expand "%:p"
