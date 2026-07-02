@@ -19,3 +19,5 @@ export SDKMAN_DIR="$HOME/.sdkman"
 # PATH
 export GOPATH="$HOME/go"
 export PATH="$HOME/.local/bin:$HOME/.npm-global/bin:$GOPATH/bin:$PATH"
+
+. "$HOME/.uv/bin/env"

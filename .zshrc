@@ -118,3 +118,5 @@ bindkey '^[l' autosuggest-accept
 bindkey '^[k' up-line-or-history
 bindkey '^[j' down-line-or-history
 
+
+. "$HOME/.uv/bin/env"

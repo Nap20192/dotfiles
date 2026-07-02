@@ -1,3 +1,4 @@
+--[[
 local function get_git_ignored_files_in(dir)
 	local found = vim.fs.find(".git", {
 		upward = true,
@@ -36,6 +37,10 @@ end
 local cache = {}
 
 local function cached_get_git_ignored_files_in(dir)
+	if not dir then
+		return {}
+	end
+
 	local val
 	val = cache[dir]
 	if val then
@@ -74,7 +79,7 @@ oil.setup({
 	view_options = {
 		show_hidden = true,
 		is_hidden_file = function(name, bufnr)
-			local ignored_files = cached_get_git_ignored_files_in(oil.get_current_dir())
+			local ignored_files = cached_get_git_ignored_files_in(oil.get_current_dir(bufnr))
 			return vim.tbl_contains(ignored_files, name) or vim.startswith(name, ".")
 		end,
 	},
@@ -83,3 +88,4 @@ oil.setup({
 vim.keymap.set("n", "-", "<cmd>Oil<CR>", { desc = "Open parent directory" })
 vim.keymap.set("n", "<leader>e", "<cmd>Oil<CR>", { desc = "Open file explorer" })
 vim.keymap.set("n", "<leader>E", "<cmd>Oil --float<CR>", { desc = "Open floating file explorer" })
+--]]

@@ -31,8 +31,13 @@ local M = {
 				version = "harpoon2",
 			},
 			gh("nvim-mini/mini.files"),
+			{
+				src = gh("nvim-neo-tree/neo-tree.nvim"),
+				version = vim.version.range("3"),
+			},
 
 			-- UI
+			gh("nvim-tree/nvim-web-devicons"),
 			gh("nvim-lualine/lualine.nvim"),
 			gh("nvim-mini/mini.tabline"),
 			gh("folke/which-key.nvim"),

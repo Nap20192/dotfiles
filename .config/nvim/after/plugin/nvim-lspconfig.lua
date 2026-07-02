@@ -96,6 +96,41 @@ vim.lsp.config("rust_analyzer", {
 })
 vim.lsp.enable("rust_analyzer")
 
+---PYTHON---
+vim.lsp.config("basedpyright", {
+	on_attach = function(_, bufnr)
+		if vim.lsp.inlay_hint then
+			vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
+		end
+	end,
+	settings = {
+		basedpyright = {
+			analysis = {
+				typeCheckingMode = "standard", -- "off" | "basic" | "standard" | "strict"
+				autoImportCompletions = true,
+				autoSearchPaths = true,
+				useLibraryCodeForTypes = true,
+				diagnosticMode = "openFilesOnly", -- "openFilesOnly" | "workspace"
+				inlayHints = {
+					variableTypes = true,
+					callArgumentNames = true,
+					functionReturnTypes = true,
+					genericTypes = true,
+				},
+			},
+		},
+	},
+})
+vim.lsp.enable("basedpyright")
+
+-- ruff handles linting + formatting; let basedpyright own hover/type info
+vim.lsp.config("ruff", {
+	on_attach = function(client, _)
+		client.server_capabilities.hoverProvider = false
+	end,
+})
+vim.lsp.enable("ruff")
+
 --GENERAL---
 local opts = { noremap = true, silent = true }
 vim.keymap.set("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
