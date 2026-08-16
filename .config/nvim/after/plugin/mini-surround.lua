@@ -1,1 +1,3 @@
-require("mini.surround").setup()
+vim.schedule(function()
+    require("mini.surround").setup()
+end)

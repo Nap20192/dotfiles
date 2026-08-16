@@ -1,0 +1,144 @@
+{
+  "runId": "102f7696",
+  "agent": "reviewer",
+  "task": "[prompt redacted]",
+  "exitCode": 0,
+  "processSignal": "SIGTERM",
+  "usage": {
+    "input": 163722,
+    "output": 12471,
+    "cacheRead": 4243968,
+    "cacheWrite": 0,
+    "cost": 3.314724000000001,
+    "turns": 48
+  },
+  "model": "openai-codex/gpt-5.5:high",
+  "attemptedModels": [
+    "openai-codex/gpt-5.5:high"
+  ],
+  "modelAttempts": [
+    {
+      "model": "openai-codex/gpt-5.5:high",
+      "success": true,
+      "exitCode": 0,
+      "usage": {
+        "input": 163722,
+        "output": 12471,
+        "cacheRead": 4243968,
+        "cacheWrite": 0,
+        "cost": 3.314724000000001,
+        "turns": 48
+      }
+    }
+  ],
+  "durationMs": 361632,
+  "toolCount": 103,
+  "launchContractDigest": "7daaa11699867bd2373e5eb888afac8ee1cb450adf7a0edb11aa3a1c7450fa05",
+  "launchResolvedExtensions": {
+    "version": 1,
+    "source": "launch-resolved",
+    "disableAmbientExtensions": false,
+    "runtime": [
+      "sha256:14cad915c94ae411"
+    ],
+    "configured": [],
+    "effective": [
+      "sha256:14cad915c94ae411"
+    ],
+    "omitted": {
+      "runtime": 0,
+      "configured": 0,
+      "effective": 0
+    }
+  },
+  "acceptance": {
+    "status": "attested",
+    "evidenceStatus": "attested",
+    "explicit": false,
+    "effectiveAcceptance": {
+      "level": "attested",
+      "explicit": false,
+      "inferredReason": [
+        "read-only/reviewer-style agent"
+      ],
+      "criteria": [
+        {
+          "id": "criterion-1",
+          "must": "Return concrete findings with file paths and severity when applicable",
+          "evidence": [
+            "review-findings",
+            "residual-risks"
+          ],
+          "severity": "required"
+        }
+      ],
+      "evidence": [
+        "review-findings",
+        "residual-risks"
+      ],
+      "verify": [],
+      "stopRules": []
+    },
+    "inferredReason": [
+      "read-only/reviewer-style agent"
+    ],
+    "criteria": [
+      {
+        "id": "criterion-1",
+        "must": "Return concrete findings with file paths and severity when applicable",
+        "evidence": [
+          "review-findings",
+          "residual-risks"
+        ],
+        "severity": "required"
+      }
+    ],
+    "runtimeChecks": [],
+    "verifyRuns": [],
+    "childReport": {
+      "criteriaSatisfied": [
+        {
+          "id": "criterion-1",
+          "status": "satisfied",
+          "evidence": "Concrete findings include file paths and line numbers for settings, model costs, duplicate web/video tools, subagent/orchestrator policy, bash-guard, FFF, memory, filechanges, context, Ponytail, and read-only mode."
+        }
+      ],
+      "changedFiles": [],
+      "testsAddedOrUpdated": [],
+      "commandsRun": [
+        {
+          "command": "shell/git commands",
+          "result": "not-run",
+          "summary": "Reviewer role forbids shell; inspection used read/find/grep/ls tools only."
+        }
+      ],
+      "validationOutput": [
+        "Inspected agent/settings.json, agent/models-store.json, local extensions under agent/extensions, local skills under agent/skills, and installed npm package metadata/source for pi-web-access, @ff-labs/pi-fff, @dietrichgebert/ponytail, and pi-subagents."
+      ],
+      "residualRisks": [
+        "No runtime token trace was measured; findings are based on static config and extension behavior.",
+        "Actual savings depend on which tools/skills are used in normal sessions."
+      ],
+      "noStagedFiles": true,
+      "diffSummary": "No files changed.",
+      "reviewFindings": [
+        "high: agent/settings.json:5-6 - gpt-5.5 with medium thinking is the default despite much cheaper installed models.",
+        "high: agent/extensions/web-fetch/index.ts:548-557 and agent/extensions/video-extract/index.ts:1145-1155 duplicate pi-web-access fetch_content capabilities at agent/npm/node_modules/pi-web-access/index.ts:2326-2356.",
+        "medium: agent/skills/orchestrator/SKILL.md:25-34 pushes subagent scouts for exploration, increasing model-run and tool-call cost on small tasks.",
+        "medium: agent/extensions/bash-guard/index.ts:87-93 prompts for every git command, including read-only checks.",
+        "medium: agent/npm/node_modules/@ff-labs/pi-fff/src/index.ts:58-70 registers extra ffgrep/fffind tools in default mode instead of replacing built-ins.",
+        "no blockers"
+      ],
+      "manualNotes": "No edits performed. Recommended deletion-first changes are listed in the report."
+    }
+  },
+  "effects": {
+    "fileMutation": {
+      "status": "not-applicable",
+      "expected": false,
+      "attempted": false
+    }
+  },
+  "transcriptPath": "/home/vnkjd/.pi/agent/sessions/--home-vnkjd-.pi--/subagent-artifacts/102f7696_reviewer_0_transcript.jsonl",
+  "timestamp": 1786879107139
+}

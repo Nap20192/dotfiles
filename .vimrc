@@ -95,8 +95,13 @@ nmap <Leader>f :GoFmt<CR>
 nmap <Leader>gd :GoDef<CR>
 nmap <Leader>i :GoImport<CR>
 
-autocmd BufWritePre *.go :silent! lua vim.lsp.buf.formatting_sync(nil, 100)
-autocmd BufWritePre *.go :silent! lua vim.cmd('GoImports')
+" Neovim formats Go through conform (goimports -> gofumpt), asynchronously after
+" the write.  Running vim-go's synchronous :GoImports on top of that cost 297ms
+" on every :w, and vim.lsp.buf.formatting_sync no longer exists in the Neovim
+" API at all -- it just failed quietly under :silent!.
+if !has('nvim')
+  autocmd BufWritePre *.go :silent! GoImports
+endif
 
 let g:go_fmt_command = "goimports"
 let g:go_def_mode = 'gopls'

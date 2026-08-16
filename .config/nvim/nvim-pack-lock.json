@@ -36,6 +36,10 @@
       "rev": "44ef9b9eb77cd5dfca471b6f7dc0ee74888626fb",
       "src": "https://github.com/saghen/blink.pairs"
     },
+    "claudecode.nvim": {
+      "rev": "2390c6e45c4789072c293ac69de051d169668b29",
+      "src": "https://github.com/coder/claudecode.nvim"
+    },
     "conform.nvim": {
       "rev": "619363c30309d29ffa631e67c8183f2a72caa373",
       "src": "https://github.com/stevearc/conform.nvim"

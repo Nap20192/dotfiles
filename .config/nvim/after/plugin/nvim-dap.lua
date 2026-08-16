@@ -1,78 +1,95 @@
-local dap = require "dap"
+-- nvim-dap + dapui + dap-go + dap-python are loaded via vim.pack with `load
+-- = false` (see pack.lua): debugging isn't used every session, so nothing
+-- here should spin up dapui or spawn adapters until a debug keymap fires.
+local loaded = false
 
-local dapui = require "dapui"
-dapui.setup()
+local function ensure_dap()
+    if loaded then
+        return
+    end
+    loaded = true
 
-require("nvim-dap-virtual-text").setup()
+    vim.cmd.packadd("nvim-dap")
+    vim.cmd.packadd("nvim-dap-virtual-text")
+    vim.cmd.packadd("nvim-nio")
+    vim.cmd.packadd("nvim-dap-ui")
+    vim.cmd.packadd("nvim-dap-go")
+    vim.cmd.packadd("nvim-dap-python")
 
-require("dap-go").setup()
-local dap_python = require "dap-python"
-dap_python.setup "uv"
-dap_python.test_runner = "pytest"
+    local dap = require "dap"
+    local dapui = require "dapui"
+    dapui.setup()
 
-vim.keymap.set("n", "<F2>", function()
-    dap.terminate()
-    dapui.close()
-end, { desc = "Stop debugging" })
+    require("nvim-dap-virtual-text").setup()
 
-vim.keymap.set("n", "<F5>", function()
-    dap.continue()
-end, { desc = "Continue debugging" })
+    require("dap-go").setup()
+    local dap_python = require "dap-python"
+    dap_python.setup "uv"
+    dap_python.test_runner = "pytest"
 
-vim.keymap.set("n", "<F6>", function()
-    dap.repl.open()
-end, { desc = "Open REPL" })
+    dap.listeners.before.attach.dapui_config = function()
+        dapui.open()
+    end
+    dap.listeners.before.launch.dapui_config = function()
+        dapui.open()
+    end
+    dap.listeners.before.event_terminated.dapui_config = function()
+        dapui.close()
+    end
+    dap.listeners.before.event_exited.dapui_config = function()
+        dapui.close()
+    end
+end
 
-vim.keymap.set("n", "<F7>", function()
-    dap.run_to_cursor()
-end, { desc = "Run debugging to cursor" })
+local function map(mode, lhs, fn, desc)
+    vim.keymap.set(mode, lhs, function()
+        ensure_dap()
+        fn()
+    end, { desc = desc })
+end
 
-vim.keymap.set("n", "<F10>", function()
-    dap.step_over()
-end, { desc = "Step over" })
+map("n", "<F2>", function()
+    require("dap").terminate()
+    require("dapui").close()
+end, "Stop debugging")
 
-vim.keymap.set("n", "<F11>", function()
-    dap.step_into()
-end, { desc = "Step into" })
+map("n", "<F5>", function()
+    require("dap").continue()
+end, "Continue debugging")
 
-vim.keymap.set("n", "<F12>", function()
-    dap.step_out()
-end, { desc = "Step out" })
+map("n", "<F6>", function()
+    require("dap").repl.open()
+end, "Open REPL")
 
-vim.keymap.set("n", "<leader>Db", function()
-    dap.toggle_breakpoint()
-end, {
-    desc = "Toggle Debug breakpoint",
-})
+map("n", "<F7>", function()
+    require("dap").run_to_cursor()
+end, "Run debugging to cursor")
 
-vim.keymap.set("n", "<leader>DB", function()
+map("n", "<F10>", function()
+    require("dap").step_over()
+end, "Step over")
+
+map("n", "<F11>", function()
+    require("dap").step_into()
+end, "Step into")
+
+map("n", "<F12>", function()
+    require("dap").step_out()
+end, "Step out")
+
+map("n", "<leader>Db", function()
+    require("dap").toggle_breakpoint()
+end, "Toggle Debug breakpoint")
+
+map("n", "<leader>DB", function()
     local condition = vim.fn.input "Breakpoint condition: "
-    dap.set_breakpoint(condition)
-end, {
-    desc = "Toggle Debug conditional Breakpoint",
-})
+    require("dap").set_breakpoint(condition)
+end, "Toggle Debug conditional Breakpoint")
 
-vim.keymap.set("n", "<leader>Du", function()
-    dapui.toggle { layout = 2 }
-end, {
-    desc = "Toggle Simple Debug ui, I mainly use it to run tests",
-})
+map("n", "<leader>Du", function()
+    require("dapui").toggle { layout = 2 }
+end, "Toggle Simple Debug ui, I mainly use it to run tests")
 
-vim.keymap.set("n", "<leader>DU", function()
-    dapui.toggle()
-end, {
-    desc = "Toggle Full Debug ui",
-})
-
-dap.listeners.before.attach.dapui_config = function()
-    dapui.open()
-end
-dap.listeners.before.launch.dapui_config = function()
-    dapui.open()
-end
-dap.listeners.before.event_terminated.dapui_config = function()
-    dapui.close()
-end
-dap.listeners.before.event_exited.dapui_config = function()
-    dapui.close()
-end
+map("n", "<leader>DU", function()
+    require("dapui").toggle()
+end, "Toggle Full Debug ui")

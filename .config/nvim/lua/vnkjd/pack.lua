@@ -15,8 +15,6 @@ end
 local M = {
 	specs = {
 		core = {
-			gh("karb94/neoscroll.nvim"),
-
 			gh("Verf/deepwhite.nvim"),
 
 			-- Colors
@@ -81,9 +79,6 @@ local M = {
 		fzf_lua = {
 			gh("ibhagwan/fzf-lua"),
 		},
-		oil = {
-			gh("stevearc/oil.nvim"),
-		},
 		dap = {
 			gh("mfussenegger/nvim-dap"),
 			gh("theHamsta/nvim-dap-virtual-text"),
@@ -117,6 +112,9 @@ local M = {
 			-- I don't use NES, but I include it anyway.
 			gh("copilotlsp-nvim/copilot-lsp"),
 		},
+		claudecode = {
+			gh("coder/claudecode.nvim"),
+		},
 		-- yazi = {
 		--     gh "mikavilpas/yazi.nvim",
 		-- },
@@ -132,10 +130,22 @@ local M = {
 	},
 }
 
+-- Groups here are heavy and/or not needed on every startup (debugger UI,
+-- Copilot's Node agent, leetcode's curl-backed UI). vim.pack.add(..., {load
+-- = false}) registers+installs them without sourcing plugin/ scripts, so
+-- they don't pay their setup cost until something actually packadd()s them
+-- (see the lazy-load wrappers in the matching after/plugin/*.lua files).
+local lazy_groups = {
+	dap = true,
+	dap_go = true,
+	dap_python = true,
+	copilot = true,
+	leetcode = true,
+}
+
 for _, group in ipairs({
 	"core",
 	"fzf_lua",
-	"oil",
 	"dap",
 	"dap_go",
 	"dap_python",
@@ -143,6 +153,7 @@ for _, group in ipairs({
 	"dadbod",
 	"git_tools",
 	"copilot",
+	"claudecode",
 	"yazi",
 	"obs",
 	"leetcode",
@@ -151,7 +162,7 @@ for _, group in ipairs({
 }) do
 	local specs = M.specs[group]
 	if specs then
-		vim.pack.add(specs)
+		vim.pack.add(specs, lazy_groups[group] and { load = false } or nil)
 	end
 end
 

@@ -1,3 +1,6 @@
+-- Stays synchronous: nvim-lspconfig.lua sources right after this
+-- (alphabetically) and calls mason-lspconfig.setup(), which needs
+-- mason.setup() to have already run.
 local mason = require("mason")
 
 mason.setup({
@@ -42,6 +45,8 @@ vim.defer_fn(function()
 			"stylelint",
 			"stylua",
 			"tinymist",
+			-- required by nvim-treesitter (main) to build parsers
+			"tree-sitter-cli",
 			"typescript-language-server",
 			"yamllint",
 		},

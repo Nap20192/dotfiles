@@ -1,0 +1,43 @@
+# Speed/latency impact review
+
+Scope: speed/latency only. Inspected `/home/vnkjd/.pi/agent/settings.json`, installed package sources under `agent/npm/node_modules`, local extensions under `agent/extensions`, and local `agent/skills/*/SKILL.md`. No edits.
+
+## Recommendations
+
+| Setting / extension / skill | Severity | Expected speed impact | Keep / remove / change |
+|---|---:|---|---|
+| `settings.json` default model: `openai-codex` + `gpt-5.5` + `defaultThinkingLevel: medium` (`agent/settings.json:4-6`) | High | Highest likely per-turn latency source. Medium thinking adds deliberation before every answer/tool call. Ponytail docs explicitly warn GPT-5.5 can spend extra thinking on simplification rules (`agent/npm/node_modules/@dietrichgebert/ponytail/README.md:88`). | **Change**: use a faster default model and lower/default thinking for normal work; keep `gpt-5.5` as opt-in for hard tasks. |
+| `npm:pi-subagents` (`agent/settings.json:11`) + orchestrator skill (`agent/skills/orchestrator/SKILL.md:17-19`, `:41`) | High | Starts child Pi sessions/model calls when used (`agent/npm/node_modules/pi-subagents/README.md:45`). Local orchestrator pushes scout/researcher/worker/reviewer loops and max 4 parallel (`agent/skills/orchestrator/SKILL.md:17-19`, `:41`), and package docs recommend `clarify → scout → worker → fresh reviewers → worker` (`agent/npm/node_modules/pi-subagents/README.md:86`). Great for complex work, slow for ordinary tasks. | **Change**: keep package, but remove/soften orchestrator skill for default sessions. Use subagents only for high-risk/large tasks; cap parallelism lower for speed. |
+| `npm:pi-web-access` (`agent/settings.json:8`) | Medium/High | Adds full web/search/fetch/PDF/video tooling (`agent/npm/node_modules/pi-web-access/package.json:4`). Its `web_search` encourages 2-4 queries (`agent/npm/node_modules/pi-web-access/index.ts:1666-1669`) and processes queries in sequence (`agent/npm/node_modules/pi-web-access/index.ts:1802-1810`). Default workflow resolves to `summary-review` (`agent/npm/node_modules/pi-web-access/index.ts:340-343`, `:1678-1679`), adding curator/summary latency. | **Keep one web stack**. Configure/ask for one provider, one query, `workflow: "none"` or `auto-summary` when speed matters. |
+| Local `web-fetch` extension (`agent/extensions/web-fetch/index.ts`) | High | Duplicates `pi-web-access` fetch/PDF capability. Each fetch can wait 30s HTTP timeout plus 30s Jina fallback (`agent/extensions/web-fetch/index.ts:10-15`, `:337-345`, `:381`, `:522-534`). PDFs extract up to 100 pages (`agent/extensions/web-fetch/index.ts:46-78`). | **Remove** if `pi-web-access` is kept. Keep only if this exact extractor is better for your URLs. |
+| Local `video-extract` extension (`agent/extensions/video-extract/index.ts`) | High | Heavy path: Gemini video analysis defaults to `gemini-3-flash-preview` (`agent/extensions/video-extract/index.ts:13`), 120s API timeouts (`:615`, `:653-659`), upload/poll for local files, and yt-dlp/ffmpeg subprocesses for frames (`:272-312`, `:340`, `:455-471`). | **Remove or keep opt-in only** unless video analysis is common. If kept, use timestamp/frame-only paths; avoid full prompt analysis. |
+| Local `youtube-search` extension (`agent/extensions/youtube-search/index.ts`) | Medium | Calls external `yt-dlp` with a 30s timeout (`agent/extensions/youtube-search/index.ts:207-209`), then parses all returned JSON lines (`:255-260`). | **Remove** if `pi-web-access` video/search covers your use. Keep only for frequent YouTube metadata searches. |
+| Local `google-image-search` extension (`agent/extensions/google-image-search/index.ts`) | Medium | One Google API call plus parallel thumbnail fetches; each thumbnail has 5s timeout (`agent/extensions/google-image-search/index.ts:71-79`, `:113-120`, `:148`). | **Remove** unless image search is frequent. Niche tool selection slows decisions and failed credential paths waste turns. |
+| `filechanges` extension (`agent/extensions/filechanges/index.ts`) | Medium | Every edit/write snapshots file content (`agent/extensions/filechanges/index.ts:538-547`) and recomputes diffs with `diff` (`:11`, `:143`). Session start/switch/tree/fork rebuilds by replaying branch entries (`:474-534`). Large files or many tracked edits can slow tool results/session navigation. | **Change**: keep only if accept/decline workflow matters. Otherwise remove or make it command-only. |
+| `bash-guard` extension (`agent/extensions/bash-guard/index.ts`) | Medium | Parses every bash call via `shell-quote` (`agent/extensions/bash-guard/index.ts:269-295`) and prompts on any git command (`:87`, `:309`, `:427-449`). This adds UI latency to common git/status workflows. | **Change**: keep guard, but prompt only destructive git commands if speed matters. Keep subagent hard-blocks. |
+| `npm:@ff-labs/pi-fff` (`agent/settings.json:9`) | Positive after startup; startup risk | Replaces/adds fast native search: no subprocess and pre-indexed searches (`agent/npm/node_modules/@ff-labs/pi-fff/README.md:16-17`). But default mode adds extra tools (`:123`) and home scan can run a long time (`:138`). | **Keep/change**: keep for repo work. Disable home scan or launch in project dirs; consider `override` to reduce duplicate tool choices. |
+| `npm:@dietrichgebert/ponytail` (`agent/settings.json:10`) | Mixed | Claims faster agentic sessions (`agent/npm/node_modules/@dietrichgebert/ponytail/README.md:28`) by cutting unnecessary work, but warns GPT-5.5 can deliberate more (`:88`). | **Keep, but lighten**: use full/lite; turn off if GPT-5.5 latency worsens on simple tasks. |
+| `ask-user-question.ts` | Medium when overused | Tool blocks execution until user answers (`agent/extensions/ask-user-question.ts:544-547`, `:572-592`). | **Keep/change**: keep for true blockers; shorten prompt guidance to avoid asking on non-blocking choices. |
+| `memory.ts` | Low by default, high when enabled | Disabled at session start (`agent/extensions/memory.ts:94-114`), but when enabled it injects instructions to read/update `MEMORY.md` (`:38-44`), adding tool calls and writes. | **Keep off / remove** if unused. |
+| `md-link.ts` | Low/Medium when active | Reads linked file on session start (`agent/extensions/md-link.ts:24-35`), reads on `/send-diff` (`:109-122`), appends final assistant responses on `message_end` (`:137-161`). | **Remove** unless you actually edit through Markdown/Obsidian. |
+| `zz-read-only-mode.ts` | Low when disabled | Only changes active tools/prompt when enabled (`agent/extensions/zz-read-only-mode.ts:22`, `:46-54`, `:170-190`). | **Keep**. Disabled path is minimal. |
+| `context.ts` | Low | Manual command only; scans current branch on `/context` (`agent/extensions/context.ts:77-109`, `:496-517`). | **Keep**. No normal-turn cost. |
+| `custom-header.ts` | Low | Startup-only UI header (`agent/extensions/custom-header.ts:79-84`). | **Remove** if you want minimal startup, otherwise harmless. |
+| `pdf-reader` skill | Medium on PDF tasks | Good strategy for hard PDFs, but short PDFs render all pages/read images (`agent/skills/pdf-reader/SKILL.md:49-52`); venv setup can add install time if missing (`:12-16`). | **Change**: use text/PDF extraction first for ordinary PDFs; keep skill for math/diagram-heavy PDFs. |
+| `reddit` skill | Low/Medium on use | Direct public JSON fetch (`agent/skills/reddit/reddit.js:48-50`), defaults small (`agent/skills/reddit/reddit.js:24`, `:80`, `:108`). | **Keep** if Reddit research is common; otherwise remove. |
+| `stop-slop` skill | Low/Medium on prose tasks | Adds many prose checks and scoring (`agent/skills/stop-slop/SKILL.md:10-57`). | **Remove** unless writing-style cleanup is frequent. |
+| `lastChangelogVersion`, `theme` (`agent/settings.json:2-3`) | None | UI/config metadata only. | **Keep**. |
+
+## Fastest simple default
+
+1. Change default model/thinking first.
+2. Keep `pi-web-access`, remove local duplicate `web-fetch`, `video-extract`, `youtube-search`, `google-image-search`.
+3. Keep `pi-fff`, but prevent slow home scans.
+4. Keep `pi-subagents`, but stop making subagents the default path.
+5. Remove unused UI/workflow helpers: `md-link`, `memory`, `custom-header`, maybe `filechanges`.
+
+## Residual risks
+
+- No runtime benchmarks were run; impacts are inferred from inspected code paths, timeouts, subprocess/API use, and prompt/tool behavior.
+- Package config files for `pi-web-access` may override defaults outside the inspected files.
+- Exact model speed depends on available providers/models.

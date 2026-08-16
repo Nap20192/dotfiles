@@ -120,3 +120,21 @@ bindkey '^[j' down-line-or-history
 
 
 . "$HOME/.uv/bin/env"
+
+# bun completions
+[ -s "/home/vnkjd/.bun/_bun" ] && source "/home/vnkjd/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
+# kimi-code
+export PATH="/home/vnkjd/.kimi-code/bin:$PATH"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
+export GOOGLE_CSE_ID="319669929e17e4591"
+
+export GOOGLE_SEARCH_API_KEY="***REMOVED-LEAKED-KEY***"

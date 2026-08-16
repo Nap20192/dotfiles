@@ -29,8 +29,21 @@ require("nvim-treesitter").setup({
 	install_dir = vim.fn.stdpath("data") .. "/site",
 })
 
+-- nvim-treesitter (main branch) needs the tree-sitter CLI to build parsers.
+-- Without it install() is skipped, no parser ever lands in install_dir, and
+-- every vim.treesitter.start() below fails silently inside its pcall — the
+-- buffer quietly falls back to the regex syntax engine.  So say it out loud.
 if vim.fn.executable("tree-sitter") == 1 then
 	require("nvim-treesitter").install(treesitter_languages)
+else
+	vim.schedule(function()
+		vim.notify(
+			"tree-sitter CLI not found: parsers cannot be installed, "
+				.. "highlighting falls back to regex syntax. "
+				.. "Install it (`:MasonInstall tree-sitter-cli`) and restart.",
+			vim.log.levels.WARN
+		)
+	end)
 end
 
 vim.api.nvim_create_autocmd("FileType", {
