@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+# Toggles a narrow right-hand pane showing tmux-window-list, browser-tabs style.
+# ponytail: per-window toggle, not auto-created for every new window.
+existing=$(tmux list-panes -F '#{pane_id} #{pane_title}' | awk '$2=="tmux-sidebar"{print $1; exit}')
+if [ -n "$existing" ]; then
+	tmux kill-pane -t "$existing"
+else
+	pane_id=$(tmux split-window -h -l 24 -d -P -F '#{pane_id}' -c "$HOME" "$HOME/.local/bin/tmux-window-list")
+	tmux select-pane -t "$pane_id" -T tmux-sidebar
+fi

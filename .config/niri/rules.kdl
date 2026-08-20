@@ -1,5 +1,5 @@
 window-rule {
-    match app-id="floating-kitty"
+    match app-id="com.ghostty.floating"
     
     open-floating true
 }

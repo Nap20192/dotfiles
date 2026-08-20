@@ -9,7 +9,7 @@ vim.schedule(function()
 	--
 	-- A tmux pane does NOT inherit the caller's environment — new panes get the
 	-- tmux *server* env — so every variable has to be passed with an explicit
-	-- `-e KEY=VAL` (tmux >= 3.0).  A detached kitty window is a normal child
+	-- `-e KEY=VAL` (tmux >= 3.0).  A new ghostty window is a normal child
 	-- process, so there the env table set by jobstart is enough.
 	local function external_terminal_cmd(cmd_string, env_table)
 		if vim.env.TMUX then
@@ -22,7 +22,14 @@ vim.schedule(function()
 			return argv
 		end
 
-		return { "kitty", "--detach", "--directory", vim.uv.cwd(), "sh", "-c", cmd_string }
+		return {
+			"ghostty",
+			"--working-directory=" .. vim.uv.cwd(),
+			"-e",
+			"sh",
+			"-c",
+			cmd_string,
+		}
 	end
 
 	claudecode.setup({

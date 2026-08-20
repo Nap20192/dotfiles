@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+# Renders tmux's window list vertically, active window highlighted.
+# Meant to run inside a narrow pane toggled by tmux-sidebar-toggle.
+while true; do
+	clear
+	tmux list-windows -F '#{window_active} #{window_index}:#{window_name}' | while read -r active label; do
+		if [ "$active" = "1" ]; then
+			printf '\033[48;2;255;175;0m\033[38;2;25;25;25m %s \033[0m\n' "$label"
+		else
+			printf '  %s\n' "$label"
+		fi
+	done
+	sleep 1
+done
