@@ -73,9 +73,6 @@ alias la='eza -lah --icons --git'
 
 alias c='clear'
 
-# PATH
-export PATH="$HOME/.local/bin:$HOME/.npm-global/bin:$PATH"
-
 # Shell integrations
 eval "$(fzf --zsh)"
 eval "$(zoxide init --cmd cd zsh)"
@@ -96,7 +93,7 @@ gvm() { _gvm_lazy_load gvm "$@"; }
 # PATH
 export GOPATH="$HOME/go"
 export PATH="$HOME/.local/bin:$HOME/.npm-global/bin:$GOPATH/bin:$PATH"
-export PATH=$PATH:~/FlameGraph
+[[ -d "$HOME/FlameGraph" ]] && export PATH="$PATH:$HOME/FlameGraph"
 
 function y() {
 	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
