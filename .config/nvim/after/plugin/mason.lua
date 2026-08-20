@@ -23,7 +23,7 @@ vim.defer_fn(function()
 			"buf",
 			"debugpy",
 			"delve",
-			"eslint_d",
+			"eslint-lsp",
 			"gofumpt",
 			"goimports",
 			"golangci-lint",

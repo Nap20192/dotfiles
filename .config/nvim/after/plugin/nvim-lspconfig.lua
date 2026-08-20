@@ -131,6 +131,48 @@ vim.lsp.config("ruff", {
 })
 vim.lsp.enable("ruff")
 
+---TYPESCRIPT---
+vim.lsp.config("ts_ls", {
+	on_attach = function(client, bufnr)
+		-- eslint owns fixes/lint diagnostics; ts_ls just does types/nav.
+		client.server_capabilities.documentFormattingProvider = false
+		if vim.lsp.inlay_hint then
+			vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
+		end
+	end,
+	settings = {
+		typescript = {
+			inlayHints = {
+				includeInlayParameterNameHints = "all",
+				includeInlayFunctionResultTypeHints = true,
+				includeInlayVariableTypeHints = true,
+				includeInlayPropertyDeclarationTypeHints = true,
+				includeInlayFunctionLikeReturnTypeHints = true,
+			},
+		},
+		javascript = {
+			inlayHints = {
+				includeInlayParameterNameHints = "all",
+				includeInlayFunctionResultTypeHints = true,
+				includeInlayVariableTypeHints = true,
+			},
+		},
+	},
+})
+vim.lsp.enable("ts_ls")
+
+local eslint_base_on_attach = vim.lsp.config.eslint.on_attach
+vim.lsp.config("eslint", {
+	on_attach = function(client, bufnr)
+		eslint_base_on_attach(client, bufnr)
+		vim.api.nvim_create_autocmd("BufWritePre", {
+			buffer = bufnr,
+			command = "LspEslintFixAll",
+		})
+	end,
+})
+vim.lsp.enable("eslint")
+
 --GENERAL---
 local opts = { noremap = true, silent = true }
 vim.keymap.set("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)

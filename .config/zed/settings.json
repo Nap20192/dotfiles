@@ -1,3 +1,11 @@
 {
-  "theme": "Catppuccin Espresso (Blur) [Heavy]"
+  "agent_servers": {
+    "claude-acp": {
+      "default_config_options": {
+        "model": "claude-fable-5[1m]"
+      },
+      "type": "registry"
+    }
+  },
+  "theme": "Light"
 }
