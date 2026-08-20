@@ -27,8 +27,8 @@ vim.schedule(function()
     -- прямое переключение без пикера
     vim.keymap.set("n", "<A-j>", "<cmd>bnext<cr>", { desc = "next buffer" })
     vim.keymap.set("n", "<A-k>", "<cmd>bprevious<cr>", { desc = "prev buffer" })
-    vim.keymap.set("n", "<A-l>", "<cmd>tabnext<cr>", { desc = "next tab" })
-    vim.keymap.set("n", "<A-h>", "<cmd>tabprevious<cr>", { desc = "prev tab" })
+    -- <A-h>/<A-l> (== <M-h>/<M-l>) belong to mini-tabline's buffer switching;
+    -- tabs are gt/gT.
 
     -- пикеры с превью на отдельных биндингах
     vim.keymap.set("n", "<leader>fb", function() require("fzf-lua").buffers() end, { desc = "buffers picker" })

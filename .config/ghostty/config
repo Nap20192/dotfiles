@@ -15,6 +15,7 @@ background-blur = false
 
 cursor-style = block
 cursor-style-blink = false
+custom-shader = shaders/cursor_tail.glsl
 mouse-hide-while-typing = true
 
 copy-on-select = true

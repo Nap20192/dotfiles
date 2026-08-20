@@ -74,7 +74,6 @@ local M = {
 
 			-- Text manipulation
 			gh("tpope/vim-abolish"),
-			gh("nvim-mini/mini.surround"),
 		},
 		fzf_lua = {
 			gh("ibhagwan/fzf-lua"),
@@ -106,18 +105,9 @@ local M = {
 			gh("tpope/vim-rhubarb"),
 			gh("tpope/vim-fugitive"),
 		},
-		copilot = {
-			gh("zbirenbaum/copilot.lua"),
-			-- This plugin is required for NES support.
-			-- I don't use NES, but I include it anyway.
-			gh("copilotlsp-nvim/copilot-lsp"),
-		},
 		claudecode = {
 			gh("coder/claudecode.nvim"),
 		},
-		-- yazi = {
-		--     gh "mikavilpas/yazi.nvim",
-		-- },
 		leetcode = {
 			gh("kawre/leetcode.nvim"),
 		},
@@ -131,7 +121,7 @@ local M = {
 }
 
 -- Groups here are heavy and/or not needed on every startup (debugger UI,
--- Copilot's Node agent, leetcode's curl-backed UI). vim.pack.add(..., {load
+-- leetcode's curl-backed UI). vim.pack.add(..., {load
 -- = false}) registers+installs them without sourcing plugin/ scripts, so
 -- they don't pay their setup cost until something actually packadd()s them
 -- (see the lazy-load wrappers in the matching after/plugin/*.lua files).
@@ -139,7 +129,6 @@ local lazy_groups = {
 	dap = true,
 	dap_go = true,
 	dap_python = true,
-	copilot = true,
 	leetcode = true,
 }
 
@@ -152,10 +141,7 @@ for _, group in ipairs({
 	"jdtls",
 	"dadbod",
 	"git_tools",
-	"copilot",
 	"claudecode",
-	"yazi",
-	"obs",
 	"leetcode",
 	"themery",
 	"alabaster",

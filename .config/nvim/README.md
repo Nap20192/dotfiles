@@ -105,10 +105,10 @@ local gh = function(x) return "https://github.com/" .. x end
 local function vnkjd(name)   -- ~/Projects/vnkjd/<name> если есть локально, иначе GitHub
 ```
 
-Спеки разложены по группам в таблице `M.specs` (`core`, `dap`, `git_tools`, `copilot`,
+Спеки разложены по группам в таблице `M.specs` (`core`, `dap`, `git_tools`,
 `claudecode`, …), в конце файла цикл идёт по списку имён групп и вызывает
-`vim.pack.add(specs)`. Цикл защищён `if specs then` — поэтому в списке могут висеть
-имена без спеков (`yazi`, `obs`) и это не ломает загрузку.
+`vim.pack.add(specs)`. Цикл защищён `if specs then` — поэтому список групп и
+`M.specs` могут расходиться без поломки загрузки.
 
 Пиннинг версий — через поле `version`:
 
@@ -136,14 +136,13 @@ local function vnkjd(name)   -- ~/Projects/vnkjd/<name> если есть лок
 | `core` — LSP | nvim-lspconfig, vim-go, conform.nvim, mason.nvim, mason-tool-installer, mason-lspconfig | `nvim-lspconfig.lua`, `mason.lua`, `conform.lua` |
 | `core` — treesitter | nvim-treesitter, -textobjects (branch `main`), -context | `nvim-treesitter.lua` |
 | `core` — утилиты | plenary.nvim, nui.nvim | — (зависимости) |
-| `core` — текст | vim-abolish, mini.surround | `mini-surround.lua` |
+| `core` — текст | vim-abolish | — (дефолты) |
 | `fzf_lua` | fzf-lua | `fzf.lua` |
 | `dap` | nvim-dap, -virtual-text, -ui, nvim-nio | `nvim-dap.lua` — **lazy**, `load = false`, packadd on first debug keymap |
 | `dap_go` / `dap_python` | nvim-dap-go, nvim-dap-python | `nvim-dap.lua` — **lazy**, see above |
 | `jdtls` | nvim-jdtls | — (только учитывается в lualine) |
 | `dadbod` | vim-dadbod, -completion, -ui | `vim-dadbod.lua` |
-| `git_tools` | vim-fugitive, vim-rhubarb, fugitive-gitlab, vim-fubitive, vim-dispatch | — (дефолты) |
-| `copilot` | copilot.lua, copilot-lsp | `copilot.lua` — **lazy**, `load = false`, packadd on first matching `FileType` or `<leader>a*` |
+| `git_tools` | vim-fugitive, vim-rhubarb, fugitive-gitlab, vim-fubitive, vim-dispatch | `vim-fugitive.lua`, Go tests/lint dispatch through `after/ftplugin/go.lua` |
 | `claudecode` | claudecode.nvim | `claudecode.lua` |
 | `leetcode` | leetcode.nvim | `leetcode.lua` — **lazy**, `load = false`, packadd on `<leader>lc` |
 | `themery` | themery.nvim | `themery.lua` |
@@ -338,7 +337,7 @@ local function external_terminal_cmd(cmd_string, env_table)
 Ограничение провайдера `external`: плагин не управляет фокусом чужого окна, поэтому
 `:ClaudeCodeFocus` ведёт себя как `:ClaudeCode` (старт/стоп), а «показать окно» — no-op.
 
-Бинды на префиксе `<leader>k*` (не `<leader>a*`, он занят Copilot) — см. HINTS.md.
+Бинды на префиксе `<leader>k*` — см. HINTS.md.
 Проверка связи: `:ClaudeCodeStatus` в Neovim, `/ide` в Claude.
 
 ---

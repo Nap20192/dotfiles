@@ -13,6 +13,11 @@ vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagn
 
 ---GOLANG---
 vim.lsp.config("gopls", {
+	on_attach = function(_, bufnr)
+		if vim.lsp.inlay_hint then
+			vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
+		end
+	end,
 	settings = {
 		gopls = {
 			analyses = {
@@ -176,4 +181,4 @@ vim.lsp.enable("eslint")
 --GENERAL---
 local opts = { noremap = true, silent = true }
 vim.keymap.set("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
-vim.keymap.set("n", "<leader>fo", "<cmd>Format<CR>", opts)
+-- <leader>fo is owned by conform.lua (async, with a fallback-to-LSP note on why)

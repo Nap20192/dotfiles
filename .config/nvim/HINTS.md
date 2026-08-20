@@ -16,7 +16,7 @@
 5. [LSP](#lsp)
 6. [Автодополнение](#автодополнение)
 7. [Отладка (DAP)](#отладка-dap)
-8. [AI: Copilot и Claude Code](#ai-copilot-и-claude-code)
+8. [AI: Claude Code](#ai-claude-code)
 9. [Git](#git)
 10. [Go](#go)
 11. [Текст и окружения](#текст-и-окружения)
@@ -230,28 +230,9 @@ UI открывается сам при старте сессии и закры�
 
 ---
 
-## AI: Copilot и Claude Code
+## AI: Claude Code
 
-Два разных префикса: Copilot — `<leader>a*`, Claude Code — `<leader>k*`.
-
-### Copilot — inline-подсказки
-
-| Клавиша | Режим | Действие |
-|---|---|---|
-| `<M-l>` | i | Принять предложение |
-| `<M-w>` | i | Принять одно слово |
-| `<M-]>` / `<M-[>` | i | Следующее / предыдущее |
-| `<M-h>` | i | Отклонить |
-| `<M-CR>` | i | Открыть panel |
-| `<leader>aa` | n | Toggle |
-| `<leader>ae` / `<leader>ad` | n | Включить / выключить |
-| `<leader>ar` | n | Перезапустить |
-| `<leader>as` | n | Статус |
-| `<leader>ap` | n | Panel |
-
-Автотриггер включён, но только для явного списка filetype (go, python, lua, rust,
-js/ts, sh, make, sql, proto, yaml, markdown, gitcommit); для остальных — `["*"] = false`.
-Отключается целиком через `vim.g.copilot_disable = true`.
+Префикс — `<leader>k*`.
 
 ### Claude Code — сессия рядом с редактором
 
@@ -282,19 +263,26 @@ Claude запускается **не внутри Neovim**: в панели tmux
 
 ## Git
 
-Fugitive и друзья — на дефолтных командах, своих биндов нет.
+Fugitive и друзья, плюс свои бинды в `after/plugin/vim-fugitive.lua`.
+
+| Клавиша | Действие |
+|---|---|
+| `<leader>gg` | Открыть fugitive UI (`:Git`) |
+| `<leader>gb` | Blame текущего файла |
+| `<leader>gl` | История репозитория / выделения (`:Gclog`) |
+| `<leader>gL` | История текущего буфера |
+| `<leader>gy` / `<leader>gY` | Ссылка на строку / файл (`GBrowse`) |
+
+**В окне `:Git`:** `s` stage, `u` unstage, `-` toggle, `=` развернуть, `X` откатить.
+**В fugitive-буфере:** `cc` — коммит verbose, `dt` — дифф ревизии под курсором
+в новой вкладке. В `git`/`fugitive`-буферах: `<localleader>rs` — soft reset
+до ревизии под курсором.
 
 | Команда | Действие |
 |---|---|
-| `:Git` | Статус |
 | `:Git commit`, `:Git push` | Как в CLI |
-| `:Git blame` | Blame текущего файла |
 | `:Gvdiffsplit` / `:Ghdiffsplit` | Дифф с индексом vertical / horizontal |
-| `:GBrowse` | Открыть файл/строку в GitHub / GitLab / Bitbucket |
 | `:Gwrite` / `:Gread` | `git add` / `git checkout` для файла |
-
-**В окне `:Git`:** `s` stage, `u` unstage, `-` toggle, `cc` commit, `dv` дифф,
-`=` развернуть, `X` откатить.
 
 Запуск внешних команд — `:Dispatch <cmd>`, результат уходит в quickfix.
 
@@ -316,19 +304,24 @@ Inlay hints от gopls включены полностью — типы, име�
 
 Дебаг Go — стандартный DAP-набор выше, конфигурации подхватываются из `dap-go`.
 
----
-
-## Текст и окружения
-
-### mini.surround
+`after/ftplugin/go.lua` подключает свой dispatch-тулинг (`functions/{test,lint}.lua`):
 
 | Клавиша | Действие |
 |---|---|
-| `sa{motion}{char}` | Добавить окружение |
-| `sd{char}` | Удалить |
-| `sr{old}{new}` | Заменить |
-| `sf` / `sF` | Найти справа / слева |
-| `sh` | Подсветить |
+| `<localleader>ta` / `tp` / `tt` | `go test`: всё / текущий пакет / функция под курсором |
+| `<localleader>tl` | Повторить последний тест |
+| `<localleader>la` / `ll` | golangci-lint: всё / повторить последний |
+| `<localleader>ot` | Toggle между `foo.go` и `foo_test.go` |
+| `<localleader>ct` / `cT` | Сгенерировать тест для функции / для всех (через `gotests`) |
+| `<localleader>oi` | Organize imports (LSP code action) |
+| `<localleader>jl` / `sl` | Join / split lines |
+| `<localleader>em` / `ef` / `ec` / `ev` | Extract to method / function / constant / variable |
+| `<localleader>fs` | Fill struct |
+| `<localleader>at` | Add test (gopls' own code action) |
+
+---
+
+## Текст и окружения
 
 ### vim-abolish
 
@@ -352,6 +345,7 @@ Inlay hints от gopls включены полностью — типы, име�
 
 | Клавиша / команда | Действие |
 |---|---|
+| `<localleader>hc` | Toggle: визуально скрыть/показать комментарии (treesitter conceal) |
 | `<localleader>fm` или `:RenderMarkdown` | Превью markdown через `glow` в сплите |
 | `:OpenLink` | Открыть URL под курсором |
 | `:Undotree` | Дерево истории изменений (встроенное в Neovim 0.13) |
@@ -376,10 +370,12 @@ helper-запрос **Table Size**.
 - **obs.nvim** и бинды `<leader>n*` для заметок — плагин не установлен
   (`<leader>n*` теперь принадлежит neo-tree);
 - **oil.nvim** и бинд `-` — плагин ставится, но его конфиг целиком закомментирован;
-- **treesitter text objects** (`af`/`if`, `ac`/`ic`, `]f`/`[f`, swap параметров,
-  фолдинг по treesitter) — секция закомментирована;
-- **тесты и бенчмарки на `<localleader>t*` / `<localleader>b*`** — каталога
-  `ftplugin/` в репозитории нет, эти бинды не создаются;
+- **Copilot и mini.surround** — вырезаны: агент теперь только в терминале,
+  автокомплит не нужен (LSP hover/signature вместо него); своей замены на
+  `ys`/`cs`/`ds` пока нет — попроси написать, если понадобится;
+- **treesitter text objects** (`af`/`if`, `ac`/`ic`, `]f`/`[f`, swap параметров) —
+  убраны вместе с остальным мёртвым закомментированным кодом в
+  `nvim-treesitter.lua`; фолдинг по treesitter тоже не настроен;
 - **fzf-lua бинды** `<leader>fs`, `<leader>fd`, `<leader>fq`, `<leader>fh` и прочие —
   не определены, используй команды `:FzfLua *`;
 - **`<leader>ut`** для undotree — бинда нет, есть команда `:Undotree`;
