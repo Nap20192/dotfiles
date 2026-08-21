@@ -1,12 +1,12 @@
 layout {
-    gaps 5
+    gaps 8
 
-   struts {
-        left 0
-        right 0
-        top 0
-        bottom 0
-    }
+   // struts {
+   //      left 3
+   //      right 3
+   //      top 3
+   //      bottom 3
+   //  }
     center-focused-column "never"
     always-center-single-column
     empty-workspace-above-first
@@ -27,20 +27,17 @@ layout {
         proportion 0.66667
     }
 
+    // minimalist: just a 2px accent ring on the focused window, no border
     focus-ring {
         on
-        width 5
-        active-color "#000000"
-        inactive-color "#9b907f"
+        width 2
+        active-color "#ffaf00"
+        inactive-color "#888888"
         urgent-color "#ad5a4d"
     }
 
     border {
-        on
-        width 4
-        active-color "#ffaf00"
-        inactive-color "#9b907f"
-        urgent-color "#ad5a4d"
+        off
     }
 
     shadow {

@@ -23,17 +23,4 @@ window-rule {
 
 // prefer-no-csd
 
-layout {
-    focus-ring {
-        // off
-        width 1
-    }
-
-    border {
-        off
-    }
-
-    shadow {
-        off
-    }
-}
+// border/focus-ring/shadow live in layout.kdl — single source of truth

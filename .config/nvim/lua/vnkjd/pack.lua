@@ -29,10 +29,7 @@ local M = {
 				version = "harpoon2",
 			},
 			gh("nvim-mini/mini.files"),
-			{
-				src = gh("nvim-neo-tree/neo-tree.nvim"),
-				version = vim.version.range("3"),
-			},
+			gh("mikavilpas/yazi.nvim"),
 
 			-- UI
 			gh("nvim-tree/nvim-web-devicons"),
