@@ -142,7 +142,7 @@ local function vnkjd(name)   -- ~/Projects/vnkjd/<name> если есть лок
 | `dap_go` / `dap_python` | nvim-dap-go, nvim-dap-python | `nvim-dap.lua` — **lazy**, see above |
 | `jdtls` | nvim-jdtls | — (только учитывается в lualine) |
 | `dadbod` | vim-dadbod, -completion, -ui | `vim-dadbod.lua` |
-| `git_tools` | vim-fugitive, vim-rhubarb, fugitive-gitlab, vim-fubitive, vim-dispatch | `vim-fugitive.lua`, Go tests/lint dispatch through `after/ftplugin/go.lua` |
+| `git_tools` | vim-fugitive, vim-rhubarb, fugitive-gitlab, vim-fubitive, vim-dispatch, diffview.nvim | `vim-fugitive.lua`, `diffview.lua`, `lazygit.lua`, Go tests/lint dispatch through `after/ftplugin/go.lua` |
 | `claudecode` | claudecode.nvim | `claudecode.lua` |
 | `leetcode` | leetcode.nvim | `leetcode.lua` — **lazy**, `load = false`, packadd on `<leader>lc` |
 | `themery` | themery.nvim | `themery.lua` |

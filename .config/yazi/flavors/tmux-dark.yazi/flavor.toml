@@ -1,10 +1,10 @@
 # Palette mirrored from ~/.tmux.conf
-# bg     "#191919"
+# bg     "#000000"
 # fg     "#dadada"
 # accent "#ffaf00"
 
 [app]
-overall = { bg = "#191919" }
+overall = { bg = "#000000" }
 
 [mgr]
 cwd = { fg = "#dadada", bold = true }
@@ -14,14 +14,14 @@ find_keyword = { fg = "#ffaf00", bg = "#3a2b00", bold = true }
 find_position = { fg = "#ffaf00", bold = true, italic = true }
 
 # Marker
-marker_copied = { fg = "#7fbf7f", bg = "#7fbf7f" }
-marker_cut = { fg = "#ff5f5f", bg = "#ff5f5f" }
-marker_marked = { fg = "#ffaf00", bg = "#ffaf00" }
+marker_copied = { fg = "#6d8758", bg = "#6d8758" }
+marker_cut = { fg = "#b35a4f", bg = "#b35a4f" }
+marker_marked = { fg = "#6c8db5", bg = "#6c8db5" }
 marker_selected = { fg = "#ffaf00", bg = "#ffaf00" }
 
 # Count
-count_copied = { fg = "#7fbf7f", bold = true, reversed = true }
-count_cut = { fg = "#ff5f5f", bold = true, reversed = true }
+count_copied = { fg = "#6d8758", bold = true, reversed = true }
+count_cut = { fg = "#b35a4f", bold = true, reversed = true }
 count_selected = { fg = "#ffaf00", bold = true, reversed = true }
 
 # Border
@@ -30,42 +30,42 @@ border_style = { fg = "#303030" }
 
 [indicator]
 parent = { underline = true }
-current = { fg = "#191919", bg = "#ffaf00", bold = true }
+current = { fg = "#000000", bg = "#ffaf00", bold = true }
 preview = { underline = true }
 padding = { open = "█", close = "█" }
 
 [tabs]
-active = { fg = "#191919", bg = "#ffaf00", bold = true }
+active = { fg = "#000000", bg = "#ffaf00", bold = true }
 inactive = { fg = "#a8a8a8", bg = "#242424" }
 sep_inner = { open = "", close = "" }
 sep_outer = { open = "", close = "" }
 
 [mode]
-normal_main = { fg = "#191919", bg = "#ffaf00", bold = true }
+normal_main = { fg = "#000000", bg = "#ffaf00", bold = true }
 normal_alt = { fg = "#dadada", bg = "#242424" }
 
-select_main = { fg = "#191919", bg = "#ffaf00", bold = true }
+select_main = { fg = "#000000", bg = "#ffaf00", bold = true }
 select_alt = { fg = "#ffaf00", bg = "#3a2b00" }
 
-unset_main = { fg = "#191919", bg = "#ffaf00", bold = true }
+unset_main = { fg = "#000000", bg = "#ffaf00", bold = true }
 unset_alt = { fg = "#ffaf00", bg = "#3a2b00" }
 
 [status]
-overall = { fg = "#dadada", bg = "#191919" }
+overall = { fg = "#dadada", bg = "#000000" }
 sep_left = { open = "", close = "" }
 sep_right = { open = "", close = "" }
 
 # Permissions
 perm_type = { fg = "#ffaf00" }
 perm_read = { fg = "#dadada" }
-perm_write = { fg = "#ff5f5f" }
-perm_exec = { fg = "#7fbf7f" }
+perm_write = { fg = "#b35a4f" }
+perm_exec = { fg = "#6d8758" }
 perm_sep = { fg = "#6f6f6f" }
 
 # Progress
-progress_label = { fg = "#191919", bold = true }
+progress_label = { fg = "#000000", bold = true }
 progress_normal = { fg = "#ffaf00", bg = "#3a2b00" }
-progress_error = { bg = "#ff5f5f" }
+progress_error = { bg = "#b35a4f" }
 
 [which]
 cols = 3
@@ -81,7 +81,7 @@ border = { fg = "#303030" }
 title = { fg = "#ffaf00", bold = true }
 body = { fg = "#dadada", bold = true }
 list = { fg = "#dadada" }
-btn_yes = { fg = "#191919", bg = "#ffaf00", bold = true }
+btn_yes = { fg = "#000000", bg = "#ffaf00", bold = true }
 btn_no = { fg = "#a8a8a8", bg = "#242424" }
 
 [spot]
@@ -93,7 +93,7 @@ tbl_cell = { fg = "#dadada", bg = "#242424" }
 [notify]
 title_info = { fg = "#ffaf00" }
 title_warn = { fg = "#ffaf00" }
-title_error = { fg = "#ff5f5f" }
+title_error = { fg = "#b35a4f" }
 
 [pick]
 border = { fg = "#303030", bold = true }
@@ -104,24 +104,24 @@ inactive = { fg = "#a8a8a8" }
 border = { fg = "#303030" }
 title = { fg = "#ffaf00", bold = true }
 value = { fg = "#dadada" }
-selected = { fg = "#191919", bg = "#ffaf00" }
+selected = { fg = "#000000", bg = "#ffaf00" }
 
 [cmp]
 border = { fg = "#303030", bold = true }
-active = { fg = "#191919", bg = "#ffaf00", bold = true }
+active = { fg = "#000000", bg = "#ffaf00", bold = true }
 inactive = { fg = "#a8a8a8" }
 
 [tasks]
 border = { fg = "#303030" }
 title = { fg = "#ffaf00", bold = true }
-hovered = { fg = "#191919", bg = "#ffaf00", bold = true }
+hovered = { fg = "#000000", bg = "#ffaf00", bold = true }
 
 [help]
 on = { fg = "#ffaf00" }
 run = { fg = "#dadada" }
 desc = { fg = "#8a8a8a", italic = true }
-hovered = { fg = "#191919", bg = "#ffaf00" }
-footer = { fg = "#191919", bg = "#ffaf00", bold = true }
+hovered = { fg = "#000000", bg = "#ffaf00" }
+footer = { fg = "#000000", bg = "#ffaf00", bold = true }
 
 [filetype]
 rules = [
@@ -139,7 +139,7 @@ rules = [
   { url = "*", is = "dummy", fg = "#6f6f6f" },
 
   { url = "*/", fg = "#ffaf00" },
-  { url = "*", is = "exec", fg = "#7fbf7f" },
+  { url = "*", is = "exec", fg = "#6d8758" },
   { url = "*", fg = "#dadada" }
 ]
 
@@ -171,6 +171,6 @@ conds = [
   { if = "dummy", text = "", fg = "#6f6f6f" },
 
   { if = "dir", text = "", fg = "#ffaf00" },
-  { if = "exec", text = "", fg = "#7fbf7f" },
+  { if = "exec", text = "", fg = "#6d8758" },
   { if = "!dir", text = "", fg = "#dadada" }
 ]

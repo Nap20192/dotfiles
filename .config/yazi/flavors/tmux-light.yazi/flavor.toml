@@ -1,10 +1,10 @@
 # Light pair for the local tmux palette
-# bg     "#ffffff"
+# bg     "#fff7df"
 # fg     "#000000"
 # accent "#ffaf00"
 
 [app]
-overall = { bg = "#ffffff" }
+overall = { bg = "#fff7df" }
 
 [mgr]
 cwd = { fg = "#000000", bold = true }
@@ -14,9 +14,9 @@ find_keyword = { fg = "#000000", bg = "#ffaf00", bold = true }
 find_position = { fg = "#000000", bold = true, italic = true }
 
 # Marker
-marker_copied = { fg = "#000000", bg = "#4f8f4f" }
-marker_cut = { fg = "#000000", bg = "#b83333" }
-marker_marked = { fg = "#000000", bg = "#d89600" }
+marker_copied = { fg = "#000000", bg = "#5f7a4f" }
+marker_cut = { fg = "#000000", bg = "#ad5a4d" }
+marker_marked = { fg = "#000000", bg = "#5e7fa8" }
 marker_selected = { fg = "#000000", bg = "#ffaf00" }
 
 # Count
@@ -51,7 +51,7 @@ unset_main = { fg = "#000000", bg = "#ffaf00", bold = true }
 unset_alt = { fg = "#000000", bg = "#ffe1a0" }
 
 [status]
-overall = { fg = "#000000", bg = "#ffffff" }
+overall = { fg = "#000000", bg = "#fff7df" }
 sep_left = { open = "", close = "" }
 sep_right = { open = "", close = "" }
 
@@ -65,7 +65,7 @@ perm_sep = { fg = "#000000" }
 # Progress
 progress_label = { fg = "#000000", bold = true }
 progress_normal = { fg = "#000000", bg = "#ffe1a0" }
-progress_error = { bg = "#b83333" }
+progress_error = { bg = "#ad5a4d" }
 
 [which]
 cols = 3
@@ -125,52 +125,52 @@ footer = { fg = "#000000", bg = "#ffaf00", bold = true }
 
 [filetype]
 rules = [
-  { mime = "inode/empty", fg = "#000000" },
+  { mime = "inode/empty", fg = "#6f6f6f" },
 
-  { url = "*", is = "orphan", fg = "#000000" },
-  { url = "*/", is = "orphan", fg = "#000000" },
-  { url = "*", is = "link", fg = "#000000" },
-  { url = "*/", is = "link", fg = "#000000" },
+  { url = "*", is = "orphan", fg = "#6f6f6f" },
+  { url = "*/", is = "orphan", fg = "#6f6f6f" },
+  { url = "*", is = "link", fg = "#ffaf00" },
+  { url = "*/", is = "link", fg = "#ffaf00" },
   { url = "*", is = "block", fg = "#000000" },
   { url = "*", is = "char", fg = "#000000" },
-  { url = "*", is = "fifo", fg = "#000000" },
-  { url = "*", is = "sock", fg = "#000000" },
+  { url = "*", is = "fifo", fg = "#ffaf00" },
+  { url = "*", is = "sock", fg = "#ffaf00" },
   { url = "*", is = "sticky", fg = "#000000" },
-  { url = "*", is = "dummy", fg = "#000000" },
+  { url = "*", is = "dummy", fg = "#6f6f6f" },
 
   { url = "*/", fg = "#000000" },
-  { url = "*", is = "exec", fg = "#000000" },
+  { url = "*", is = "exec", fg = "#5f7a4f" },
   { url = "*", fg = "#000000" }
 ]
 
 [icon]
 dirs = [
-  { name = ".config", text = "■", fg = "#000000" },
-  { name = ".git", text = "■", fg = "#000000" },
-  { name = ".github", text = "■", fg = "#000000" },
-  { name = ".npm", text = "■", fg = "#000000" },
-  { name = "Desktop", text = "■", fg = "#000000" },
-  { name = "Development", text = "■", fg = "#000000" },
-  { name = "Documents", text = "■", fg = "#000000" },
-  { name = "Downloads", text = "■", fg = "#000000" },
-  { name = "Library", text = "■", fg = "#000000" },
-  { name = "Movies", text = "■", fg = "#000000" },
-  { name = "Music", text = "■", fg = "#000000" },
-  { name = "Pictures", text = "■", fg = "#000000" },
-  { name = "Public", text = "■", fg = "#000000" },
-  { name = "Videos", text = "■", fg = "#000000" }
+  { name = ".config", text = "", fg = "#ffaf00" },
+  { name = ".git", text = "", fg = "#ffaf00" },
+  { name = ".github", text = "", fg = "#ffaf00" },
+  { name = ".npm", text = "", fg = "#ffaf00" },
+  { name = "Desktop", text = "", fg = "#ffaf00" },
+  { name = "Development", text = "", fg = "#ffaf00" },
+  { name = "Documents", text = "", fg = "#ffaf00" },
+  { name = "Downloads", text = "", fg = "#ffaf00" },
+  { name = "Library", text = "", fg = "#ffaf00" },
+  { name = "Movies", text = "", fg = "#ffaf00" },
+  { name = "Music", text = "", fg = "#ffaf00" },
+  { name = "Pictures", text = "", fg = "#ffaf00" },
+  { name = "Public", text = "", fg = "#ffaf00" },
+  { name = "Videos", text = "", fg = "#ffaf00" }
 ]
 conds = [
-  { if = "orphan", text = "■", fg = "#000000" },
-  { if = "link", text = "■", fg = "#000000" },
-  { if = "block", text = "■", fg = "#000000" },
-  { if = "char", text = "■", fg = "#000000" },
-  { if = "fifo", text = "■", fg = "#000000" },
-  { if = "sock", text = "■", fg = "#000000" },
-  { if = "sticky", text = "■", fg = "#000000" },
-  { if = "dummy", text = "■", fg = "#000000" },
+  { if = "orphan", text = "", fg = "#6f6f6f" },
+  { if = "link", text = "", fg = "#ffaf00" },
+  { if = "block", text = "", fg = "#000000" },
+  { if = "char", text = "", fg = "#000000" },
+  { if = "fifo", text = "", fg = "#ffaf00" },
+  { if = "sock", text = "", fg = "#ffaf00" },
+  { if = "sticky", text = "", fg = "#000000" },
+  { if = "dummy", text = "", fg = "#6f6f6f" },
 
-  { if = "dir", text = "■", fg = "#000000" },
-  { if = "exec", text = "■", fg = "#000000" },
-  { if = "!dir", text = "■", fg = "#000000" }
+  { if = "dir", text = "", fg = "#000000" },
+  { if = "exec", text = "", fg = "#5f7a4f" },
+  { if = "!dir", text = "", fg = "#000000" }
 ]

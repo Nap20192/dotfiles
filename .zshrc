@@ -65,10 +65,10 @@ export VISUAL="nvim"
 export EDITOR="nvim"
 
 # Aliases
-alias ls='eza -a --icons'
+alias ls='eza -a --icons=auto'
 
-alias ll='eza -lh --icons --git'
-alias la='eza -lah --icons --git'
+alias ll='eza -lh --icons=auto --git'
+alias la='eza -lah --icons=auto --git'
 
 
 alias c='clear'
@@ -92,7 +92,7 @@ gvm() { _gvm_lazy_load gvm "$@"; }
 
 # PATH
 export GOPATH="$HOME/go"
-export PATH="$HOME/.local/bin:$HOME/.npm-global/bin:$GOPATH/bin:$PATH"
+export PATH="$HOME/.local/bin:$HOME/.npm-global/bin:$GOPATH/bin:$HOME/.cargo/bin:$PATH"
 [[ -d "$HOME/FlameGraph" ]] && export PATH="$PATH:$HOME/FlameGraph"
 
 function y() {

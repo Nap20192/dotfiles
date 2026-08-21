@@ -1,0 +1,62 @@
+@import url("dank-colors.css");
+
+/* Thunar-only theme: static hand-picked colors, independent of matugen.
+   Scoped by ThunarWindow (its actual GTK widget type) so it never leaks
+   into other GTK apps, which still use dank-colors.css above. */
+ThunarWindow,
+ThunarWindow .background,
+ThunarWindow headerbar,
+ThunarWindow toolbar,
+ThunarWindow .sidebar,
+ThunarWindow .view,
+ThunarWindow iconview,
+ThunarWindow treeview.view {
+    background-color: #fff7df;
+    color: #000000;
+}
+
+ThunarWindow .view text,
+ThunarWindow iconview text,
+ThunarWindow treeview.view text {
+    color: #000000;
+}
+
+/* Thunar's icon grid is ExoIconView (a custom xfce widget, NOT GtkIconView).
+   When painting an item it saves the context and adds .view and .cell classes,
+   so the matching node is ExoIconView.view.cell:selected — and the selector
+   needs enough specificity to beat the theme's own `.view:selected` rules. */
+ThunarWindow ExoIconView.view.cell:selected,
+ThunarWindow ExoIconView.view.cell:selected:focus,
+ThunarWindow ExoIconView.view.cell:selected:hover,
+ThunarWindow ExoIconView.view:selected,
+ThunarWindow .view.cell:selected,
+ThunarWindow *:selected,
+ThunarWindow .view:selected,
+ThunarWindow iconview:selected,
+ThunarWindow treeview.view:selected,
+ThunarWindow treeview.view:selected:focus,
+ThunarWindow .rubberband,
+ThunarWindow rubberband {
+    background-color: #ffaf00;
+    color: #000000;
+}
+
+ThunarWindow ExoIconView.view.cell:hover:not(:selected),
+ThunarWindow .view.cell:hover:not(:selected),
+ThunarWindow .view:hover,
+ThunarWindow iconview:hover,
+ThunarWindow treeview.view:hover:not(:selected) {
+    background-color: alpha(#ffaf00, 0.4);
+    color: #000000;
+}
+
+ThunarWindow headerbar,
+ThunarWindow toolbar {
+    border-color: #000000;
+    box-shadow: none;
+}
+
+ThunarWindow separator,
+ThunarWindow .sidebar {
+    border-color: alpha(#000000, 0.2);
+}

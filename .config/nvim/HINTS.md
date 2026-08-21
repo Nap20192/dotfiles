@@ -286,6 +286,23 @@ Fugitive и друзья, плюс свои бинды в `after/plugin/vim-fugi
 
 Запуск внешних команд — `:Dispatch <cmd>`, результат уходит в quickfix.
 
+**diffview.nvim** (дополняет fugitive, не конкурирует):
+
+| Клавиша | Действие |
+|---|---|
+| `<leader>gv` | Diff против HEAD (файловое дерево + дифф) |
+| `<leader>gV` | Закрыть diffview |
+| `<leader>gh` | История текущего файла |
+| `<leader>gH` | История всего репозитория |
+
+`<leader>gd` занят vim-go (`GoDef`) — поэтому не `gd`/`gD`.
+
+**lazygit** (`<leader>gG`) — плавающий терминал, встроенный `:terminal`,
+без отдельного плагина. Выход через `q` внутри lazygit закрывает окно сам.
+
+Терминальный diff — `delta` (`core.pager` в `~/.gitconfig`), красит
+`git diff`/`git log -p` в амбер+моно палитру, ту же, что везде.
+
 ---
 
 ## Go

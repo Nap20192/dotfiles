@@ -1,11 +1,11 @@
 layout {
-    gaps 0
+    gaps 5
 
    struts {
         left 0
         right 0
-        top -5
-        bottom -5
+        top 0
+        bottom 0
     }
     center-focused-column "never"
     always-center-single-column

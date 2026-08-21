@@ -104,6 +104,7 @@ local M = {
 			gh("tommcdo/vim-fubitive"),
 			gh("tpope/vim-rhubarb"),
 			gh("tpope/vim-fugitive"),
+			gh("sindrets/diffview.nvim"),
 		},
 		claudecode = {
 			gh("coder/claudecode.nvim"),

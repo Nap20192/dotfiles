@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+# fzf-pick a wallpaper from ~/wallpapers and hand it to awww.
+set -euo pipefail
+
+pick=$(find -L ~/wallpapers -maxdepth 1 -type f | sort | fzf --prompt="wallpaper> ")
+[ -n "$pick" ] && awww img --transition-type=simple "$pick"

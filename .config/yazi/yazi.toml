@@ -20,12 +20,12 @@ mouse_events   = [ "click", "scroll", "drag" ]
 [preview]
 wrap            = "no"
 tab_size        = 2
-max_width       = 600
-max_height      = 900
+max_width       = 1920
+max_height      = 1440
 cache_dir       = ""
 image_delay     = 30
-image_filter    = "triangle"
-image_quality   = 75
+image_filter    = "lanczos3"
+image_quality   = 85
 ueberzug_scale  = 1
 ueberzug_offset = [ 0, 0, 0, 0 ]
 
@@ -34,6 +34,15 @@ edit = [
 	{ run = "nvim %s",         desc = "nvim",         for = "unix", block = true },
 	{ run = "code %s",          desc = "code",         for = "windows", orphan = true },
 	{ run = "code -w %s",       desc = "code (block)", for = "windows", block = true },
+]
+image = [
+	# mpv doubles as an image viewer and is already installed; imv listed
+	# second so it takes over from the picker once it's actually installed
+	{ run = "mpv --loop-file=inf %*", desc = "mpv", for = "unix", orphan = true },
+	{ run = "imv %*",          desc = "imv",  for = "unix", orphan = true },
+]
+pdf = [
+	{ run = "zathura %*",      desc = "zathura", for = "unix", orphan = true },
 ]
 play = [
 	{ run = "xdg-open %s1",    desc = "Play", for = "linux", orphan = true },
@@ -71,7 +80,9 @@ rules = [
 	# Text
 	{ mime = "text/*", use = [ "edit", "reveal" ] },
 	# Image
-	{ mime = "image/*", use = [ "open", "reveal" ] },
+	{ mime = "image/*", use = [ "image", "reveal" ] },
+	# PDF
+	{ mime = "application/pdf", use = [ "pdf", "reveal" ] },
 	# Media
 	{ mime = "{audio,video}/*", use = [ "play", "reveal" ] },
 	# Code
@@ -98,6 +109,11 @@ image_bound      = [ 10000, 10000 ]
 suppress_preload = false
 
 [plugin]
+prepend_fetchers = [
+	# Git status signs in the file list (git.yazi)
+	{ url = "*",  run = "git", group = "git" },
+	{ url = "*/", run = "git", group = "git" },
+]
 fetchers = [
 	# MIME-type
 	{ url = "*/",         run = "mime.dir",    prio = "high", group = "mime" },

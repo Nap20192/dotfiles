@@ -1,3 +1,13 @@
 [flavor]
 dark  = "tmux-dark"
 light = "tmux-light"
+
+# git.yazi status signs, in the vnkjd palette (readable in both flavors)
+[git]
+staged    = { fg = "#5f7a4f" }
+added     = { fg = "#5f7a4f" }
+unstaged  = { fg = "#ffaf00" }
+untracked = { fg = "#707070" }
+deleted   = { fg = "#ad5a4d" }
+updated   = { fg = "#ffaf00" }
+ignored   = { fg = "#707070" }

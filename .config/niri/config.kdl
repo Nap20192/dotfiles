@@ -1,5 +1,3 @@
-spawn-at-startup "awww-daemon"
-
 include "debug.kdl"
 include "input.kdl"
 include "outputs.kdl"

@@ -1,4 +1,6 @@
 animations {
+    // <1 speeds everything up globally; 0.6 keeps motion visible but snappy
+    slowdown 0.6
     // off
     // slowdown 100
     // slowdown 10

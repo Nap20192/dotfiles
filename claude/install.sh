@@ -10,6 +10,23 @@ if ! command -v claude >/dev/null 2>&1; then
   exit 1
 fi
 
+# --- Symlink config from dotfiles ------------------------------------------
+DOTFILES="$(cd "$(dirname "$0")/.." && pwd)"
+echo "==> Linking config from $DOTFILES"
+mkdir -p ~/.claude
+for pair in \
+  "$DOTFILES/.claude/settings.json ~/.claude/settings.json" \
+  "$DOTFILES/.claude/commands      ~/.claude/commands" \
+  "$DOTFILES/.claude/hooks         ~/.claude/hooks" \
+  "$DOTFILES/.claude/skills        ~/.claude/skills" \
+  "$DOTFILES/.agents               ~/.agents"; do
+  read -r src dst <<<"$pair"
+  dst="${dst/#\~/$HOME}"
+  [ -e "$dst" ] && [ ! -L "$dst" ] && { echo "  ! $dst exists and is not a symlink, skipping"; continue; }
+  ln -sfn "$src" "$dst"
+  echo "--- $dst -> $src"
+done
+
 # --- Plugins & skills -------------------------------------------------------
 # Each entry: "<marketplace-repo> <plugin-ref>"
 plugins=(

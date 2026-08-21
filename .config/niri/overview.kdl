@@ -1,5 +1,6 @@
 layer-rule {
-    match namespace="^awww"
+    // DMS wallpaper window uses quickshell's default layer namespace
+    match namespace="^quickshell$"
     place-within-backdrop true
 }
 

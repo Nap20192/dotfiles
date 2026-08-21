@@ -1,0 +1,78 @@
+onboarding = false
+# herdr — https://herdr.dev/docs/configuration/
+
+[theme]
+# reviewr's config mirrors this name (its themes resolve the same palettes)
+name = "gruvbox-light"
+auto_switch = false
+[ui]
+# tmux parity: status/tab strip at the bottom
+tab_bar_position = "bottom"
+
+agent_panel_sort = "spaces"
+[keys]
+# Same prefix as tmux (~/.tmux.conf) for muscle memory; ctrl+b default
+# is the awkward reach that got replaced there too.
+prefix = "ctrl+space"
+
+# tmux parity (~/.tmux.conf): M-j/M-k switch windows without the prefix
+previous_tab = ["prefix+p", "alt+j"]
+next_tab = ["prefix+n", "alt+k"]
+
+# tmux parity: `prefix d` detaches (q kept too)
+detach = ["prefix+q", "prefix+d"]
+
+# tmux parity: `prefix g` opens a scratch popup shell; herdr's goto moves to u
+goto = "prefix+u"
+
+# prefix-less Ctrl+hjkl live below as vim-nav plugin actions: nvim panes get
+# the key (vim splits work), other panes move herdr focus. Note: ctrl+l
+# clear-screen in a plain shell still becomes pane focus.
+focus_pane_left = "prefix+h"
+focus_pane_down = "prefix+j"
+focus_pane_up = "prefix+k"
+focus_pane_right = "prefix+l"
+
+[[keys.command]]
+key = "ctrl+h"
+type = "plugin_action"
+command = "vnkjd.vim-nav.left"
+
+[[keys.command]]
+key = "ctrl+j"
+type = "plugin_action"
+command = "vnkjd.vim-nav.down"
+
+[[keys.command]]
+key = "ctrl+k"
+type = "plugin_action"
+command = "vnkjd.vim-nav.up"
+
+[[keys.command]]
+key = "ctrl+l"
+type = "plugin_action"
+command = "vnkjd.vim-nav.right"
+
+[[keys.command]]
+key = "prefix+g"
+type = "popup"
+command = "zsh"
+width = "80%"
+height = "80%"
+
+[[keys.command]]
+# ctrl+alt+r: free on every layer (niri owns Super+R/Shift/Ctrl variants,
+# tmux is prefix-only, ghostty uses ctrl+shift), reaches herdr directly
+key = "ctrl+alt+r"
+type = "plugin_action"
+command = "persiyanov.reviewr.toggle"
+
+[ui.sound]
+# freedesktop theme sounds (same as DMS) pre-attenuated to 10% volume —
+# herdr has no volume knob, so the files themselves are quiet
+path = "sounds/notification.mp3"
+done_path = "sounds/done.mp3"
+request_path = "sounds/request.mp3"
+
+[experimental]
+kitty_graphics = true

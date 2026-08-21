@@ -2,13 +2,14 @@ binds {
     Mod+Shift+Slash { show-hotkey-overlay; }
     Mod+B { spawn "dms" "ipc" "call" "bar" "toggle" "index" "0"; }
     Mod+Shift+L allow-when-locked=true hotkey-overlay-title="Lock the Screen" { spawn-sh "dms ipc call lock lock || hyprlock"; }
-    Mod+N hotkey-overlay-title="Open File Manager" { spawn "nautilus"; }
+    Mod+N hotkey-overlay-title="Open File Manager" { spawn "thunar"; }
     Mod+D hotkey-overlay-title="Run an Application" { spawn "dms" "ipc" "call" "spotlight" "toggle"; }
 
     Super+Alt+S allow-when-locked=true hotkey-overlay-title=null { spawn-sh "pkill orca || exec orca"; }
 
     Mod+Return { spawn "ghostty"; }
-    Mod+T { spawn "ghostty" "--class=com.ghostty.floating"; }
+    Mod+T hotkey-overlay-title="Wallpaper Carousel" { spawn "dms" "ipc" "call" "wallpaperCarousel" "toggle"; }
+    Mod+Shift+T { spawn "ghostty" "--class=com.ghostty.floating"; }
     Mod+Shift+Y hotkey-overlay-title="Open YouTube" { spawn "webapp-youtube"; }
     Mod+Shift+G hotkey-overlay-title="Open Gemini" { spawn "webapp-gemini"; }
     Mod+Shift+X hotkey-overlay-title="Open Grok" { spawn "webapp-grok"; }
@@ -86,4 +87,11 @@ binds {
 
     Mod+V       { toggle-window-floating; }
     Mod+Shift+S { screenshot; }
+
+    // Wallpaper — DMS-managed: per-mode dirs ~/wallpapers/{dark,light},
+    // carousel is the dank dash wallpaper tab (also on Mod+T),
+    // next/prev cycle within the active mode's folder.
+    Mod+W             hotkey-overlay-title="Wallpaper Carousel"  { spawn "dms" "ipc" "call" "wallpaperCarousel" "toggle"; }
+    Mod+Ctrl+W        hotkey-overlay-title="Next Wallpaper"      { spawn "dms" "ipc" "call" "wallpaper" "next"; }
+    Mod+Ctrl+Shift+W  hotkey-overlay-title="Previous Wallpaper"  { spawn "dms" "ipc" "call" "wallpaper" "prev"; }
 }

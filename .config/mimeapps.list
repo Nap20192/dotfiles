@@ -7,7 +7,7 @@ x-scheme-handler/unknown=google-chrome.desktop
 x-scheme-handler/claude-cli=claude-code-url-handler.desktop
 x-scheme-handler/postman=postman.desktop
 x-scheme-handler/discord=vesktop.desktop
-inode/directory=org.gnome.Nautilus.desktop
+inode/directory=thunar.desktop
 text/plain=org.neovim.nvim.desktop
 text/markdown=org.neovim.nvim.desktop
 text/x-shellscript=org.neovim.nvim.desktop
@@ -29,7 +29,7 @@ audio/ogg=mpv.desktop
 audio/wav=mpv.desktop
 
 [Added Associations]
-inode/directory=org.gnome.Nautilus.desktop;yazi.desktop;
+inode/directory=thunar.desktop;org.kde.dolphin.desktop;org.gnome.Nautilus.desktop;yazi.desktop;
 text/plain=org.neovim.nvim.desktop;vim.desktop;code.desktop;
 text/markdown=org.neovim.nvim.desktop;vim.desktop;code.desktop;
 text/x-shellscript=org.neovim.nvim.desktop;vim.desktop;code.desktop;

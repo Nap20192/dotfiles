@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+# Step to the next/previous wallpaper in ~/wallpapers (sorted, wraps around).
+# awww has no next/prev of its own, so this tracks position via `awww query`.
+set -euo pipefail
+
+dir=$(readlink -f ~/wallpapers)
+mapfile -t files < <(find -L "$dir" -maxdepth 1 -type f | sort)
+[ "${#files[@]}" -eq 0 ] && { echo "no wallpapers in $dir" >&2; exit 1; }
+
+current=$(awww query | grep -oP 'image: \K\S+' | head -1 || true)
+
+idx=0
+for i in "${!files[@]}"; do
+	[ "${files[$i]}" = "$current" ] && idx=$i && break
+done
+
+case "${1:-next}" in
+next) idx=$(((idx + 1) % ${#files[@]})) ;;
+prev) idx=$(((idx - 1 + ${#files[@]}) % ${#files[@]})) ;;
+*)
+	echo "usage: wallpaper-cycle [next|prev]" >&2
+	exit 1
+	;;
+esac
+
+awww img --transition-type=simple "${files[$idx]}"

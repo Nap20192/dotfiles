@@ -64,6 +64,10 @@
       "rev": "ccad56bb5eb7d29258980cfc0a716eb87bcad69e",
       "src": "https://github.com/Verf/deepwhite.nvim"
     },
+    "diffview.nvim": {
+      "rev": "4516612fe98ff56ae0415a259ff6361a89419b0a",
+      "src": "https://github.com/sindrets/diffview.nvim"
+    },
     "fff.nvim": {
       "rev": "cebacb3c35645a5036adda093d4332f6098865bd",
       "src": "https://github.com/dmtrKovalenko/fff.nvim"
