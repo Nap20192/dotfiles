@@ -21,3 +21,5 @@ export GOPATH="$HOME/go"
 export PATH="$HOME/.local/bin:$HOME/.npm-global/bin:$GOPATH/bin:$PATH"
 
 . "$HOME/.uv/bin/env"
+
+if command -v wt >/dev/null 2>&1; then eval "$(command wt config shell init bash)"; fi

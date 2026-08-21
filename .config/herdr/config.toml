@@ -25,6 +25,11 @@ detach = ["prefix+q", "prefix+d"]
 # tmux parity: `prefix g` opens a scratch popup shell; herdr's goto moves to u
 goto = "prefix+u"
 
+# worktrees: w = create worktree + workspace, W = open existing, ctrl+w = remove
+new_worktree = "prefix+w"
+open_worktree = "prefix+shift+w"
+remove_worktree = "prefix+ctrl+w"
+
 # prefix-less Ctrl+hjkl live below as vim-nav plugin actions: nvim panes get
 # the key (vim splits work), other panes move herdr focus. Note: ctrl+l
 # clear-screen in a plain shell still becomes pane focus.

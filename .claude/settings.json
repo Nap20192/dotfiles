@@ -27,7 +27,8 @@
     "mattpocock-skills@mattpocock": true,
     "superpowers@superpowers-dev": true,
     "andrej-karpathy-skills@karpathy-skills": true,
-    "diagram-design@diagram-design": true
+    "diagram-design@diagram-design": true,
+    "worktrunk@worktrunk": true
   },
   "extraKnownMarketplaces": {
     "ponytail": {
@@ -82,6 +83,12 @@
       "source": {
         "source": "github",
         "repo": "kepano/obsidian-skills"
+      }
+    },
+    "worktrunk": {
+      "source": {
+        "source": "github",
+        "repo": "max-sixty/worktrunk"
       }
     }
   },

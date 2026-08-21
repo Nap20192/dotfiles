@@ -30,6 +30,7 @@ local M = {
 			},
 			gh("nvim-mini/mini.files"),
 			gh("mikavilpas/yazi.nvim"),
+			gh("pwntester/octo.nvim"),
 
 			-- UI
 			gh("nvim-tree/nvim-web-devicons"),
