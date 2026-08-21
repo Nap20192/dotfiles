@@ -1,66 +1,74 @@
 # dotfiles
 
 CachyOS + [niri](https://github.com/YaLTeR/niri) + [DankMaterialShell](https://danklinux.com).
-Монохромная AMOLED-тема с оранжевым акцентом, светлый и тёмный режимы — от логин-экрана до обоев.
+Monochrome AMOLED theme with an orange accent, light and dark modes everywhere —
+from the login screen to the wallpapers.
 
 ![desktop](docs/desktop.png)
 
-## Что внутри
+## Wallpapers
 
-| Компонент | Выбор |
-|---|---|
-| WM | niri (scrollable tiling, Wayland) |
-| Shell / бар | DankMaterialShell (quickshell), кастомная тема `amoled.json` |
-| Логин | greetd + dms-greeter, тема синхронизирована с сессией |
-| Терминал | ghostty (+ tmux, [herdr](https://herdr.dev) для агентов) |
-| Редактор | neovim, свой монохромный colorscheme |
-| Файлы | yazi (+ Thunar), тема под tmux-палитру |
-| Агенты | Claude Code: настройки, скилы, hooks, herdr-плагины — всё в репо |
+Two sets that follow the theme mode automatically. Dark: black with highlights
+tinted to the theme foreground (`#fffaf0`). Light: ink-on-ivory duotone
+(`#fff7df`, the light theme background). Untouched sources live in
+`wallpapers/originals/`.
 
-## Обои
-
-Два набора под режимы темы: тёмный — AMOLED-монохром, светлый — duotone
-«тушь на слоновой кости» (`#fff7df` — фон светлой темы). DMS переключает их
-вместе с темой автоматически. Исходники — в `wallpapers/originals/`.
-
-| Тёмные | Светлые |
+| Dark | Light |
 |---|---|
 | ![dark](docs/wallpapers-dark.png) | ![light](docs/wallpapers-light.png) |
 
-Карусель — плагин [Wallpaper Carousel](https://github.com/motor-dev/wallpaperCarousel):
-fullscreen 3D-выбор обоев, `Mod+T` / `Mod+W`.
+Picker: the [Wallpaper Carousel](https://github.com/motor-dev/wallpaperCarousel)
+DMS plugin — fullscreen 3D carousel on `Mod+T` / `Mod+W`.
 
-## Установка
+## Install
 
 ```sh
-git clone <repo> ~/dotfiles
-~/dotfiles/install.sh          # симлинки всех конфигов в $HOME
-~/dotfiles/claude/install.sh   # плагины и MCP-серверы Claude Code
-dms greeter install -t         # логин-экран DMS (greetd), опционально
+git clone git@github.com:Nap20192/dotfiles.git ~/dotfiles
+~/dotfiles/install.sh          # symlink all configs into $HOME
+~/dotfiles/claude/install.sh   # Claude Code plugins & MCP servers
+dms greeter install -t         # DMS login screen (greetd), optional
 ```
 
-`install.sh` идемпотентен: существующие не-симлинки не трогает, только предупреждает.
+`install.sh` is idempotent: existing non-symlink targets are skipped with a warning.
 
-## Горячие клавиши (главное)
+## Required packages
 
-| Клавиши | Действие |
+Core:
+
+```
+niri dms quickshell ghostty tmux neovim yazi thunar zsh git
+pipewire wireplumber xdg-desktop-portal-gnome xdg-desktop-portal-gtk
+```
+
+Login screen: `greetd` + `greetd-dms-greeter-git` (AUR) — or just run
+`dms greeter install -t`.
+
+Shell extras: `zinit` (auto-installed by `.zshrc`), `powerlevel10k`.
+
+Fonts: `GoMono Nerd Font` (terminal), Material Symbols (pulled in by DMS).
+
+Optional: `herdr` (agent terminal workspace), `claude-code`,
+`imagemagick` + `ffmpeg` (only to regenerate wallpaper recolors and
+quiet notification sounds).
+
+## Keybindings
+
+| Keys | Action |
 |---|---|
-| `Mod+Return` | терминал |
-| `Mod+Shift+T` | плавающий терминал |
-| `Mod+D` | лаунчер (spotlight) |
-| `Mod+T` / `Mod+W` | карусель обоев |
-| `Mod+Ctrl+W` / `+Shift` | следующие / предыдущие обои |
-| `Ctrl+h/j/k/l` в herdr | vim-aware навигация по panes (nvim получает клавишу сам) |
+| `Mod+Return` | terminal |
+| `Mod+Shift+T` | floating terminal |
+| `Mod+D` | launcher |
+| `Mod+T` / `Mod+W` | wallpaper carousel |
+| `Mod+Ctrl+W` / `+Shift` | next / previous wallpaper |
+| `Ctrl+h/j/k/l` in herdr | vim-aware pane navigation |
 
-Полный список — `.config/niri/binds.kdl`.
+Full list: `.config/niri/binds.kdl`.
 
-## Детали
+## Notes
 
-- **Тихие уведомления**: громкость звука DMS зажата до 10% через WirePlumber
-  stream-restore; herdr играет свои mp3 (`.config/herdr/sounds/`), пережатые до 10%.
-- **herdr vim-nav**: локальный плагин (`.config/herdr/plugins-local/vim-nav/`) —
-  `ctrl+hjkl` идут в nvim, если он в фокусе, иначе двигают фокус panes.
-- **Анимации niri**: глобальный `slowdown 0.6` — быстрее, но не мгновенно.
-- **Claude Code**: `.claude/` (settings, commands, hooks, skills) и `.agents/`
-  живут в репо, домашние пути — симлинки. `claude/install.sh` ставит плагины
-  и MCP-серверы с нуля.
+- **Quiet notifications**: DMS sound volume is pinned to 10% via WirePlumber
+  stream-restore; herdr plays its own 10%-volume mp3s (`.config/herdr/sounds/`).
+- **herdr vim-nav**: local plugin (`.config/herdr/plugins-local/vim-nav/`) —
+  `ctrl+hjkl` passes through to nvim when focused, otherwise moves pane focus.
+- **Claude Code**: `.claude/` (settings, commands, hooks, skills) and `.agents/`
+  are tracked here; home paths are symlinks.
