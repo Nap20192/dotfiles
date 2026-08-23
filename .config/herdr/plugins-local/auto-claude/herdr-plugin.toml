@@ -1,0 +1,14 @@
+id = "vnkjd.auto-claude"
+name = "Auto Claude"
+version = "0.1.0"
+min_herdr_version = "0.8.0"
+description = "Start a claude agent automatically in every new/opened worktree workspace"
+platforms = ["linux", "macos"]
+
+[[events]]
+on = "worktree.created"
+command = ["bash", "on-worktree.sh"]
+
+[[events]]
+on = "worktree.opened"
+command = ["bash", "on-worktree.sh"]

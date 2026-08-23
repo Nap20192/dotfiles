@@ -1,9 +1,0 @@
-[Icons]
-Theme=breeze
-
-[KDE]
-ShowDeleteCommand=false
-
-[PreviewSettings]
-EnableRemoteFolderThumbnail=false
-MaximumRemoteSize=0

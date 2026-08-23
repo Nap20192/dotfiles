@@ -35,7 +35,7 @@ keymap = [
 
 	# Navigation
 	{ on = "h", run = "leave", desc = "Back to the parent directory" },
-	{ on = "l", run = "enter", desc = "Enter the child directory" },
+	{ on = "l", run = "plugin smart-enter", desc = "Enter directory, or open file" },
 
 	{ on = "<Left>",  run = "leave", desc = "Back to the parent directory" },
 	{ on = "<Right>", run = "enter", desc = "Enter the child directory" },
@@ -94,6 +94,9 @@ keymap = [
 	{ on = [ "m", "o" ], run = "linemode owner",       desc = "Linemode: owner" },
 	{ on = [ "m", "n" ], run = "linemode none",        desc = "Linemode: none" },
 
+	# chmod on selected files
+	{ on = [ "c", "m" ], run = "plugin chmod",          desc = "Chmod selected files" },
+
 	# Copy
 	{ on = [ "c", "c" ], run = "copy path",             desc = "Copy file URL" },
 	{ on = [ "c", "d" ], run = "copy dirname",          desc = "Copy directory URL" },
@@ -128,6 +131,9 @@ keymap = [
 	{ on = [ "g", "h" ],       run = "cd ~",             desc = "Go home" },
 	{ on = [ "g", "c" ],       run = "cd ~/.config",     desc = "Go ~/.config" },
 	{ on = [ "g", "d" ],       run = "cd ~/Downloads",   desc = "Go ~/Downloads" },
+	{ on = [ "g", "o" ],       run = "cd ~/dotfiles",    desc = "Go ~/dotfiles" },
+	{ on = [ "g", "n" ],       run = "cd ~/Notes",       desc = "Go ~/Notes" },
+	{ on = [ "g", "t" ],       run = "cd ~/tmp",         desc = "Go ~/tmp" },
 	{ on = [ "g", "<Space>" ], run = "cd --interactive", desc = "Jump interactively" },
 	{ on = [ "g", "f" ],       run = "follow",           desc = "Follow hovered symlink" },
 

@@ -11,13 +11,13 @@ tab_bar_position = "bottom"
 
 agent_panel_sort = "spaces"
 [keys]
-# Same prefix as tmux (~/.tmux.conf) for muscle memory; ctrl+b default
-# is the awkward reach that got replaced there too.
-prefix = "ctrl+space"
+# alt is herdr's layer (see ~/Notes/hotkeys-audit.md); tmux keeps ctrl+space
+# for SSH boxes where herdr is absent.
+prefix = "alt+space"
 
-# tmux parity (~/.tmux.conf): M-j/M-k switch windows without the prefix
-previous_tab = ["prefix+p", "alt+j"]
-next_tab = ["prefix+n", "alt+k"]
+# alt layer: alt+p/n switch tabs (alt+j/k now belong to pane nav below)
+previous_tab = ["prefix+p", "alt+p"]
+next_tab = ["prefix+n", "alt+n"]
 
 # tmux parity: `prefix d` detaches (q kept too)
 detach = ["prefix+q", "prefix+d"]
@@ -30,31 +30,31 @@ new_worktree = "prefix+w"
 open_worktree = "prefix+shift+w"
 remove_worktree = "prefix+ctrl+w"
 
-# prefix-less Ctrl+hjkl live below as vim-nav plugin actions: nvim panes get
-# the key (vim splits work), other panes move herdr focus. Note: ctrl+l
-# clear-screen in a plain shell still becomes pane focus.
+# prefix-less Alt+hjkl live below as vim-nav plugin actions: nvim panes get
+# the key passed through (vim splits work), other panes move herdr focus.
+# Bare ctrl+hjkl now reach apps again (ctrl+l clear-screen is back).
 focus_pane_left = "prefix+h"
 focus_pane_down = "prefix+j"
 focus_pane_up = "prefix+k"
 focus_pane_right = "prefix+l"
 
 [[keys.command]]
-key = "ctrl+h"
+key = "alt+h"
 type = "plugin_action"
 command = "vnkjd.vim-nav.left"
 
 [[keys.command]]
-key = "ctrl+j"
+key = "alt+j"
 type = "plugin_action"
 command = "vnkjd.vim-nav.down"
 
 [[keys.command]]
-key = "ctrl+k"
+key = "alt+k"
 type = "plugin_action"
 command = "vnkjd.vim-nav.up"
 
 [[keys.command]]
-key = "ctrl+l"
+key = "alt+l"
 type = "plugin_action"
 command = "vnkjd.vim-nav.right"
 

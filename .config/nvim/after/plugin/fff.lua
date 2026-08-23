@@ -20,6 +20,14 @@ vim.g.fff = {
   },
 }
 
+-- follow :cd (e.g. the <leader>fz zoxide picker) — otherwise fff keeps
+-- indexing the directory nvim started in
+vim.api.nvim_create_autocmd('DirChanged', {
+  callback = function()
+    pcall(function() require('fff').change_indexing_directory(vim.fn.getcwd()) end)
+  end,
+})
+
 vim.keymap.set(
   'n',
   '<leader>ff',

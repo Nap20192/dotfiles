@@ -9,5 +9,8 @@ node_modules/
 .pi/agent/models-store.json
 .pi/agent/run-history.jsonl
 .pi/agent/extensions/*/logs/
+.pi/agent/npm/
+.pi/agent/extensions/
+.pi/web-search-cache/
 __pycache__/
 .venv/
